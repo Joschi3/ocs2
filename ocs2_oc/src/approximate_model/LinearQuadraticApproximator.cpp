@@ -81,6 +81,8 @@ void approximateIntermediateLQ(OptimalControlProblem& problem, const scalar_t ti
     modelData.cost +=
         problem.inequalityLagrangianPtr->getQuadraticApproximation(time, state, input, multipliers.stateInputIneq, preComputation);
   }
+  // add some regularization to the Hessian to make it positive definite #AddedRegularization
+  modelData.cost.dfdxx += matrix_t::Identity(modelData.cost.dfdxx.rows(), modelData.cost.dfdxx.cols()) * 1e-5;
 }
 
 /******************************************************************************************************/
@@ -262,7 +264,8 @@ ScalarFunctionQuadraticApproximation approximateFinalCost(const OptimalControlPr
   if (!problem.finalSoftConstraintPtr->empty()) {
     cost += problem.finalSoftConstraintPtr->getQuadraticApproximation(time, state, targetTrajectories, preComputation);
   }
-
+  // add some regularization to the Hessian to make it positive definite #AddedRegularization
+  cost.dfdxx += matrix_t::Identity(cost.dfdxx.rows(), cost.dfdxx.cols()) * 1e-5;
   return cost;
 }
 

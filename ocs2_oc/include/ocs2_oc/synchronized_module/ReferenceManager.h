@@ -73,6 +73,7 @@ class ReferenceManager : public ReferenceManagerInterface {
    */
   virtual void modifyReferences(scalar_t initTime, scalar_t finalTime, const vector_t& initState, TargetTrajectories& targetTrajectories,
                                 ModeSchedule& modeSchedule) {}
+                                
 
  private:
   BufferedValue<ModeSchedule> modeSchedule_;

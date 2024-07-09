@@ -145,6 +145,7 @@ install(DIRECTORY config
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(${PROJECT_NAME}_test
   test/AnymalFactoryFunctions.cpp
@@ -163,3 +164,4 @@ target_link_libraries(${PROJECT_NAME}_test
   ${Boost_LIBRARIES}
 )
 target_compile_options(${PROJECT_NAME}_test PRIVATE ${FLAGS})
+endif()

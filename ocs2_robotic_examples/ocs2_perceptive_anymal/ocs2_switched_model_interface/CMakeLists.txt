@@ -127,6 +127,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_constraints
 	test/constraint/testZeroForceConstraint.cpp
@@ -192,3 +193,4 @@ target_link_libraries(test_${PROJECT_NAME}_convexTerrain
 	${PROJECT_NAME}
 	gtest_main
 )
+endif()

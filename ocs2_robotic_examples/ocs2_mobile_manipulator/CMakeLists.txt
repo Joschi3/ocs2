@@ -132,6 +132,7 @@ install(DIRECTORY config
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 # Helper macro for adding target applications
 macro(add_ocs2_test APP_NAME APP_SRC)
@@ -152,3 +153,4 @@ endmacro()
 add_ocs2_test(SelfCollisionTest test/testSelfCollision.cpp)
 add_ocs2_test(EndEffectorConstraintTest test/testEndEffectorConstraint.cpp)
 add_ocs2_test(DummyMobileManipulatorTest test/testDummyMobileManipulator.cpp)
+endif()

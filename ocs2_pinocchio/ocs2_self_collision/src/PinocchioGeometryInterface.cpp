@@ -106,8 +106,16 @@ void PinocchioGeometryInterface::buildGeomFromPinocchioInterface(const Pinocchio
 /******************************************************************************************************/
 void PinocchioGeometryInterface::addCollisionObjectPairs(const PinocchioInterface& pinocchioInterface,
                                                          const std::vector<std::pair<size_t, size_t>>& collisionObjectPairs) {
+  // int i = 0;
+  // for (const auto& collisionObject : geometryModelPtr_->geometryObjects) {
+  //   std::cerr << i << ".) Collision Object: " << collisionObject.name << std::endl;
+  //   i++;
+  // }
+
   for (const auto& pair : collisionObjectPairs) {
     geometryModelPtr_->addCollisionPair(pinocchio::CollisionPair{pair.first, pair.second});
+    // std::cerr << "Collision Pair ( " << geometryModelPtr_->geometryObjects[pair.first].name << ", "
+    //           << geometryModelPtr_->geometryObjects[pair.second].name << " )" << std::endl;
   }
 }
 
@@ -134,7 +142,8 @@ void PinocchioGeometryInterface::addCollisionLinkPairs(const PinocchioInterface&
     }
     if (!addedPair) {
       std::cerr << "WARNING: in collision link pair [" << linkPair.first << ", " << linkPair.second
-                << "], one or both of the links don't exist in the pinocchio/urdf model\n";
+                << "], one or both of the links don't exist in the "
+                   "pinocchio/urdf model\n";
     }
   }
 }

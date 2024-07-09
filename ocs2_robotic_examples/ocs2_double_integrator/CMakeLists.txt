@@ -130,6 +130,7 @@ install(TARGETS DoubleIntegratorPyBindings
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(ocs2_double_integrator_no_ros_integration_test
   test/DoubleIntegratorNoRosIntegrationTest.cpp
@@ -163,3 +164,4 @@ target_link_libraries(ocs2_double_integrator_pybinding_test
 
 # python tests
 catkin_add_nosetests(test/DoubleIntegratorPyBindingTest.py)
+endif()

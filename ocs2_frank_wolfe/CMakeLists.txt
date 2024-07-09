@@ -69,7 +69,7 @@ install(TARGETS ${PROJECT_NAME}
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_frank_wolfe
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(quadratic_test
   test/QuadraticTest.cpp
 )
@@ -99,3 +99,4 @@ target_link_libraries(glpk_test
   GLPK::GLPK
   gtest_main
 )
+endif()

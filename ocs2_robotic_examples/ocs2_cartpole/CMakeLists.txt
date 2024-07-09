@@ -113,6 +113,7 @@ install(DIRECTORY config
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_cartpole
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_cartpole
   test/testCartpole.cpp
@@ -126,3 +127,4 @@ target_link_libraries(test_cartpole
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
+endif()

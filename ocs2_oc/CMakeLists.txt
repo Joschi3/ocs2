@@ -129,7 +129,7 @@ install(DIRECTORY test/include/${PROJECT_NAME}/
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_oc
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(test_${PROJECT_NAME}_multiple_shooting
   test/multiple_shooting/testProjectionMultiplierCoefficients.cpp
   test/multiple_shooting/testTranscriptionMetrics.cpp
@@ -210,3 +210,4 @@ target_link_libraries(test_precondition
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

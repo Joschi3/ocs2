@@ -95,7 +95,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(test_${PROJECT_NAME}
   test/Exp0Test.cpp
   test/Exp1Test.cpp
@@ -112,3 +112,4 @@ target_link_libraries(test_${PROJECT_NAME}
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

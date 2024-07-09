@@ -105,7 +105,7 @@ install(DIRECTORY config launch
 #############
 ## Testing ##
 #############
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(${PROJECT_NAME}_test
   test/testLeggedRobotRaisimConversions.cpp
 )
@@ -114,3 +114,4 @@ target_link_libraries(${PROJECT_NAME}_test
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
+endif()

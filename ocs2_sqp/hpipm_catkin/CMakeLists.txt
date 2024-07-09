@@ -121,6 +121,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_${PROJECT_NAME}
   test/testHpipmInterface.cpp
@@ -132,3 +133,4 @@ target_link_libraries(test_${PROJECT_NAME}
   hpipm
   gtest_main
 )
+endif()

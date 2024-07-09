@@ -28,7 +28,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 
 #include <ocs2_core/cost/QuadraticStateInputCost.h>
-
+#include <iostream>
 namespace ocs2 {
 
 /******************************************************************************************************/
@@ -53,9 +53,18 @@ QuadraticStateInputCost* QuadraticStateInputCost::clone() const {
 /******************************************************************************************************/
 /******************************************************************************************************/
 scalar_t QuadraticStateInputCost::getValue(scalar_t time, const vector_t& state, const vector_t& input,
-                                           const TargetTrajectories& targetTrajectories, const PreComputation&) const {
+                                            const TargetTrajectories& targetTrajectories, const PreComputation&) const {
   vector_t stateDeviation, inputDeviation;
+  /*std::cout << "state " << state << std::endl;
+  std::cout << "input " << input << std::endl;
+  std::cout << "targetTrajectories.stateTrajectory.size() " << targetTrajectories.stateTrajectory.size() << std::endl;
+  std::cout << "targetTrajectories.inputTrajectory.size() " << targetTrajectories.inputTrajectory.size() << std::endl;
+  std::cout << "targetTrajectories.stateTrajectory[0] " << targetTrajectories.stateTrajectory[0] << std::endl;
+  std::cout << "targetTrajectories.inputTrajectory[0] " << targetTrajectories.inputTrajectory[0] << std::endl;
+  std::cout << "targetTrajectories.timeTrajectory[0]  " << targetTrajectories.timeTrajectory[0] << std::endl;*/
   std::tie(stateDeviation, inputDeviation) = getStateInputDeviation(time, state, input, targetTrajectories);
+  /*std::cout << "stateDeviation " << stateDeviation.size() << std::endl;
+  std::cout << "inputDeviation " << inputDeviation.size() << std::endl;*/
 
   if (P_.size() == 0) {
     return 0.5 * stateDeviation.dot(Q_ * stateDeviation) + 0.5 * inputDeviation.dot(R_ * inputDeviation);

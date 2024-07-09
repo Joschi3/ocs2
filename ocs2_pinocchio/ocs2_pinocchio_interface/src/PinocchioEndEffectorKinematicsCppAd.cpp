@@ -169,6 +169,25 @@ auto PinocchioEndEffectorKinematicsCppAd::getPosition(const vector_t& state) con
   return positions;
 }
 
+auto PinocchioEndEffectorKinematicsCppAd::getOrientation(const vector_t& state) const -> std::vector<Eigen::Quaternion<scalar_t>> {
+  throw std::runtime_error("Not implemented yet");
+  // using ad_quaternion_t = Eigen::Quaternion<ad_scalar_t>;
+  // const auto& model = pinocchioInterfaceCppAd.getModel();
+  // auto& data = pinocchioInterfaceCppAd.getData();
+  // const ad_vector_t q = mapping.getPinocchioJointPosition(state);
+
+  // pinocchio::forwardKinematics(model, data, q);
+  // pinocchio::updateFramePlacements(model, data);
+
+  // ad_vector_t errors(3 * endEffectorFrameIds_.size());
+  // for (int i = 0; i < endEffectorFrameIds_.size(); i++) {
+  //   const size_t frameId = endEffectorFrameIds_[i];
+  //   const ad_quaternion_t eeOrientation = matrixToQuaternion(data.oMf[frameId].rotation());
+  //return orientations;
+  return {};
+}
+
+
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
@@ -264,6 +283,20 @@ auto PinocchioEndEffectorKinematicsCppAd::getOrientationError(const vector_t& st
   }
   return errors;
 }
+ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematicsCppAd::getOrientationLinearApproximation(const vector_t& state) const {
+    throw std::runtime_error("Not implemented yet");
+    // const vector_t orientationValues = orientationCppAdInterfacePtr_->getFunctionValue(state);
+    // const matrix_t orientationJacobian = orientationCppAdInterfacePtr_->getJacobian(state);
+
+    // std::vector<VectorFunctionLinearApproximation> orientations;
+    // for (int i = 0; i < endEffectorIds_.size(); i++) {
+    //   VectorFunctionLinearApproximation ori;
+    //   ori.f = orientationValues.segment<3>(3 * i);
+    //   ori.dfdx = orientationJacobian.block(3 * i, 0, 3, state.rows());
+    //   orientations.emplace_back(std::move(ori));
+    // }
+    // return orientations;
+  }
 
 /******************************************************************************************************/
 /******************************************************************************************************/

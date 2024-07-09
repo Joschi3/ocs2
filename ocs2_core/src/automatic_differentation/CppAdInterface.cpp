@@ -151,7 +151,8 @@ void CppAdInterface::loadModelsIfAvailable(ApproximationOrder approximationOrder
 vector_t CppAdInterface::getFunctionValue(const vector_t& x, const vector_t& p) const {
   vector_t xp(variableDim_ + parameterDim_);
   xp << x, p;
-
+  //std::cout<< "model_->Range() = " << model_->Range() << std::endl;
+  //std::cout<< "model_->getName() = " << model_->getName() << std::endl;
   vector_t functionValue(model_->Range());
 
   model_->ForwardZero(xp, functionValue);

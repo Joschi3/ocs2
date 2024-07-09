@@ -106,6 +106,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ############
 # Testing ##
 ############
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(PinocchioSphereKinematicsTest
   test/testPinocchioSphereKinematics.cpp
 )
@@ -115,3 +116,4 @@ target_link_libraries(PinocchioSphereKinematicsTest
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
+endif()

@@ -88,6 +88,13 @@ class PinocchioEndEffectorKinematics final : public EndEffectorKinematics<scalar
    */
   std::vector<vector3_t> getPosition(const vector_t& state) const override;
 
+    /** Get the end effector orientation vectors.
+   * @note requires pinocchioInterface to be updated with:
+   *       pinocchio::forwardKinematics(model, data, q)
+   *       pinocchio::updateFramePlacements(model, data)
+   */
+  std::vector<quaternion_t> getOrientation(const vector_t& state) const override;
+
   /** Get the end effector velocity vectors.
    * @note requires pinocchioInterface to be updated with:
    *       pinocchio::forwardKinematics(model, data, q, v)
@@ -108,6 +115,14 @@ class PinocchioEndEffectorKinematics final : public EndEffectorKinematics<scalar
    *       pinocchio::computeJointJacobians(model, data)
    */
   std::vector<VectorFunctionLinearApproximation> getPositionLinearApproximation(const vector_t& state) const override;
+
+    /** Get the end effector orientation linear approximation.
+   * @note requires pinocchioInterface to be updated with:
+   *       pinocchio::forwardKinematics(model, data, q)
+   *       pinocchio::updateFramePlacements(model, data)
+   *       pinocchio::computeJointJacobians(model, data)
+   */
+  std::vector<VectorFunctionLinearApproximation> getOrientationLinearApproximation(const vector_t& state) const override;
 
   /** Get the end effector velocity linear approximation
    * @note requires pinocchioInterface to be updated with:

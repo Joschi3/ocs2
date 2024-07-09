@@ -91,6 +91,7 @@ install(DIRECTORY
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_robotic_tools
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(rotation_transform_tests
   test/common/TestRotationTransforms.cpp
@@ -102,3 +103,4 @@ target_link_libraries(rotation_transform_tests
   gtest_main
 )
 target_compile_options(rotation_transform_tests PRIVATE ${OCS2_CXX_FLAGS})
+endif()

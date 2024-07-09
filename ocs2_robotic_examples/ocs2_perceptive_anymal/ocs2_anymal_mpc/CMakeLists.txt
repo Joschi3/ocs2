@@ -118,6 +118,7 @@ install(DIRECTORY config launch
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_nosetests(test)
 
@@ -130,3 +131,4 @@ target_link_libraries(${PROJECT_NAME}_test
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

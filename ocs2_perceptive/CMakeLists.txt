@@ -95,6 +95,7 @@ install(
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_perceptive
 
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(test_bilinear_interpolation
   test/interpolation/testBilinearInterpolation.cpp
 )
@@ -114,3 +115,4 @@ target_link_libraries(test_trilinear_interpolation
   ${Boost_LIBRARIES}
   gtest_main
 )
+endif()

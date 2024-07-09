@@ -83,6 +83,7 @@ install(DIRECTORY test/include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_${PROJECT_NAME}
   test/testDiscreteTranscription.cpp
@@ -93,3 +94,4 @@ target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
   gtest_main
 )
+endif()

@@ -28,7 +28,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 
 #include <ocs2_core/cost/QuadraticStateCost.h>
-
 namespace ocs2 {
 
 /******************************************************************************************************/
@@ -55,7 +54,7 @@ scalar_t QuadraticStateCost::getValue(scalar_t time, const vector_t& state, cons
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-ScalarFunctionQuadraticApproximation QuadraticStateCost::getQuadraticApproximation(scalar_t time, const vector_t& state,
+ScalarFunctionQuadraticApproximation QuadraticStateCost:: getQuadraticApproximation(scalar_t time, const vector_t& state,
                                                                                    const TargetTrajectories& targetTrajectories,
                                                                                    const PreComputation&) const {
   const vector_t xDeviation = getStateDeviation(time, state, targetTrajectories);
@@ -64,6 +63,7 @@ ScalarFunctionQuadraticApproximation QuadraticStateCost::getQuadraticApproximati
   Phi.dfdxx = Q_;
   Phi.dfdx.noalias() = Q_ * xDeviation;
   Phi.f = 0.5 * xDeviation.dot(Phi.dfdx);
+
   return Phi;
 }
 

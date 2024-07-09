@@ -98,7 +98,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ############
 # Testing ##
 ############
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(testPinocchioInterface
   test/testPinocchioInterface.cpp
   test/testPinocchioEndEffectorKinematics.cpp
@@ -108,3 +108,4 @@ target_link_libraries(testPinocchioInterface
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
+endif()

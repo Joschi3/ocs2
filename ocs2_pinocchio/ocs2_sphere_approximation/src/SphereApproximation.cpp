@@ -53,6 +53,10 @@ SphereApproximation::SphereApproximation(const hpp::fcl::CollisionGeometry& geom
     case hpp::fcl::NODE_TYPE::GEOM_CYLINDER: {
       const auto* cylinderPtr = dynamic_cast<const hpp::fcl::Cylinder*>(&geometry);
       approximateCylinder(cylinderPtr->radius, cylinderPtr->halfLength * 2);
+      /*sphereRadius_ = 2*cylinderPtr->radius;
+      numSpheres_ = 1;
+      sphereCentersToObjectCenter_.resize(1);
+      sphereCentersToObjectCenter_[0] = vector_t::Zero(3);*/
       break;
     }
     case hpp::fcl::NODE_TYPE::GEOM_SPHERE: {
@@ -167,68 +171,68 @@ void SphereApproximation::approximateBox(const vector_t& sides) {
 /******************************************************************************************************/
 /******************************************************************************************************/
 void SphereApproximation::approximateCylinder(const scalar_t radius, const scalar_t length) {
-  // First, approximate the rectangle cross-section of the cylinder
-  vector_t sides(2);
-  sides << 2 * radius, length;
+   // First, approximate the rectangle cross-section of the cylinder
+   vector_t sides(2);
+   sides << 2 * radius, length;
 
-  size_array_t idxSorted = {0, 1};
-  if (sides(0) > sides(1)) {
-    std::swap(idxSorted[0], idxSorted[1]);
-  }
+   size_array_t idxSorted = {0, 1};
+   if (sides(0) > sides(1)) {
+     std::swap(idxSorted[0], idxSorted[1]);
+   }
 
-  scalar_t maxExcessL = maxExcess_ * shrinkRatio_;
-  vector_t distances(2);
-  vector_t numSpheres(2);
+   scalar_t maxExcessL = maxExcess_ * shrinkRatio_;
+   vector_t distances(2);
+   vector_t numSpheres(2);
 
-  approximateRectanglularCrossSection(sides, idxSorted, maxExcess_, sphereRadius_, numSpheres, distances);
-  bool recursiveApproximation = false;  // If recursive approximation of the cylinder base is necessary.
-  if (numSpheres[0] > 1) {
-    // More than one sphere is required along radial direction with maxExcess. Re-approximate the rectangular cross-section using the
-    // reduced threshold in favor of the later approximation of the circular base.
-    approximateRectanglularCrossSection(sides, idxSorted, maxExcessL, sphereRadius_, numSpheres, distances);
-    recursiveApproximation = true;
-  }
+   approximateRectanglularCrossSection(sides, idxSorted, maxExcess_, sphereRadius_, numSpheres, distances);
+   bool recursiveApproximation = false;  // If recursive approximation of the cylinder base is necessary.
+   if (numSpheres[0] > 1) {
+     // More than one sphere is required along radial direction with maxExcess. Re-approximate the rectangular cross-section using the
+     // reduced threshold in favor of the later approximation of the circular base.
+     approximateRectanglularCrossSection(sides, idxSorted, maxExcessL, sphereRadius_, numSpheres, distances);
+     recursiveApproximation = true;
+   }
 
-  scalar_t spacingLength;
-  if (numSpheres[1] > 1) {
-    spacingLength = (sides[1] - 2 * distances[1]) / (numSpheres[1] - 1);
-  }
+   scalar_t spacingLength;
+   if (numSpheres[1] > 1) {
+     spacingLength = (sides[1] - 2 * distances[1]) / (numSpheres[1] - 1);
+   }
 
-  // Second, approximate the circle base of the cylinder
-  vector_array_t circleCentersToBaseCenter;
-  if (!recursiveApproximation) {
-    circleCentersToBaseCenter.push_back(vector_t::Zero(2));
-  } else {
-    scalar_t radiusBase = radius;
-    scalar_t radiusCircle = std::sqrt(std::pow(sphereRadius_, 2) - std::pow(distances[1], 2));
-    scalar_t maxExcessR = maxExcess_ - maxExcessL;
+   // Second, approximate the circle base of the cylinder
+   vector_array_t circleCentersToBaseCenter;
+   if (!recursiveApproximation) {
+     circleCentersToBaseCenter.push_back(vector_t::Zero(2));
+   } else {
+     scalar_t radiusBase = radius;
+     scalar_t radiusCircle = std::sqrt(std::pow(sphereRadius_, 2) - std::pow(distances[1], 2));
+     scalar_t maxExcessR = maxExcess_ - maxExcessL;
 
-    while (recursiveApproximation) {
-      scalar_t shift, alpha, numCircles;
-      recursiveApproximation = approximateCircleBase(radiusBase, radiusCircle, maxExcessR, shift, alpha, numCircles);
+     while (recursiveApproximation) {
+       scalar_t shift, alpha, numCircles;
+       recursiveApproximation = approximateCircleBase(radiusBase, radiusCircle, maxExcessR, shift, alpha, numCircles);
 
-      for (size_t i = 0; i < numCircles; i++) {
-        vector_t circleCenter(2);
-        circleCenter << shift * std::sin(i * alpha), shift * std::cos(i * alpha);
-        circleCentersToBaseCenter.push_back(circleCenter);
-      }
+       for (size_t i = 0; i < numCircles; i++) {
+         vector_t circleCenter(2);
+         circleCenter << shift * std::sin(i * alpha), shift * std::cos(i * alpha);
+         circleCentersToBaseCenter.push_back(circleCenter);
+       }
 
-      // Enclose the uncovered area by another circle with radiusBase
-      radiusBase = shift / std::cos(alpha / 2) - radiusCircle;
-    }
-  }
+       // Enclose the uncovered area by another circle with radiusBase
+       radiusBase = shift / std::cos(alpha / 2) - radiusCircle;
+     }
+   }
 
-  numSpheres[0] = circleCentersToBaseCenter.size();
-  numSpheres_ = numSpheres[0] * numSpheres[1];
-  sphereCentersToObjectCenter_.resize(numSpheres_);
+   numSpheres[0] = circleCentersToBaseCenter.size();
+   numSpheres_ = numSpheres[0] * numSpheres[1];
+   sphereCentersToObjectCenter_.resize(numSpheres_);
 
-  size_t count = 0;
-  for (size_t i = 0; i < numSpheres[1]; i++) {
-    for (size_t j = 0; j < numSpheres[0]; j++) {
-      sphereCentersToObjectCenter_[count] << circleCentersToBaseCenter[j], distances[1] + i * spacingLength - sides[1] / 2;
-      count++;
-    }
-  }
+   size_t count = 0;
+   for (size_t i = 0; i < numSpheres[1]; i++) {
+     for (size_t j = 0; j < numSpheres[0]; j++) {
+       sphereCentersToObjectCenter_[count] << circleCentersToBaseCenter[j], distances[1] + i * spacingLength - sides[1] / 2;
+       count++;
+     }
+   }
 }
 
 /******************************************************************************************************/

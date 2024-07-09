@@ -97,6 +97,19 @@ class Collection {
    */
   bool getTermIndex(const std::string& name, size_t& index) const;
 
+  /**
+   * Finds the name of the term in the stored map.
+   * @param [in]  index : Term index.
+   * @param [out] name: Name of the term.
+   * @return True if the name found in the collection.
+  */
+  bool getTermName(const size_t index, std::string& name) const;
+
+  /**
+   *  Get the names of all terms in the collection
+   */
+  std::vector<std::string> getTermNames() const;
+
  protected:
   /** Copy constructor */
   Collection(const Collection& other);
@@ -201,6 +214,29 @@ bool Collection<T>::getTermIndex(const std::string& name, size_t& index) const {
     index = termNameMap_.size();
     return false;
   }
+}
+
+/******************************************************************************************************/
+/******************************************************************************************************/
+/******************************************************************************************************/
+template <typename T>
+bool Collection<T>::getTermName(const size_t index, std::string& name) const {
+  for (const auto& term : termNameMap_) {
+    if (term.second == index) {
+      name = term.first;
+      return true;
+    }
+  }
+  return false;
+}
+
+template <typename T>
+std::vector<std::string> Collection<T>::getTermNames() const {
+  std::vector<std::string> keysVector;
+  for (const auto& pair :termNameMap_) {
+        keysVector.push_back(pair.first);
+  }
+  return keysVector;
 }
 
 /**

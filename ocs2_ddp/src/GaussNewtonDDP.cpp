@@ -710,7 +710,6 @@ void GaussNewtonDDP::approximateOptimalControlProblem() {
     const auto& state = nominalPrimalData_.primalSolution.stateTrajectory_.back();
     const auto& multiplier = nominalDualData_.dualSolution.final;
     modelData = ocs2::approximateFinalLQ(optimalControlProblemStock_[0], time, state, multiplier);
-
     // checking the numerical properties
     if (ddpSettings_.checkNumericalStability_) {
       const std::string err = checkCostProperties(modelData) + checkConstraintProperties(modelData);
@@ -924,6 +923,8 @@ void GaussNewtonDDP::takePrimalDualStep(scalar_t lqModelExpectedCost) {
   }
   totalDualSolutionTimer_.endTimer();
 
+  std::cerr<<"[GaussNewtonDDP::takePrimalDualStep] performanceIndex_.merit = "<<performanceIndex_.merit<<std::boolalpha<<" success = "<<success<<std::endl;
+  
   // if failed, use nominal and to keep the consistency of cached data, all cache should be left untouched
   if (!success) {
     optimizedDualSolution_ = nominalDualData_.dualSolution;

@@ -93,6 +93,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_${PROJECT_NAME}
   test/testCircularKinematics.cpp
@@ -108,3 +109,4 @@ target_link_libraries(test_${PROJECT_NAME}
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

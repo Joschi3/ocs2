@@ -110,7 +110,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_ddp
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(exp0_ddp_test
   test/Exp0Test.cpp
 )
@@ -211,3 +211,4 @@ target_link_libraries(testReachingTask
   ${PROJECT_NAME}
   gtest_main
 )
+endif()

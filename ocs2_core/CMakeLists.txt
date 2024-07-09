@@ -141,6 +141,7 @@ add_library(${PROJECT_NAME}
   src/model_data/Multiplier.cpp
   src/misc/LinearAlgebra.cpp
   src/misc/Log.cpp
+  src/misc/LoadStdVectorOfPair.cpp
   src/soft_constraint/StateSoftConstraint.cpp
   src/soft_constraint/StateInputSoftConstraint.cpp
   src/soft_constraint/StateInputSoftBoxConstraint.cpp
@@ -209,7 +210,7 @@ install(DIRECTORY test/include/${PROJECT_NAME}/
 ## $ catkin run_tests --no-deps --this
 ## to see the summary of unit test results run
 ## $ catkin_test_results ../../../build/ocs2_core
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(test_control
   test/control/testLinearController.cpp
   test/control/testFeedforwardController.cpp
@@ -410,3 +411,5 @@ target_link_libraries(${PROJECT_NAME}_test_core
   ${catkin_LIBRARIES}
   gtest_main
 )
+
+endif()

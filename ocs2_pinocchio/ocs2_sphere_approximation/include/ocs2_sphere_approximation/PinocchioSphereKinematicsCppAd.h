@@ -88,6 +88,15 @@ class PinocchioSphereKinematicsCppAd final : public EndEffectorKinematics<scalar
   const std::vector<std::string>& getIds() const override { return linkIds_; };
 
   std::vector<vector3_t> getPosition(const vector_t& state) const override;
+       /** Get the end effector orientation vectors.
+   * @note requires pinocchioInterface to be updated with:
+   *       pinocchio::forwardKinematics(model, data, q)
+   *       pinocchio::updateFramePlacements(model, data)
+   */
+  std::vector<quaternion_t> getOrientation(const vector_t& state) const override{
+    throw std::runtime_error("[PinocchioSphereKinematics] getOrientation() is not implemented");
+    }
+
   std::vector<vector3_t> getVelocity(const vector_t& state, const vector_t& input) const override {
     throw std::runtime_error("[PinocchioSphereKinematicsCppAd] getVelocity() is not implemented");
   };
@@ -96,6 +105,17 @@ class PinocchioSphereKinematicsCppAd final : public EndEffectorKinematics<scalar
   };
 
   std::vector<VectorFunctionLinearApproximation> getPositionLinearApproximation(const vector_t& state) const override;
+  
+     /**
+   * Get end-effector orientation linear approximation in world frame
+   *
+   * @param [in] state: state vector
+   * @return array of position function linear approximations
+   */
+  std::vector<VectorFunctionLinearApproximation> getOrientationLinearApproximation(const vector_t& state) const override{
+    throw std::runtime_error("[PinocchioSphereKinematics] getOrientationLinearApproximation() is not implemented");
+  }
+  
   std::vector<VectorFunctionLinearApproximation> getVelocityLinearApproximation(const vector_t& state,
                                                                                 const vector_t& input) const override {
     throw std::runtime_error("[PinocchioSphereKinematicsCppAd] getVelocityLinearApproximation() is not implemented");

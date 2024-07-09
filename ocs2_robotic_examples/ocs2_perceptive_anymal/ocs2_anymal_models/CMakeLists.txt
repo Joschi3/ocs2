@@ -83,6 +83,7 @@ install(DIRECTORY launch
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 # Build unit tests
 catkin_add_gtest(${PROJECT_NAME}_switched_model_test
@@ -107,3 +108,4 @@ target_link_libraries(TestQuadrupedPinocchio
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

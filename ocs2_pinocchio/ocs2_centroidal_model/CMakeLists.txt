@@ -114,7 +114,7 @@ install(
 #############
 ## Testing ##
 #############
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(${PROJECT_NAME}_test
   # test/testAccessMethods.cpp
   test/testAnymalCentroidalModel.cpp
@@ -130,3 +130,4 @@ target_link_libraries(${PROJECT_NAME}_test
   ${pinocchio_LIBRARIES}
 )
 target_compile_options(${PROJECT_NAME}_test PRIVATE ${FLAGS})
+endif()

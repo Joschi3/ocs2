@@ -61,7 +61,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 ## Testing ##
 #############
-
+if(CATKIN_ENABLE_TESTING)
 catkin_add_gtest(testDummyPyBindings
   test/testDummyPyBindings.cpp
 )
@@ -70,3 +70,4 @@ target_link_libraries(testDummyPyBindings
   ${catkin_LIBRARIES}
   gtest_main
 )
+endif()

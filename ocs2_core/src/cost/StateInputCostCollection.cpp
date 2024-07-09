@@ -28,7 +28,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 
 #include <ocs2_core/cost/StateInputCostCollection.h>
-
+#include <iostream>
 namespace ocs2 {
 
 /******************************************************************************************************/

@@ -128,6 +128,7 @@ install(DIRECTORY config
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_${PROJECT_NAME}
   test/testLoadMotions.cpp
@@ -139,3 +140,4 @@ target_link_libraries(test_${PROJECT_NAME}
   -lstdc++fs
   gtest_main
 )
+endif()

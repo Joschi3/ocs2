@@ -43,7 +43,8 @@ namespace ocs2 {
 /******************************************************************************************************/
 /******************************************************************************************************/
 PinocchioSphereInterface::PinocchioSphereInterface(const PinocchioInterface& pinocchioInterface, std::vector<std::string> collisionLinks,
-                                                   const std::vector<scalar_t>& maxExcesses, scalar_t shrinkRatio)
+                                                   const std::vector<scalar_t>& maxExcesses, scalar_t shrinkRatio,
+                                                   const std::vector<std::string>& ignoreObjects, const std::map<std::string,scalar_t>& maxExcessPerCollisionGeometry)
     : geometryModelPtr_(new pinocchio::GeometryModel), collisionLinks_(std::move(collisionLinks)) {
   buildGeomFromPinocchioInterface(pinocchioInterface, *geometryModelPtr_);
 
@@ -53,8 +54,17 @@ PinocchioSphereInterface::PinocchioSphereInterface(const PinocchioInterface& pin
       const pinocchio::GeometryObject& object = geometryModelPtr_->geometryObjects[j];
       const std::string parentFrameName = pinocchioInterface.getModel().frames[object.parentFrame].name;
       if (parentFrameName == link) {
-        sphereApproximations_.emplace_back(*object.geometry, j, maxExcesses[i], shrinkRatio);
-        collisionLinkOfEachPrimitiveShape_.emplace_back(link);
+        bool ignore = std::find(ignoreObjects.begin(), ignoreObjects.end(), object.name) != ignoreObjects.end();
+        if(!ignore){
+          // check if the object has a specific maxExcess
+          auto it = maxExcessPerCollisionGeometry.find(object.name);
+          if(it != maxExcessPerCollisionGeometry.end()){
+            sphereApproximations_.emplace_back(*object.geometry, j, it->second, shrinkRatio);
+          } else {
+            sphereApproximations_.emplace_back(*object.geometry, j, maxExcesses[i], shrinkRatio);
+          }
+          collisionLinkOfEachPrimitiveShape_.emplace_back(link);
+        }
       }
     }
   }

@@ -129,6 +129,7 @@ install(TARGETS QuadrotorPyBindings
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(${PROJECT_NAME}_PyBindingsTest
   test/PyBindingsTest.cpp
@@ -141,3 +142,4 @@ target_link_libraries(${PROJECT_NAME}_PyBindingsTest
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
+endif()

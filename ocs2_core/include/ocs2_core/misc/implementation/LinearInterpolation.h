@@ -32,7 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ocs2_core/NumericTraits.h"
 #include "ocs2_core/misc/Lookup.h"
-
+#include <iostream>
 namespace ocs2 {
 namespace LinearInterpolation {
 
@@ -67,6 +67,8 @@ const Data& stdAccessFun(const std::vector<Data, Alloc>& vec, size_t ind) {
 /******************************************************************************************************/
 /******************************************************************************************************/
 inline index_alpha_t timeSegment(scalar_t enquiryTime, const std::vector<scalar_t>& timeArray) {
+  //std::cout<<"enquiryTime "<<enquiryTime<<std::endl;
+  //std::cout<<"timeArray "<<timeArray.size()<<std::endl;
   // corner cases (no time set OR single time element)
   if (timeArray.size() <= 1) {
     return {0, scalar_t(1.0)};

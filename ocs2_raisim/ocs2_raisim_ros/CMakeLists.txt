@@ -72,7 +72,6 @@ install(TARGETS ${PROJECT_NAME}
 #############
 ## Testing ##
 #############
-
 if(CATKIN_ENABLE_TESTING)
   catkin_add_gtest(test_${PROJECT_NAME}
     test/testRosConversion.cpp

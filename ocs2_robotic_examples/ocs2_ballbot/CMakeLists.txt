@@ -136,6 +136,7 @@ install(TARGETS BallbotPyBindings
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
 
 catkin_add_gtest(test_BallbotPyBindings
   test/testBallbotPyBindings.cpp
@@ -151,3 +152,4 @@ target_link_libraries(test_BallbotPyBindings
 
 # python tests
 catkin_add_nosetests(test)
+endif()
