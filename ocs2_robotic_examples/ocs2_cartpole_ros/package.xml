@@ -13,7 +13,6 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roslib </build_depend>
-  <build_depend>cmake_clang_tools</build_depend>
 
   <depend>ocs2_core</depend>
   <depend>ocs2_ddp</depend>
