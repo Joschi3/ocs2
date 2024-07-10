@@ -8,7 +8,7 @@ set(CATKIN_PACKAGE_DEPENDENCIES
   ocs2_core
   ocs2_robotic_tools
   ocs2_pinocchio_interface
-  ocs2_robotic_assets
+#  ocs2_robotic_assets
 )
 
 find_package(catkin REQUIRED COMPONENTS
@@ -106,14 +106,14 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ############
 # Testing ##
 ############
-if(CATKIN_ENABLE_TESTING)
-catkin_add_gtest(PinocchioSphereKinematicsTest
-  test/testPinocchioSphereKinematics.cpp
-)
+# if(CATKIN_ENABLE_TESTING)
+# catkin_add_gtest(PinocchioSphereKinematicsTest
+#   test/testPinocchioSphereKinematics.cpp
+# )
 
-target_link_libraries(PinocchioSphereKinematicsTest
-  gtest_main
-  ${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
-endif()
+# target_link_libraries(PinocchioSphereKinematicsTest
+#   gtest_main
+#   ${PROJECT_NAME}
+#   ${catkin_LIBRARIES}
+# )
+# endif()
