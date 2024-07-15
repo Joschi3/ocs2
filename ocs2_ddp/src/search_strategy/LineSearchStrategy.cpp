@@ -146,7 +146,7 @@ bool LineSearchStrategy::run(const std::pair<scalar_t, scalar_t>& timePeriod, co
   constexpr size_t taskId = 0;
   constexpr scalar_t stepLength = 0.0;
   try {
-    std::cerr<<"[LineSearchStrategy::run] computeSolution steplength 0 expected cost "<<expectedCost<<std::endl;
+    //std::cerr<<"[LineSearchStrategy::run] computeSolution steplength 0 expected cost "<<expectedCost<<std::endl;
     computeSolution(taskId, stepLength, workersSolution_[taskId]);
     baselineMerit_ = workersSolution_[taskId].performanceIndex.merit;
     unoptimizedControllerUpdateIS_ = computeControllerUpdateIS(unoptimizedController);

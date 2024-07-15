@@ -59,6 +59,7 @@ include_directories(
 
 link_directories(
   ${pinocchio_LIBRARY_DIRS}
+  ${hpp-fcl_LIBRARY_DIRS}
 )
 
 # ocs2 pinocchio interface library
@@ -75,6 +76,7 @@ add_dependencies(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${pinocchio_LIBRARIES}
+  ${hpp-fcl_LIBRARIES}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${FLAGS})
 

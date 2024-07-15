@@ -923,7 +923,7 @@ void GaussNewtonDDP::takePrimalDualStep(scalar_t lqModelExpectedCost) {
   }
   totalDualSolutionTimer_.endTimer();
 
-  std::cerr<<"[GaussNewtonDDP::takePrimalDualStep] performanceIndex_.merit = "<<performanceIndex_.merit<<std::boolalpha<<" success = "<<success<<std::endl;
+  //std::cerr<<"[GaussNewtonDDP::takePrimalDualStep] performanceIndex_.merit = "<<performanceIndex_.merit<<std::boolalpha<<" success = "<<success<<std::endl;
   
   // if failed, use nominal and to keep the consistency of cached data, all cache should be left untouched
   if (!success) {
