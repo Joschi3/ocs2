@@ -28,7 +28,7 @@ include(cmake/pinocchio_config.cmake)
 catkin_package(
   INCLUDE_DIRS
     include
-    ${pinocchio_INCLUDE_DIRS}
+#    ${pinocchio_INCLUDE_DIRS}
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS
