@@ -47,7 +47,6 @@ pkg_check_modules(pinocchio REQUIRED pinocchio)
 catkin_package(
   INCLUDE_DIRS
     include
-    ${EIGEN3_INCLUDE_DIRS}
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS

@@ -28,7 +28,6 @@ find_package(raisim REQUIRED)
 catkin_package(
   INCLUDE_DIRS
     include
-    ${raisim_INCLUDE_DIRS}
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS

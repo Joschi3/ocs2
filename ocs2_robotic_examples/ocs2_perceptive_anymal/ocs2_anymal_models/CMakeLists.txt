@@ -19,7 +19,6 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 catkin_package(
   INCLUDE_DIRS
     include
-    ${EIGEN3_INCLUDE_DIRS}
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS

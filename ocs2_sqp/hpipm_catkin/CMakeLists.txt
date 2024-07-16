@@ -61,7 +61,7 @@ set_target_properties(hpipm PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${HPIPM_LIB_DIR}
 ###################################
 
 catkin_package(
-  INCLUDE_DIRS include ${HPIPM_INCLUDE_DIR}
+  INCLUDE_DIRS include
   CATKIN_DEPENDS blasfeo_catkin
   LIBRARIES ${PROJECT_NAME} hpipm
 )

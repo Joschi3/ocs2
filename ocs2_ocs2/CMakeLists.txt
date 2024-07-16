@@ -24,7 +24,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 catkin_package(
   INCLUDE_DIRS
     include
-    ${EIGEN3_INCLUDE_DIRS}
   CATKIN_DEPENDS
     ocs2_core
     ocs2_ddp

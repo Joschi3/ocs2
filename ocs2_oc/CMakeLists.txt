@@ -25,7 +25,6 @@ catkin_package(
   INCLUDE_DIRS
     include
     test/include
-    ${EIGEN3_INCLUDE_DIRS}
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS
