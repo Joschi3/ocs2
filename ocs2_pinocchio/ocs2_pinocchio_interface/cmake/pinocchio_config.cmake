@@ -1,7 +1,7 @@
 # Add pinocchio library to the linker's search path
-link_directories(
-  ${pinocchio_LIBRARY_DIRS}
-)
+#link_directories(
+#  ${pinocchio_LIBRARY_DIRS}
+#)
 
 # Add pinocchio flags
 set(OCS2_PINOCCHIO_FLAGS

@@ -61,9 +61,6 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
-link_directories(
-  ${pinocchio_LIBRARY_DIRS}
-)
 
 add_library(${PROJECT_NAME}
   src/PinocchioCentroidalDynamics.cpp
@@ -73,6 +70,9 @@ add_library(${PROJECT_NAME}
   src/CentroidalModelInfo.cpp
   src/FactoryFunctions.cpp
   src/ModelHelperFunctions.cpp
+)
+target_link_directories( ${PROJECT_NAME} PUBLIC
+  ${pinocchio_LIBRARY_DIRS}
 )
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
