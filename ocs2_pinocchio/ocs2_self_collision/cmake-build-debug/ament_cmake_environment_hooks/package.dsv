@@ -1,0 +1,4 @@
+source;share/ocs2_self_collision/local_setup.bash
+source;share/ocs2_self_collision/local_setup.dsv
+source;share/ocs2_self_collision/local_setup.sh
+source;share/ocs2_self_collision/local_setup.zsh

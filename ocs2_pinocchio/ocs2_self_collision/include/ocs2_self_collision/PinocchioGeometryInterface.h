@@ -32,7 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <utility>
 
 #include <ocs2_pinocchio_interface/PinocchioInterface.h>
-
+#include "pinocchio/collision/distance.hpp"
+#include "pinocchio/collision/collision.hpp"
 #include <hpp/fcl/collision_data.h>
 
 #include <urdf_model/model.h>
