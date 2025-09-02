@@ -59,7 +59,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/aljoscha-schmidt/hector/src/ocs2/ocs2_pinocchio/ocs2_self_collision/cmake-build-debug/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/ocs2_self_collision")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_exec_dependencies" TYPE FILE FILES "/home/aljoscha-schmidt/hector/src/ocs2/ocs2_pinocchio/ocs2_self_collision/cmake-build-debug/ament_cmake_index/share/ament_index/resource_index/package_exec_dependencies/ocs2_self_collision")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)

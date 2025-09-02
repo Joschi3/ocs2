@@ -94,7 +94,7 @@ void PinocchioGeometryInterface::buildGeomFromPinocchioInterface(
     throw std::runtime_error(
         "The PinocchioInterface passed to PinocchioGeometryInterface(...) does not contain a URDF model!");
   }
-
+  // TODO: Replace with pinocchio function that uses the ModelInterface directly
   // Export the URDF model (TinyXML1 -> tinyxml2 in ROS 2).
   // exportURDF returns a heap-allocated XMLDocument in current urdfdom.
   std::unique_ptr<tinyxml2::XMLDocument> urdf_doc(

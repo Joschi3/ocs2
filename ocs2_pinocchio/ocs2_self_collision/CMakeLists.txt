@@ -80,7 +80,7 @@ target_link_libraries(${PROJECT_NAME}
   Boost::filesystem
   Boost::log_setup
   Boost::log
-  ${TINYXML2_TARGET}   # <-- fixes "DSO missing from command line"
+  ${TINYXML2_TARGET} 
 )
 
 # -----------------------------

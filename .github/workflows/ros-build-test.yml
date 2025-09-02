@@ -53,7 +53,7 @@ jobs:
       - name: Checkout dependencies (Pinocchio, hpp-fcl, assets)
         shell: bash
         run: |
-          git clone https://github.com/leggedrobotics/ocs2_robotic_assets.git src/ocs2_robotic_assets
+          git clone https://github.com/Joschi3/ocs2_robotic_assets.git src/ocs2_robotic_assets
         # git clone --recurse-submodules https://github.com/leggedrobotics/pinocchio.git src/pinocchio
         # git clone --recurse-submodules https://github.com/leggedrobotics/hpp-fcl.git src/hpp-fcl
 

@@ -8,7 +8,7 @@
 			"_ament_cmake_export_libraries_register_environment_hook",
 			"ament_export_targets",
 			"ament_index_register_resource",
-			"ament_cmake_environment_generate_package_run_dependencies_marker",
+			"ament_cmake_environment_generate_package_exec_dependencies_marker",
 			"include",
 			"ament_execute_extensions",
 			"ament_package",
@@ -346,10 +346,10 @@
 		{
 			"backtrace" : 14,
 			"component" : "Unspecified",
-			"destination" : "share/ament_index/resource_index/package_run_dependencies",
+			"destination" : "share/ament_index/resource_index/package_exec_dependencies",
 			"paths" : 
 			[
-				"cmake-build-debug/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/ocs2_self_collision"
+				"cmake-build-debug/ament_cmake_index/share/ament_index/resource_index/package_exec_dependencies/ocs2_self_collision"
 			],
 			"type" : "file"
 		},
