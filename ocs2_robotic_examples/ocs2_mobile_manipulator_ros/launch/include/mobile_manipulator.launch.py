@@ -94,8 +94,8 @@ def generate_launch_description():
             package='ocs2_mobile_manipulator_ros',
             executable='mobile_manipulator_target',
             name='mobile_manipulator_target',
-            prefix="",
-            condition=launch.conditions.UnlessCondition(LaunchConfiguration("rviz")),
+            prefix= "",
+            condition=launch.conditions.IfCondition(LaunchConfiguration("rviz")),
             output='screen',
             parameters=[
                 {

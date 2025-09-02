@@ -28,6 +28,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
 // needs to be included before boost
+#include <pinocchio/fwd.hpp>
+
+#include <pinocchio/multibody/geometry.hpp>
+
 #include <ocs2_core/misc/LoadData.h>
 #include <ocs2_core/misc/LoadStdVectorOfPair.h>
 #include <ocs2_mobile_manipulator/FactoryFunctions.h>
@@ -37,7 +41,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ocs2_self_collision/PinocchioGeometryInterface.h>
 #include <ocs2_self_collision_visualization/GeometryInterfaceVisualization.h>
 
-#include <pinocchio/multibody/geometry.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
 
 #include "rclcpp/rclcpp.hpp"

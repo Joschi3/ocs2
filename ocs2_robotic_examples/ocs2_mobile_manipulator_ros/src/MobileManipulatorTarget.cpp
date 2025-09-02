@@ -59,10 +59,13 @@ int main(int argc, char* argv[]) {
       rclcpp::NodeOptions()
           .allow_undeclared_parameters(true)
           .automatically_declare_parameters_from_overrides(true));
+  RCLCPP_INFO(node->get_logger(), "Target pose command published.");
 
   TargetTrajectoriesInteractiveMarker targetPoseCommand(
       node, robotName, &goalPoseToTargetTrajectories);
   targetPoseCommand.publishInteractiveMarker();
+  RCLCPP_INFO(node->get_logger(), "Target pose command published.");
+  rclcpp::spin(node);
 
   // Successful exit
   return 0;
