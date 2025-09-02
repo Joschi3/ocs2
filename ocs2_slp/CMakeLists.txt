@@ -58,19 +58,6 @@ target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )
 
-#########################
-###   CLANG TOOLING   ###
-#########################
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling for target " ${PROJECT_NAME}_lintTarget)
-  add_clang_tooling(
-    TARGETS ${PROJECT_NAME}_lintTarget ${PROJECT_NAME}
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/test
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-  )
-endif(cmake_clang_tools_FOUND)
 
 #############
 ## Install ##

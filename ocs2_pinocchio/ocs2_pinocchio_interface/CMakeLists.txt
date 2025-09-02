@@ -57,21 +57,6 @@ ament_target_dependencies(${PROJECT_NAME}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_PINOCCHIO_FLAGS})
 
-####################
-## Clang tooling ###
-####################
-
-find_package(cmake_clang_tools QUIET)
-if (cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling")
-  add_clang_tooling(
-    TARGETS ${PROJECT_NAME}
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-  )
-endif (cmake_clang_tools_FOUND)
-
 #############
 ## Install ##
 #############

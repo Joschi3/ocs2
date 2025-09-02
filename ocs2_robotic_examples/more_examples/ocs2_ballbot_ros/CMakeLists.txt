@@ -155,25 +155,6 @@ install(DIRECTORY launch rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
-#########################
-###   CLANG TOOLING   ###
-#########################
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling for target ocs2_ballbot")
-  add_clang_tooling(
-    TARGETS
-        ${PROJECT_NAME}
-        ballbot_ddp
-        ballbot_sqp
-        ballbot_dummy_test
-        ballbot_target
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-  )
-endif(cmake_clang_tools_FOUND)
-
 
 #############
 ## Testing ##

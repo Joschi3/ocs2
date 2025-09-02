@@ -46,19 +46,6 @@ ament_target_dependencies(${PROJECT_NAME}_lintTarget
   ${dependencies}
 )
 
-#########################
-###   CLANG TOOLING   ###
-#########################
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling for target ocs2_ocs2")
-  add_clang_tooling(
-    TARGETS ${PROJECT_NAME}_lintTarget
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include  ${CMAKE_CURRENT_SOURCE_DIR}/test
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-)
-endif(cmake_clang_tools_FOUND)
 
 #############
 ## Install ##

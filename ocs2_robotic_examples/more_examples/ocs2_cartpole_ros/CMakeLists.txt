@@ -63,23 +63,6 @@ ament_target_dependencies(cartpole_dummy_test
   ${dependencies}
 )
 
-#########################
-###   CLANG TOOLING   ###
-#########################
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Running clang tooling.")
-  add_clang_tooling(
-    TARGETS
-        cartpole_mpc
-        cartpole_dummy_test
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_EXCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}/generated
-    CF_WERROR
-  )
-endif(cmake_clang_tools_FOUND)
-
 #############
 ## Install ##
 #############

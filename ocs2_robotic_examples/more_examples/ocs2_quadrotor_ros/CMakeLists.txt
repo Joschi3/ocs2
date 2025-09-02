@@ -71,23 +71,6 @@ ament_target_dependencies(quadrotor_target
 )
 target_compile_options(quadrotor_target PRIVATE ${OCS2_CXX_FLAGS})
 
-#########################
-###   CLANG TOOLING   ###
-#########################
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling for target ocs2_quadrotor")
-  add_clang_tooling(
-    TARGETS
-      quadrotor_mpc
-      quadrotor_dummy_test
-      quadrotor_target
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-  )
-endif(cmake_clang_tools_FOUND)
-
 #############
 ## Install ##
 #############

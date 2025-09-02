@@ -13,8 +13,7 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <build_depend>cmake_modules</build_depend>
-  <build_depend>cmake_clang_tools</build_depend>
+
 
   <depend>rclcpp</depend>
   <depend>ocs2_msgs</depend>
@@ -24,7 +23,7 @@
   <depend>visualization_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>interactive_markers</depend>
-  <exec_depend>rqt_multiplot</exec_depend>
+  <!-- <exec_depend>rqt_multiplot</exec_depend> -->
   <exec_depend>ros2launch</exec_depend>
 
   <export>                               

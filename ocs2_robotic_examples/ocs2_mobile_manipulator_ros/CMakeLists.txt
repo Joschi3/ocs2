@@ -83,24 +83,6 @@ ament_target_dependencies(mobile_manipulator_target ${ament_deps})
 target_compile_options(mobile_manipulator_target PUBLIC ${FLAGS})
 target_link_libraries(mobile_manipulator_target ${Boost_LIBRARIES})
 
-####################
-## Clang tooling ###
-####################
-
-find_package(cmake_clang_tools QUIET)
-if(cmake_clang_tools_FOUND)
-  message(STATUS "Run clang tooling")
-  add_clang_tooling(
-    TARGETS
-      mobile_manipulator_mpc_node
-      mobile_manipulator_distance_visualization
-      mobile_manipulator_dummy_mrt_node
-      mobile_manipulator_target
-    SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CT_HEADER_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
-    CF_WERROR
-  )
-endif()
 
 #############
 ## Install ##
