@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(ocs2_pinocchio_interface)
 
-
-
-
 set(dependencies
   ocs2_core
   ocs2_robotic_tools
@@ -75,19 +72,21 @@ install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 ############
 # Testing ##
 ############
-find_package(ament_lint_auto REQUIRED)
-ament_lint_auto_find_test_dependencies()
-find_package(ament_cmake_gtest REQUIRED)
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+  find_package(ament_cmake_gtest REQUIRED)
 
-ament_add_gtest(testPinocchioInterface
-  test/testPinocchioInterface.cpp
-  test/testPinocchioEndEffectorKinematics.cpp
-)
-target_link_libraries(testPinocchioInterface
-  ${PROJECT_NAME}
-)
-ament_target_dependencies(testPinocchioInterface ${dependencies}) 
-target_compile_options(testPinocchioInterface PUBLIC ${OCS2_PINOCCHIO_FLAGS})
+  ament_add_gtest(testPinocchioInterface
+    test/testPinocchioInterface.cpp
+    test/testPinocchioEndEffectorKinematics.cpp
+  )
+  target_link_libraries(testPinocchioInterface
+    ${PROJECT_NAME}
+  )
+  ament_target_dependencies(testPinocchioInterface ${dependencies}) 
+  target_compile_options(testPinocchioInterface PUBLIC ${OCS2_PINOCCHIO_FLAGS})
+endif()
 
 # Propagate dependencies
 ament_export_dependencies(${dependencies})  
