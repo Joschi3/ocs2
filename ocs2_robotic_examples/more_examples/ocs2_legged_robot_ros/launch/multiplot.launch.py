@@ -13,12 +13,12 @@ def generate_launch_description():
             default_value=get_package_share_directory(
                 'ocs2_legged_robot') + '/config/multiplot/zero_velocity.xml'
         ),
-        launch_ros.actions.Node(
-            package='rqt_multiplot',
-            executable='rqt_multiplot',
-            name='mpc_metrics',
-            output='screen'
-        ),
+        # launch_ros.actions.Node(
+        #     package='rqt_multiplot',
+        #     executable='rqt_multiplot',
+        #     name='mpc_metrics',
+        #     output='screen'
+        # ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory(

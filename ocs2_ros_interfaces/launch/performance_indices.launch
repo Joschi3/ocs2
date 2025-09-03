@@ -1,4 +1,4 @@
-<launch>
+<!-- <launch>
   <arg name="mpc_policy_topic_name"/>
 
   <node pkg="ocs2_ros_interfaces" type="multiplot_remap" name="multiplot_remap"
@@ -6,4 +6,4 @@
 
   <node pkg="rqt_multiplot" type="rqt_multiplot" name="multiplot_performance_indices"
         output="screen" args="--multiplot-run-all --multiplot-config $(find ocs2_ros_interfaces)/multiplot/performance_indices.xml"/>
-</launch>
+</launch> -->
