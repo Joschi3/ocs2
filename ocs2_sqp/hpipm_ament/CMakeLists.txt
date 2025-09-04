@@ -1,77 +1,102 @@
 cmake_minimum_required(VERSION 3.14)
 project(hpipm_ament)
 
+## Find ament_cmake macros and libraries
 find_package(ament_cmake REQUIRED)
 find_package(blasfeo_ament REQUIRED)
 find_package(ocs2_core REQUIRED)
 find_package(ocs2_oc REQUIRED)
 find_package(ocs2_qp_solver REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+
+find_package(Boost REQUIRED COMPONENTS
+  system
+  filesystem
+  log_setup
+  log
+)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 include(FetchContent)
+include(CheckCCompilerFlag)
 
-# -----------------------
-# Install & third-party paths
-# -----------------------
-# In your packaging rules, CMAKE_INSTALL_PREFIX is /opt/hector/jazzy.
-set(HPIPM_PREFIX "${CMAKE_INSTALL_PREFIX}" CACHE PATH "Install prefix for hpipm")
-# BLASFEO is installed under the same prefix by blasfeo_ament.
-set(BLASFEO_PATH "${CMAKE_INSTALL_PREFIX}" CACHE PATH "BLASFEO prefix for hpipm")
+# Define directories
+set(HPIPM_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE STRING "HPIPM install path")
+set(HPIPM_INCLUDE_DIR ${HPIPM_INSTALL_PREFIX}/include)
+set(HPIPM_LIB_DIR ${HPIPM_INSTALL_PREFIX}/lib)
+set(HPIPM_DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/download)
+set(HPIPM_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/build)
 
-# -----------------------
-# CPU target selection for hpipm
-# -----------------------
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|X86_64|amd64|AMD64)$")
-  set(HPIPM_TARGET "AVX")
-elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|ARM64)$")
-  set(HPIPM_TARGET "ARMV8A")
+# Create directories if they do not exist
+file(MAKE_DIRECTORY ${HPIPM_INCLUDE_DIR})
+file(MAKE_DIRECTORY ${HPIPM_LIB_DIR})
+file(MAKE_DIRECTORY ${HPIPM_DOWNLOAD_DIR})
+file(MAKE_DIRECTORY ${HPIPM_BUILD_DIR})
+
+# ---------------- hpipm inner-project cache preseed (critical on ARM) ----------------
+# Point hpipm to the BLASFEO installed by ament
+set(BLASFEO_PATH "${CMAKE_INSTALL_PREFIX}" CACHE STRING "BLASFEO installation path")
+
+# hpipm inspects this to decide static/shared BLASFEO
+set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries")
+
+# Disable hpipm's internal tests/examples
+set(HPIPM_TESTING OFF CACHE BOOL "Disable hpipm tests/examples")
+
+# Select a CPU target that exists on the current architecture.
+# hpipm defaults to AVX (adds -m64 -mavx) which explodes on ARM.
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|ARM64|armv7|armhf|arm)")
+  set(TARGET GENERIC CACHE STRING "hpipm CPU architecture target")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64|x64)")
+  check_c_compiler_flag("-mavx" COMPILER_SUPPORTS_AVX)
+  if(COMPILER_SUPPORTS_AVX)
+    set(TARGET AVX CACHE STRING "hpipm CPU architecture target")
+  else()
+    set(TARGET GENERIC CACHE STRING "hpipm CPU architecture target")
+  endif()
 else()
-  set(HPIPM_TARGET "GENERIC")
+  set(TARGET GENERIC CACHE STRING "hpipm CPU architecture target")
 endif()
 
-# Choose shared or static for hpipm itself.
-# If you want a .so, set this ON; if you prefer static, set OFF and link to the .a.
-set(HPIPM_BUILD_SHARED ON)
+# Keep BLASFEO as intended; don't switch to a reference BLAS back-end
+set(REF_BLAS 0 CACHE STRING "Reference BLAS selection for hpipm")
 
-message(STATUS "Configuring hpipm with TARGET=${HPIPM_TARGET}, BLASFEO_PATH=${BLASFEO_PATH}, BUILD_SHARED_LIBS=${HPIPM_BUILD_SHARED}")
+message(STATUS "BLASFEO_PATH: ${BLASFEO_PATH}")
+# -------------------------------------------------------------------------------
 
-# -----------------------
-# Fetch & configure hpipm
-# -----------------------
-FetchContent_Declare(hpipm
+# Download & build source
+FetchContent_Declare(hpipmDownload
   GIT_REPOSITORY https://github.com/giaf/hpipm
-  GIT_TAG        255ffdf38d3a5e2c3285b29568ce65ae286e5faf
-  SOURCE_DIR     ${CMAKE_CURRENT_BINARY_DIR}/hpipm-src
-  BINARY_DIR     ${CMAKE_CURRENT_BINARY_DIR}/hpipm-build
-  # CRUCIAL: push the right cache args into the sub-build
-  CMAKE_ARGS
-    -DCMAKE_INSTALL_PREFIX=${HPIPM_PREFIX}
-    -DTARGET=${HPIPM_TARGET}
-    -DBLASFEO_PATH=${BLASFEO_PATH}
-    -DREF_BLAS=0
-    -DBUILD_SHARED_LIBS=$<IF:$<BOOL:${HPIPM_BUILD_SHARED}>,ON,OFF>
-    -DHPIPM_TESTING=OFF
+  GIT_TAG 255ffdf38d3a5e2c3285b29568ce65ae286e5faf
+  UPDATE_COMMAND ""
+  SOURCE_DIR ${HPIPM_DOWNLOAD_DIR}
+  BINARY_DIR ${HPIPM_BUILD_DIR}
+  BUILD_COMMAND $(MAKE)
+  INSTALL_COMMAND "$(MAKE) install"
 )
+FetchContent_MakeAvailable(hpipmDownload)
 
-FetchContent_MakeAvailable(hpipm)  # defines target hpipm
+# Copy headers to where ament expects them
+file(GLOB_RECURSE HEADERS "${HPIPM_DOWNLOAD_DIR}/include/*.h")
+foreach(HEADER_FILE ${HEADERS})
+  message(STATUS "FOUND HEADER: ${HEADER_FILE}")
+  file(COPY ${HEADER_FILE} DESTINATION ${HPIPM_INCLUDE_DIR})
+endforeach()
 
-# -----------------------
-# Our wrapper library
-# -----------------------
-add_library(${PROJECT_NAME}
-  src/HpipmInterface.cpp
-  src/HpipmInterfaceSettings.cpp
-)
+# Install the library where ament expects it
+# (hpipm target is created by the inner project)
+set_target_properties(hpipm PROPERTIES LIBRARY_OUTPUT_PATH ${HPIPM_LIB_DIR})
 
-target_include_directories(${PROJECT_NAME} PUBLIC
+###########
+## Build ##
+###########
+
+include_directories(
+  include
+  ${HPIPM_INCLUDE_DIR}
   ${EIGEN3_INCLUDE_DIRS}
-  # During the build, include hpipm headers from the fetched tree
-  ${CMAKE_CURRENT_BINARY_DIR}/hpipm-src/include
-  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
 )
 
-ament_target_dependencies(${PROJECT_NAME}
+set(dependencies
   blasfeo_ament
   ocs2_core
   ocs2_oc
@@ -79,15 +104,19 @@ ament_target_dependencies(${PROJECT_NAME}
   Eigen3
 )
 
-# Link to the fetched hpipm target
-target_link_libraries(${PROJECT_NAME} PUBLIC hpipm)
-
-# Optional: your extra compile flags
+# Hpipm interface
+add_library(${PROJECT_NAME}
+  src/HpipmInterface.cpp
+  src/HpipmInterfaceSettings.cpp
+)
+ament_target_dependencies(${PROJECT_NAME}
+  ${dependencies}
+)
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
-# -----------------------
-# Install our wrapper (hpipm installs itself via its own install() rules)
-# -----------------------
+#############
+## Install ##
+#############
 install(
   TARGETS ${PROJECT_NAME}
   EXPORT export_${PROJECT_NAME}
@@ -99,25 +128,25 @@ install(
 
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-# -----------------------
-# Tests (optional)
-# -----------------------
-include(CTest)
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-  find_package(ament_cmake_gtest REQUIRED)
+#############
+## Testing ##
+#############
+find_package(ament_lint_auto REQUIRED)
+ament_lint_auto_find_test_dependencies()
+find_package(ament_cmake_gtest REQUIRED)
 
-  ament_add_gtest(test_${PROJECT_NAME} test/testHpipmInterface.cpp)
-  ament_target_dependencies(test_${PROJECT_NAME}
-    blasfeo_ament ocs2_core ocs2_oc ocs2_qp_solver Eigen3)
-  target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} hpipm)
-endif()
+ament_add_gtest(test_${PROJECT_NAME}
+  test/testHpipmInterface.cpp
+)
+ament_target_dependencies(test_${PROJECT_NAME}
+  ${dependencies}
+)
+target_link_libraries(test_${PROJECT_NAME}
+  ${PROJECT_NAME}
+  hpipm
+)
 
-# -----------------------
-# Export
-# -----------------------
-ament_export_dependencies(blasfeo_ament ocs2_core ocs2_oc ocs2_qp_solver Eigen3)
+ament_export_dependencies(${dependencies} hpipm)
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()
