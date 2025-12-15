@@ -26,3 +26,4 @@ ocs2_ddp/test/ddp_test_generated/
 *.synctex.gz
 .vscode/
 runs/
+**/cmake-build-*/

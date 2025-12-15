@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 17)
 project(ocs2_mpc)
 
 find_package(ament_cmake REQUIRED)
-find_package(ocs2_core REQUIRED) 
+find_package(ocs2_core REQUIRED)
 find_package(ocs2_oc REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
@@ -29,7 +29,6 @@ include_directories(
 set(dependencies
     ocs2_core
     ocs2_oc
-    Boost
 )
 
 add_library(${PROJECT_NAME}
@@ -69,7 +68,7 @@ install(
   RUNTIME DESTINATION bin
   INCLUDES DESTINATION include/${PROJECT_NAME}
 )
-install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME}) 
+install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
 #############
 ## Testing ##
@@ -78,7 +77,7 @@ find_package(ament_lint_auto REQUIRED)
 ament_lint_auto_find_test_dependencies()
 find_package(ament_cmake_gtest REQUIRED)
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

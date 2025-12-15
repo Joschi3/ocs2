@@ -7,7 +7,6 @@ set(dependencies
   ocs2_mpc
   ocs2_oc
   ocs2_qp_solver
-  Boost
 )
 
 
@@ -92,7 +91,7 @@ target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

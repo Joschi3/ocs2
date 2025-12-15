@@ -14,7 +14,6 @@ set(dependencies
   ocs2_robotic_tools
   ocs2_cartpole
   ocs2_robotic_assets
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -35,7 +34,7 @@ find_package(Boost REQUIRED COMPONENTS
 )
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
- 
+
 ###########
 ## Build ##
 ###########
@@ -70,8 +69,8 @@ ament_target_dependencies(cartpole_dummy_test
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 install(
-  TARGETS 
-    cartpole_mpc 
+  TARGETS
+    cartpole_mpc
     cartpole_dummy_test
     DESTINATION lib/${PROJECT_NAME}
 )
@@ -79,6 +78,6 @@ install(DIRECTORY launch rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_package()

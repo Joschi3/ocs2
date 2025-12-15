@@ -1,6 +1,6 @@
 # generated from ament_cmake_export_dependencies/cmake/ament_cmake_export_dependencies-extras.cmake.in
 
-set(_exported_dependencies "ocs2_core;ocs2_robotic_tools;ocs2_pinocchio_interface;hpp-fcl;pinocchio")
+set(_exported_dependencies "ocs2_core;ocs2_robotic_tools;ocs2_pinocchio_interface;pinocchio;hpp-fcl;Eigen3;Boost;tinyxml2")
 
 find_package(ament_cmake_libraries QUIET REQUIRED)
 

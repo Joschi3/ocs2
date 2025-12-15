@@ -9,7 +9,7 @@ set(dependencies
   ocs2_qp_solver
   blasfeo_ament
   hpipm_ament
-  Boost
+
 )
 
 find_package(ament_cmake REQUIRED)
@@ -45,7 +45,7 @@ add_library(${PROJECT_NAME}
   src/SqpSolver.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies} 
+  ${dependencies}
 )
 target_link_libraries(${PROJECT_NAME}
   hpipm
@@ -87,7 +87,7 @@ target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

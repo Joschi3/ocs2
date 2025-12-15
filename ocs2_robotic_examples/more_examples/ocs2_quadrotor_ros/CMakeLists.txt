@@ -13,7 +13,6 @@ set(dependencies
   ocs2_robotic_tools
   ocs2_robotic_assets
   ocs2_quadrotor
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -77,9 +76,9 @@ target_compile_options(quadrotor_target PRIVATE ${OCS2_CXX_FLAGS})
 
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(
-  TARGETS 
-    quadrotor_mpc 
-    quadrotor_dummy_test 
+  TARGETS
+    quadrotor_mpc
+    quadrotor_dummy_test
     quadrotor_target
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -88,6 +87,6 @@ install(DIRECTORY launch rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_package()

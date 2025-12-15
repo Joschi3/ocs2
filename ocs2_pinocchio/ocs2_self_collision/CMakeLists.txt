@@ -80,7 +80,7 @@ target_link_libraries(${PROJECT_NAME}
   Boost::filesystem
   Boost::log_setup
   Boost::log
-  ${TINYXML2_TARGET} 
+  ${TINYXML2_TARGET}
 )
 
 
@@ -99,13 +99,12 @@ install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_export_include_directories("include/${PROJECT_NAME}")
-# Export ament deps plus 3rd-party so downstream find_package works 
+# Export ament deps plus 3rd-party so downstream find_package works
 ament_export_dependencies(
   ${ament_deps}
   pinocchio
   hpp-fcl
   Eigen3
-  Boost
   tinyxml2
 )
 

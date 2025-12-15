@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package format="2">
   <name>ocs2_slp</name>
   <version>0.0.0</version>
@@ -10,6 +10,8 @@
   <license>BSD3</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
   <depend>ocs2_core</depend>
   <depend>ocs2_mpc</depend>
   <depend>ocs2_oc</depend>

@@ -16,7 +16,6 @@ set(dependencies
   ocs2_pinocchio_interface
   ocs2_centroidal_model
   ocs2_robotic_assets
-  Boost
   pinocchio
   urdf
   urdfdom
@@ -142,7 +141,7 @@ target_link_libraries(${PROJECT_NAME}_test
 )
 target_compile_options(${PROJECT_NAME}_test PRIVATE ${FLAGS})
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

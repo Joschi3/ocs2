@@ -13,8 +13,6 @@ find_package(Boost REQUIRED COMPONENTS
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 
-
-
 # pthread and OpenMp
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
@@ -42,7 +40,6 @@ include_directories(
 
 set(dependencies
   ocs2_thirdparty
-  Boost
   Eigen3
   OpenMP_CXX
   Threads
@@ -136,6 +133,9 @@ add_library(${PROJECT_NAME}
 )
 ament_target_dependencies(${PROJECT_NAME}
     ${dependencies}
+)
+target_link_libraries(${PROJECT_NAME}
+    ${Boost_LIBRARIES}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
@@ -332,7 +332,7 @@ target_link_libraries(${PROJECT_NAME}_test_core
 )
 ament_target_dependencies(${PROJECT_NAME}_test_core ${dependencies})
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_ocs2_core HAS_LIBRARY_TARGET)
 ament_package(CONFIG_EXTRAS "cmake/ocs2_cxx_flags.cmake")

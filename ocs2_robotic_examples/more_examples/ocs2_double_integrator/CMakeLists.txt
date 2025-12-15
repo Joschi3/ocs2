@@ -11,7 +11,6 @@ set(dependencies
   ocs2_ddp
   ocs2_python_interface
   ocs2_robotic_tools
-  Boost
 )
 
 find_package(pybind11 REQUIRED)
@@ -62,7 +61,7 @@ target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 
 # python bindings
-pybind11_add_module(DoubleIntegratorPyBindings 
+pybind11_add_module(DoubleIntegratorPyBindings
   src/pyBindModule.cpp
 )
 target_link_libraries(DoubleIntegratorPyBindings PRIVATE
@@ -94,7 +93,7 @@ install(TARGETS DoubleIntegratorPyBindings
   LIBRARY DESTINATION lib
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

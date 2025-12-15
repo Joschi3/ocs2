@@ -24,7 +24,6 @@ set(dependencies
   ocs2_msgs
   ocs2_ros_interfaces
   ocs2_legged_robot
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -180,7 +179,7 @@ install(DIRECTORY launch rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

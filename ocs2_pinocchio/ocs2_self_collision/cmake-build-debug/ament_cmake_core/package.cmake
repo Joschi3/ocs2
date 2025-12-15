@@ -1,7 +1,7 @@
 set(_AMENT_PACKAGE_NAME "ocs2_self_collision")
 set(ocs2_self_collision_VERSION "0.0.0")
 set(ocs2_self_collision_MAINTAINER "Michael Spieler <mspieler@ethz.ch>, Perry Franklin <fperry@ethz.ch>")
-set(ocs2_self_collision_BUILD_DEPENDS "cmake_clang_tools" "ocs2_core" "ocs2_robotic_tools" "ocs2_pinocchio_interface" "pinocchio")
+set(ocs2_self_collision_BUILD_DEPENDS "ocs2_core" "ocs2_robotic_tools" "ocs2_pinocchio_interface" "pinocchio")
 set(ocs2_self_collision_BUILDTOOL_DEPENDS "ament_cmake")
 set(ocs2_self_collision_BUILD_EXPORT_DEPENDS "ocs2_core" "ocs2_robotic_tools" "ocs2_pinocchio_interface" "pinocchio")
 set(ocs2_self_collision_BUILDTOOL_EXPORT_DEPENDS )

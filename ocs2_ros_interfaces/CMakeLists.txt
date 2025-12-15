@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(ocs2_ros_interfaces)
 
-# find_package(ament_cmake_auto REQUIRED) 
+# find_package(ament_cmake_auto REQUIRED)
 # ament_auto_find_build_dependencies()
 
 ## Find ament_cmake macros and libraries
@@ -34,7 +34,6 @@ set(dependencies
   visualization_msgs
   geometry_msgs
   interactive_markers
-  Boost
 )
 
 ###########
@@ -84,7 +83,7 @@ add_executable(multiplot_remap
   src/multiplot/MultiplotRemap.cpp
 )
 ament_target_dependencies(multiplot_remap
-  ${dependencies} 
+  ${dependencies}
 )
 target_link_libraries(test_custom_callback_queue
   ${PROJECT_NAME}
@@ -95,7 +94,7 @@ add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies} 
+  ${dependencies}
 )
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
@@ -126,7 +125,7 @@ install(DIRECTORY launch multiplot
 ## Testing ##
 #############
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

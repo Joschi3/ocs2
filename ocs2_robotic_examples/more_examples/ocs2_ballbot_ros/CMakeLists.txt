@@ -18,7 +18,6 @@ set(dependencies
   ocs2_robotic_tools
   ocs2_ballbot
   ocs2_robotic_assets
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -99,7 +98,7 @@ target_compile_options(ballbot_target PRIVATE ${OCS2_CXX_FLAGS})
 
 ## Combined MPC MRT example
 add_executable(ballbot_mpc_mrt
-  src/BallbotMpcMrtNode.cpp 
+  src/BallbotMpcMrtNode.cpp
   src/BallbotDummyVisualization.cpp)
 ament_target_dependencies(ballbot_mpc_mrt
   ${dependencies}
@@ -144,10 +143,10 @@ install(
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 install(
-  TARGETS 
-    ballbot_ddp 
-    ballbot_dummy_test 
-    ballbot_target 
+  TARGETS
+    ballbot_ddp
+    ballbot_dummy_test
+    ballbot_target
     ballbot_sqp
     DESTINATION lib/${PROJECT_NAME}
 )
@@ -173,7 +172,7 @@ target_link_libraries(ballbot_integration_test
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 

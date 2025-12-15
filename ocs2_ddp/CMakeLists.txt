@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_ddp)
 
-find_package(ament_cmake REQUIRED) 
+find_package(ament_cmake REQUIRED)
 find_package(ocs2_core REQUIRED)
 find_package(ocs2_mpc REQUIRED)
 find_package(ocs2_qp_solver REQUIRED)
@@ -27,7 +27,6 @@ set(dependencies
     ocs2_oc
     ocs2_mpc
     ocs2_qp_solver
-    Boost
 )
 
 ###########
@@ -85,7 +84,7 @@ install(
 )
 
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
-install(DIRECTORY test/include/ 
+install(DIRECTORY test/include/
   DESTINATION include/${PROJECT_NAME}
 )
 
@@ -174,7 +173,7 @@ target_link_libraries(testReachingTask
 )
 ament_target_dependencies(testReachingTask ${dependencies})
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

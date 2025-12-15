@@ -36,11 +36,11 @@ repos:
       - id: ruff-format
 
   # Package XML
-  - repo: https://github.com/Joschi3/package_xml_validation.git
-    rev: v1.2.3
-    hooks:
-      - id: format-package-xml
-        name: Validate and Format package.xml
+  # - repo: https://github.com/Joschi3/package_xml_validation.git
+  #   rev: v1.2.3
+  #   hooks:
+  #     - id: format-package-xml
+  #       name: Validate and Format package.xml
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.33.2

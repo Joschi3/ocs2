@@ -13,7 +13,6 @@ set(dependencies
   ocs2_sqp
   ocs2_robotic_tools
   ocs2_python_interface
-  Boost
 )
 
 find_package(pybind11 REQUIRED)
@@ -35,7 +34,7 @@ find_package(Boost REQUIRED COMPONENTS
 )
 
 # find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(ament_cmake_auto REQUIRED) 
+find_package(ament_cmake_auto REQUIRED)
 find_package(Python COMPONENTS Interpreter Development)
 find_package(pybind11 CONFIG)
 ament_auto_find_build_dependencies()
@@ -122,7 +121,7 @@ target_link_libraries(test_BallbotPyBindings
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

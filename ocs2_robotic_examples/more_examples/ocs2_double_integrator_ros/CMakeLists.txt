@@ -13,7 +13,6 @@ set(dependencies
   ocs2_double_integrator
   ocs2_robotic_tools
   ocs2_robotic_assets
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -89,6 +88,6 @@ install(DIRECTORY launch rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_package()

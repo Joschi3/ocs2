@@ -35,19 +35,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unordered_map>
 #include <vector>
 
-namespace ocs2 {
+namespace ocs2
+{
 
 /**
  * Implements the common add/get interface for cost and constraint collections.
  *
  * @tparam T : Type of the terms in the collection.
  */
-template <typename T>
-class Collection {
- public:
+template<typename T>
+class Collection
+{
+public:
   Collection() = default;
   virtual ~Collection() = default;
-  virtual Collection* clone() const { return new Collection(*this); }
+  virtual Collection *clone() const { return new Collection( *this ); }
 
   /** Checks if the collection has no elements */
   bool empty() const { return terms_.empty(); }
@@ -61,7 +63,7 @@ class Collection {
    * @param name: Name stored along with the term.
    * @param term: Term to be added.
    */
-  void add(std::string name, std::unique_ptr<T> term);
+  void add( std::string name, std::unique_ptr<T> term );
 
   /**
    * Erases a term from the collection.
@@ -69,7 +71,7 @@ class Collection {
    * @param name: Name of the term.
    * @return True if the term was in the Collection and false if the term was not found in the Collection.
    */
-  bool erase(const std::string& name) { return (extract(name) != nullptr); }
+  bool erase( const std::string &name ) { return ( extract( name ) != nullptr ); }
 
   /**
    * Removes a term from the Collection and returns it as a unique_ptr.
@@ -77,7 +79,7 @@ class Collection {
    * @param name: Name of the term.
    * @return A unique pointer to the extracted term. If the term was not found it returns nullptr.
    */
-  std::unique_ptr<T> extract(const std::string& name);
+  std::unique_ptr<T> extract( const std::string &name );
 
   /**
    * Use to modify a term.
@@ -85,8 +87,8 @@ class Collection {
    * @param name: Name of the term to modify
    * @return A reference to the underlying term
    */
-  template <typename Derived = T>
-  Derived& get(const std::string& name);
+  template<typename Derived = T>
+  Derived &get( const std::string &name );
 
   /**
    * Finds the index of the term in the stored map.
@@ -95,16 +97,29 @@ class Collection {
    * @param [out] index : Term index.
    * @return True if the name found in the collection.
    */
-  bool getTermIndex(const std::string& name, size_t& index) const;
+  bool getTermIndex( const std::string &name, size_t &index ) const;
 
- protected:
+  /**
+   * Finds the name of the term in the stored map.
+   * @param [in]  index : Term index.
+   * @param [out] name: Name of the term.
+   * @return True if the name found in the collection.
+  */
+  bool getTermName( const size_t index, std::string &name ) const;
+
+  /**
+   *  Get the names of all terms in the collection
+   */
+  std::vector<std::string> getTermNames() const;
+
+protected:
   /** Copy constructor */
-  Collection(const Collection& other);
+  Collection( const Collection &other );
 
   //! Contains all terms in the order they were added
   std::vector<std::unique_ptr<T>> terms_;
 
- private:
+private:
   //! Lookup from cost term name to index in the cost term vector
   std::unordered_map<std::string, size_t> termNameMap_;
 };
@@ -112,8 +127,9 @@ class Collection {
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-void Collection<T>::clear() {
+template<typename T>
+void Collection<T>::clear()
+{
   terms_.clear();
   termNameMap_.clear();
 }
@@ -121,45 +137,48 @@ void Collection<T>::clear() {
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-void Collection<T>::add(std::string name, std::unique_ptr<T> term) {
+template<typename T>
+void Collection<T>::add( std::string name, std::unique_ptr<T> term )
+{
   const size_t nextIndex = terms_.size();
-  auto info = termNameMap_.emplace(std::move(name), nextIndex);
-  if (info.second) {
-    terms_.push_back(std::move(term));
+  auto info = termNameMap_.emplace( std::move( name ), nextIndex );
+  if ( info.second ) {
+    terms_.push_back( std::move( term ) );
   } else {
-    throw std::runtime_error(std::string("[Collection::add] Term with name \"") + info.first->first + "\" already exists");
+    throw std::runtime_error( std::string( "[Collection::add] Term with name \"" ) +
+                              info.first->first + "\" already exists" );
   }
 }
 
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-std::unique_ptr<T> Collection<T>::extract(const std::string& name) {
+template<typename T>
+std::unique_ptr<T> Collection<T>::extract( const std::string &name )
+{
   // find the term iterator with the name
-  const auto termItr = termNameMap_.find(name);
+  const auto termItr = termNameMap_.find( name );
 
   // term was not found
-  if (termItr == termNameMap_.end()) {
+  if ( termItr == termNameMap_.end() ) {
     return nullptr;
   }
 
   // adjust the index of the terms added after the requested term
   const size_t termInd = termItr->second;
-  for (auto itr = termNameMap_.begin(); itr != termNameMap_.end(); ++itr) {
-    if (itr->second > termInd) {
+  for ( auto itr = termNameMap_.begin(); itr != termNameMap_.end(); ++itr ) {
+    if ( itr->second > termInd ) {
       --itr->second;
     }
   }
 
   // remove term from map
-  termNameMap_.erase(termItr);
+  termNameMap_.erase( termItr );
 
   // get the term
-  auto term = (std::move(terms_[termInd]));
+  auto term = ( std::move( terms_[termInd] ) );
   // remove the term
-  terms_.erase(terms_.begin() + termInd);
+  terms_.erase( terms_.begin() + termInd );
 
   return term;
 }
@@ -167,34 +186,36 @@ std::unique_ptr<T> Collection<T>::extract(const std::string& name) {
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-template <typename Derived>
-Derived& Collection<T>::get(const std::string& name) {
-  static_assert(std::is_base_of<T, Derived>::value, "Template argument must derive from the base type of this collection");
+template<typename T>
+template<typename Derived>
+Derived &Collection<T>::get( const std::string &name )
+{
+  static_assert( std::is_base_of<T, Derived>::value,
+                 "Template argument must derive from the base type of this collection" );
   // if the key does not exist throws an exception
-  const auto index = termNameMap_.at(name);
-  return dynamic_cast<Derived&>(*terms_[index]);
+  const auto index = termNameMap_.at( name );
+  return dynamic_cast<Derived &>( *terms_[index] );
 }
 
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-Collection<T>::Collection(const Collection& other) : termNameMap_(other.termNameMap_) {
+template<typename T>
+Collection<T>::Collection( const Collection &other ) : termNameMap_( other.termNameMap_ )
+{
   // Loop through all terms and clone. The name map can be copied directly because the order stays the same.
-  terms_.reserve(other.terms_.size());
-  for (const auto& term : other.terms_) {
-    terms_.emplace_back(term->clone());
-  }
+  terms_.reserve( other.terms_.size() );
+  for ( const auto &term : other.terms_ ) { terms_.emplace_back( term->clone() ); }
 }
 
 /******************************************************************************************************/
 /******************************************************************************************************/
 /******************************************************************************************************/
-template <typename T>
-bool Collection<T>::getTermIndex(const std::string& name, size_t& index) const {
-  auto itr = termNameMap_.find(name);
-  if (itr != termNameMap_.cend()) {
+template<typename T>
+bool Collection<T>::getTermIndex( const std::string &name, size_t &index ) const
+{
+  auto itr = termNameMap_.find( name );
+  if ( itr != termNameMap_.cend() ) {
     index = itr->second;
     return true;
   } else {
@@ -203,14 +224,40 @@ bool Collection<T>::getTermIndex(const std::string& name, size_t& index) const {
   }
 }
 
+/******************************************************************************************************/
+/******************************************************************************************************/
+/******************************************************************************************************/
+template <typename T>
+bool Collection<T>::getTermName(const size_t index, std::string& name) const {
+  for (const auto& term : termNameMap_) {
+    if (term.second == index) {
+      name = term.first;
+      return true;
+    }
+  }
+  return false;
+}
+
+template <typename T>
+std::vector<std::string> Collection<T>::getTermNames() const {
+  std::vector<std::string> keysVector;
+  for (const auto& pair :termNameMap_) {
+        keysVector.push_back(pair.first);
+  }
+  return keysVector;
+}
+
+
 /**
  * Helper function for merging two vectors by moving objects.
  * @param v1 : vector to move objects to
  * @param v2 : vector to move objects from
  */
-template <typename T, typename Allocator>
-inline void appendVectorToVectorByMoving(std::vector<T, Allocator>& v1, std::vector<T, Allocator>&& v2) {
-  v1.insert(v1.end(), std::make_move_iterator(v2.begin()), std::make_move_iterator(v2.end()));
+template<typename T, typename Allocator>
+inline void appendVectorToVectorByMoving( std::vector<T, Allocator> &v1,
+                                          std::vector<T, Allocator> &&v2 )
+{
+  v1.insert( v1.end(), std::make_move_iterator( v2.begin() ), std::make_move_iterator( v2.end() ) );
 }
 
-}  // namespace ocs2
+} // namespace ocs2

@@ -65,7 +65,9 @@ class PinocchioSphereInterface final {
    * collision sphere is required along the radial direction
    */
   PinocchioSphereInterface(const PinocchioInterface& pinocchioInterface, std::vector<std::string> collisionLinks,
-                           const std::vector<scalar_t>& maxExcesses, scalar_t shrinkRatio);
+                           const std::vector<scalar_t>& maxExcesses, scalar_t shrinkRatio,
+                           const std::vector<std::string>& ignoreObjects = {},
+                           const std::map<std::string,scalar_t>& maxExcessPerCollisionGeometry = {});
   ~PinocchioSphereInterface();
 
   PinocchioSphereInterface(const PinocchioSphereInterface& rhs);

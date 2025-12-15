@@ -26,7 +26,6 @@ set(dependencies
     ocs2_core
     ocs2_ddp
     # ocs2_frank_wolfe
-    Boost
 )
 
 ###########
@@ -58,6 +57,6 @@ install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 #############
 
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_package()

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package format="2">
   <name>ocs2_mpc</name>
   <version>0.0.0</version>
@@ -12,6 +12,8 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
   <depend>ocs2_core</depend>
   <depend>ocs2_oc</depend>
 
@@ -20,6 +22,3 @@
   </export>
 
 </package>
-
-
-

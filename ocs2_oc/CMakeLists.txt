@@ -33,7 +33,6 @@ include_directories(
 )
 
 set(dependencies
-    Boost
     Eigen3
     ocs2_core
 )
@@ -75,6 +74,9 @@ add_library(${PROJECT_NAME}
 ament_target_dependencies(${PROJECT_NAME}
   ${dependencies}
 )
+target_link_libraries(${PROJECT_NAME}
+    ${Boost_LIBRARIES}
+)
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(${PROJECT_NAME}_lintTarget
@@ -101,7 +103,7 @@ install(
   INCLUDES DESTINATION include/${PROJECT_NAME}
 )
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
-install(DIRECTORY test/include/ 
+install(DIRECTORY test/include/
   DESTINATION include/${PROJECT_NAME}
 )
 
@@ -162,7 +164,7 @@ ament_target_dependencies(test_trajectory_spreading
   ${dependencies}
 )
 target_link_libraries(test_trajectory_spreading
-  ${PROJECT_NAME}  
+  ${PROJECT_NAME}
 )
 
 ament_add_gtest(test_ocp_to_kkt
@@ -185,7 +187,7 @@ ament_target_dependencies(test_precondition
   ${dependencies}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 

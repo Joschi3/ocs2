@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package format="3">
   <name>ocs2_core</name>
   <version>0.0.0</version>
@@ -11,6 +11,8 @@
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
   <depend>boost</depend>
   <!--    -->
 
@@ -19,8 +21,8 @@
   <test_depend>ament_cmake_gtest</test_depend>
   <test_depend>ament_cmake_pytest</test_depend>
 
-  <export>                               
-   <build_type>ament_cmake</build_type>
-  </export> 
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 
 </package>

@@ -62,6 +62,14 @@ class EndEffectorKinematics {
   virtual std::vector<vector3_t> getPosition(const vector_t& state) const = 0;
 
   /**
+   * Get end-effector orientation quaternions in world frame
+   *
+   * @param [in] state vector
+   * @return array of orientation quaternions
+   */
+  virtual std::vector<quaternion_t> getOrientation(const vector_t& state) const = 0;
+
+  /**
    * Get end-effector velocity vectors in world frame
    *
    * @param [in] state: state vector
@@ -89,6 +97,14 @@ class EndEffectorKinematics {
    * @return array of position function linear approximations
    */
   virtual std::vector<VectorFunctionLinearApproximation> getPositionLinearApproximation(const vector_t& state) const = 0;
+
+  /**
+   * Get end-effector orientation linear approximation in world frame
+   *
+   * @param [in] state: state vector
+   * @return array of orientation function linear approximations
+   */
+  virtual std::vector<VectorFunctionLinearApproximation> getOrientationLinearApproximation(const vector_t& state) const = 0;
 
   /**
    * Get end-effector velocity linear approximation in world frame

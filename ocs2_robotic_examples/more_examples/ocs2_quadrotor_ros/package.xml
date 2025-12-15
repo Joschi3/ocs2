@@ -1,27 +1,29 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package format="2">
   <name>ocs2_quadrotor_ros</name>
   <version>0.0.0</version>
   <description>The ocs2_quadrotor_ros package</description>
-
   <maintainer email="farbod.farshidian@gmail.com">Farbod Farshidian</maintainer>
   <maintainer email="jcarius@ethz.ch">Jan Carius</maintainer>
   <maintainer email="rgrandia@ethz.ch">Ruben Grandia</maintainer>
-
   <license>TODO</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>ocs2_mpc</depend>
+  <depend>ocs2_quadrotor</depend>
+  <depend>ocs2_robotic_assets</depend>
+  <depend>ocs2_robotic_tools</depend>
+  <depend>ocs2_ros_interfaces</depend>
   <depend>rclcpp</depend>
   <depend>tf2</depend>
+  <depend>tf2_ros</depend>
 
-  <depend>ocs2_mpc</depend>
-  <depend>ocs2_ros_interfaces</depend>
-  <depend>ocs2_robotic_tools</depend>
-  <depend>ocs2_robotic_assets</depend>
-  <depend>ocs2_quadrotor</depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
 
-  <export>                               
-   <build_type>ament_cmake</build_type>
+  <export>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>

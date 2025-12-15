@@ -5,7 +5,6 @@ project(ocs2_perceptive)
 set(dependencies
   ocs2_core
   ocs2_robotic_tools
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -88,7 +87,7 @@ target_link_libraries(test_trilinear_interpolation
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

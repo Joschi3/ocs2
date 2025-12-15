@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package format="2">
   <name>ocs2_cartpole</name>
   <version>0.0.0</version>
@@ -13,15 +13,16 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <build_depend>rclcpp </build_depend>
-  
 
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
   <depend>ocs2_core</depend>
   <depend>ocs2_ddp</depend>
   <depend>ocs2_mpc</depend>
   <depend>ocs2_robotic_tools</depend>
   <test_depend>ament_cmake_gtest</test_depend>
-  
-  <export>                               
-   <build_type>ament_cmake</build_type>
-  </export> 
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

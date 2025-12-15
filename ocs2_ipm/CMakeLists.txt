@@ -8,7 +8,6 @@ set(dependencies
   ocs2_oc
   blasfeo_ament
   hpipm_ament
-  Boost
 )
 
 find_package(ament_cmake REQUIRED)
@@ -91,7 +90,7 @@ target_link_libraries(test_${PROJECT_NAME}
 )
 
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()
