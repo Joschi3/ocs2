@@ -110,6 +110,7 @@ install(
 )
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY auto_generated DESTINATION share/${PROJECT_NAME}/)
 
 
 # -----------------------------
