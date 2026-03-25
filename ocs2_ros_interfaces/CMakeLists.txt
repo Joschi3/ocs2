@@ -7,6 +7,7 @@ project(ocs2_ros_interfaces)
 ## Find ament_cmake macros and libraries
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(diagnostic_msgs REQUIRED)
 find_package(ocs2_msgs REQUIRED)
 find_package(ocs2_mpc REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -26,6 +27,7 @@ find_package(Boost REQUIRED COMPONENTS
 
 set(dependencies
   rclcpp
+  diagnostic_msgs
   ocs2_msgs
   ocs2_core
   ocs2_mpc
@@ -48,6 +50,7 @@ include_directories(
 
 set(dependencies_targets
   ${rclcpp_TARGETS}
+  ${diagnostic_msgs_TARGETS}
   ${ocs2_msgs_TARGETS}
   ${ocs2_core_TARGETS}
   ${ocs2_mpc_TARGETS}
