@@ -78,21 +78,12 @@ add_library(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
-add_executable(test_custom_callback_queue
-  test/test_custom_callback_queue.cpp
-)
-target_link_libraries(test_custom_callback_queue ${dependencies_targets})
-target_link_libraries(test_custom_callback_queue
-  ${PROJECT_NAME}
-)
-target_compile_options(test_custom_callback_queue PRIVATE ${OCS2_CXX_FLAGS})
-
 # multiplot remap node
 add_executable(multiplot_remap
   src/multiplot/MultiplotRemap.cpp
 )
 target_link_libraries(multiplot_remap ${dependencies_targets})
-target_link_libraries(test_custom_callback_queue
+target_link_libraries(multiplot_remap
   ${PROJECT_NAME}
 )
 target_compile_options(multiplot_remap PRIVATE ${OCS2_CXX_FLAGS})
@@ -129,6 +120,18 @@ install(DIRECTORY launch multiplot
 #############
 ## Testing ##
 #############
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+
+  ament_add_gtest(ocs2_ros_interfaces_test
+    test/testMpcRosInterfaces.cpp
+  )
+  target_link_libraries(ocs2_ros_interfaces_test
+    ${PROJECT_NAME}
+  )
+  target_compile_options(ocs2_ros_interfaces_test PRIVATE ${OCS2_CXX_FLAGS})
+endif()
 
 ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")

@@ -77,6 +77,21 @@ find_package(ament_lint_auto REQUIRED)
 ament_lint_auto_find_test_dependencies()
 find_package(ament_cmake_gtest REQUIRED)
 
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+
+  ament_add_gtest(ocs2_mpc_test_mpc_base
+    test/testMPC_BASE.cpp
+  )
+  target_compile_definitions(ocs2_mpc_test_mpc_base PRIVATE
+    OCS2_MPC_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/test/data"
+  )
+  target_link_libraries(ocs2_mpc_test_mpc_base
+    ${PROJECT_NAME}
+    gtest_main
+  )
+endif()
+
 ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
