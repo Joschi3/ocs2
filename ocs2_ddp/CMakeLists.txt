@@ -97,6 +97,9 @@ find_package(ament_lint_auto REQUIRED)
 ament_lint_auto_find_test_dependencies()
 find_package(ament_cmake_gtest REQUIRED)
 
+ament_add_gtest(testLineSearchConcurrency test/testLineSearchConcurrency.cpp)
+target_link_libraries(testLineSearchConcurrency ${PROJECT_NAME})
+
 ament_add_gtest(exp0_ddp_test test/Exp0Test.cpp)
 target_link_libraries(exp0_ddp_test ${PROJECT_NAME})
 target_link_libraries(exp0_ddp_test ${dependencies_targets})
