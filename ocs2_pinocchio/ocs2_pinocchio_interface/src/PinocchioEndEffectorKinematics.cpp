@@ -147,7 +147,8 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
     getFrameJacobianReadOnly(model, data, frameId, rf, J);
 
     VectorFunctionLinearApproximation pos;
-    pos.f = data.oMf[frameId].translation();
+    // computed from the parent joint, the former Data copy refreshed oMf[frameId] here
+    pos.f = data.oMi[model.frames[frameId].parentJoint].act(model.frames[frameId].placement.translation());
     std::tie(pos.dfdx, std::ignore) = mappingPtr_->getOcs2Jacobian(state, J.topRows<3>(), matrix_t::Zero(3, model.nv));
     positions.emplace_back(std::move(pos));
   }
@@ -172,7 +173,7 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
     getFrameJacobianReadOnly(model, data, frameId, rf, J);
 
     VectorFunctionLinearApproximation ori;
-    ori.f = data.oMf[frameId].translation(); // BUG: Should be orientation? //TODO: FIX THIS
+    ori.f = data.oMi[model.frames[frameId].parentJoint].act(model.frames[frameId].placement.translation());  // BUG: Should be orientation? //TODO: FIX THIS
     std::tie(ori.dfdx, std::ignore) = mappingPtr_->getOcs2Jacobian(state, J.bottomRows<3>(), matrix_t::Zero(3, model.nv));
     orientations.emplace_back(std::move(ori));
   }
