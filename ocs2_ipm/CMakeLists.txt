@@ -80,6 +80,7 @@ ament_lint_auto_find_test_dependencies()
 find_package(ament_cmake_gtest REQUIRED)
 
 ament_add_gtest(test_${PROJECT_NAME}
+  test/testBarrierMerit.cpp
   test/Exp0Test.cpp
   test/Exp1Test.cpp
   test/testCircularKinematics.cpp
