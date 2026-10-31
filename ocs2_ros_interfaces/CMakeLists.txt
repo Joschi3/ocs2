@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_ros_interfaces)
 
 # find_package(ament_cmake_auto REQUIRED)
@@ -16,7 +16,6 @@ find_package(interactive_markers REQUIRED)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -47,6 +46,17 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${rclcpp_TARGETS}
+  ${ocs2_msgs_TARGETS}
+  ${ocs2_core_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${std_msgs_TARGETS}
+  ${visualization_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${interactive_markers_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/command/TargetTrajectoriesRosPublisher.cpp
   src/command/TargetTrajectoriesInteractiveMarker.cpp
@@ -62,17 +72,13 @@ add_library(${PROJECT_NAME}
   src/visualization/VisualizationHelpers.cpp
   src/visualization/VisualizationColors.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(test_custom_callback_queue
   test/test_custom_callback_queue.cpp
 )
-ament_target_dependencies(test_custom_callback_queue
-  ${dependencies}
-)
+target_link_libraries(test_custom_callback_queue ${dependencies_targets})
 target_link_libraries(test_custom_callback_queue
   ${PROJECT_NAME}
 )
@@ -82,9 +88,7 @@ target_compile_options(test_custom_callback_queue PRIVATE ${OCS2_CXX_FLAGS})
 add_executable(multiplot_remap
   src/multiplot/MultiplotRemap.cpp
 )
-ament_target_dependencies(multiplot_remap
-  ${dependencies}
-)
+target_link_libraries(multiplot_remap ${dependencies_targets})
 target_link_libraries(test_custom_callback_queue
   ${PROJECT_NAME}
 )
@@ -93,9 +97,7 @@ target_compile_options(multiplot_remap PRIVATE ${OCS2_CXX_FLAGS})
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )

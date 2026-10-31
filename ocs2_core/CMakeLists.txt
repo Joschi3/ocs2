@@ -1,11 +1,10 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_core)
 
 find_package(ament_cmake REQUIRED)
 find_package(ocs2_thirdparty REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -41,8 +40,15 @@ include_directories(
 set(dependencies
   ocs2_thirdparty
   Eigen3
-  OpenMP_CXX
+  OpenMP
   Threads
+)
+
+set(dependencies_targets
+  ${ocs2_thirdparty_TARGETS}
+  Eigen3::Eigen
+  OpenMP::OpenMP_CXX
+  Threads::Threads
 )
 
 # Declare a C++ library
@@ -131,9 +137,7 @@ add_library(${PROJECT_NAME}
   src/penalties/penalties/SquaredHingePenalty.cpp
   src/thread_support/ThreadPool.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-    ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}
     ${Boost_LIBRARIES}
 )
@@ -142,9 +146,7 @@ target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-    ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )
@@ -180,13 +182,13 @@ ament_add_gtest(test_control
   test/control/testFeedforwardController.cpp
 )
 target_link_libraries(test_control ${PROJECT_NAME})
-ament_target_dependencies(test_control ${dependencies})
+target_link_libraries(test_control ${dependencies_targets})
 
 ament_add_gtest(initialization_unittest
   test/initialization/InitializationTest.cpp
 )
 target_link_libraries(initialization_unittest ${PROJECT_NAME})
-ament_target_dependencies(initialization_unittest ${dependencies})
+target_link_libraries(initialization_unittest ${dependencies_targets})
 
 ament_add_gtest(test_integration
   test/integration/testSensitivityIntegrator.cpp
@@ -195,13 +197,13 @@ ament_add_gtest(test_integration
   test/integration/TrapezoidalIntegrationTest.cpp
 )
 target_link_libraries(test_integration ${PROJECT_NAME})
-ament_target_dependencies(test_integration ${dependencies})
+target_link_libraries(test_integration ${dependencies_targets})
 
 ament_add_gtest(interpolation_unittest
   test/misc/testInterpolation.cpp
 )
 target_link_libraries(interpolation_unittest ${PROJECT_NAME})
-ament_target_dependencies(interpolation_unittest ${dependencies})
+target_link_libraries(interpolation_unittest ${dependencies_targets})
 
 ament_add_gtest(${PROJECT_NAME}_cppadcg
   test/cppad_cg/testCppADCG_dynamics.cpp
@@ -209,13 +211,13 @@ ament_add_gtest(${PROJECT_NAME}_cppadcg
   test/cppad_cg/testCppAdInterface.cpp
 )
 target_link_libraries(${PROJECT_NAME}_cppadcg ${PROJECT_NAME})
-ament_target_dependencies(${PROJECT_NAME}_cppadcg ${dependencies})
+target_link_libraries(${PROJECT_NAME}_cppadcg ${dependencies_targets})
 
 ament_add_gtest(test_transferfunctionbase
   test/dynamics/testTransferfunctionBase.cpp
 )
 target_link_libraries(test_transferfunctionbase ${PROJECT_NAME})
-ament_target_dependencies(test_transferfunctionbase ${dependencies})
+target_link_libraries(test_transferfunctionbase ${dependencies_targets})
 
 ament_add_gtest(${PROJECT_NAME}_loopshaping
   test/loopshaping/testLoopshapingConfiguration.cpp
@@ -229,7 +231,10 @@ ament_add_gtest(${PROJECT_NAME}_loopshaping
   test/loopshaping/testLoopshapingPreComputation.cpp
 )
 target_link_libraries(${PROJECT_NAME}_loopshaping ${PROJECT_NAME} ${Boost_LIBRARIES} -lstdc++fs)
-ament_target_dependencies(${PROJECT_NAME}_loopshaping ${dependencies} Boost)
+target_link_libraries(${PROJECT_NAME}_loopshaping
+  ${dependencies_targets}
+  ${Boost_LIBRARIES}
+)
 
 ament_add_gtest(${PROJECT_NAME}_test_misc
   test/misc/testInterpolation.cpp
@@ -241,7 +246,7 @@ ament_add_gtest(${PROJECT_NAME}_test_misc
 target_link_libraries(${PROJECT_NAME}_test_misc
   ${PROJECT_NAME}
 )
-ament_target_dependencies(${PROJECT_NAME}_test_misc ${dependencies})
+target_link_libraries(${PROJECT_NAME}_test_misc ${dependencies_targets})
 
 ament_add_gtest(test_dynamics
   test/dynamics/testSystemDynamicsLinearizer.cpp
@@ -250,7 +255,7 @@ ament_add_gtest(test_dynamics
 target_link_libraries(test_dynamics
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_dynamics ${dependencies})
+target_link_libraries(test_dynamics ${dependencies_targets})
 
 ament_add_gtest(test_cost
   test/cost/testCostCollection.cpp
@@ -260,7 +265,7 @@ ament_add_gtest(test_cost
 target_link_libraries(test_cost
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_cost ${dependencies})
+target_link_libraries(test_cost ${dependencies_targets})
 
 ament_add_gtest(test_constraint
   test/constraint/testConstraintCollection.cpp
@@ -270,7 +275,7 @@ ament_add_gtest(test_constraint
 target_link_libraries(test_constraint
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_constraint ${dependencies})
+target_link_libraries(test_constraint ${dependencies_targets})
 
 ament_add_gtest(test_metrics
   test/model_data/testMetrics.cpp
@@ -278,7 +283,7 @@ ament_add_gtest(test_metrics
 target_link_libraries(test_metrics
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_metrics ${dependencies})
+target_link_libraries(test_metrics ${dependencies_targets})
 
 ament_add_gtest(test_multiplier
   test/model_data/testMultiplier.cpp
@@ -286,7 +291,7 @@ ament_add_gtest(test_multiplier
 target_link_libraries(test_multiplier
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_multiplier ${dependencies})
+target_link_libraries(test_multiplier ${dependencies_targets})
 
 ament_add_gtest(test_ModelData
   test/model_data/testModelData.cpp
@@ -294,7 +299,7 @@ ament_add_gtest(test_ModelData
 target_link_libraries(test_ModelData
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_ModelData ${dependencies})
+target_link_libraries(test_ModelData ${dependencies_targets})
 
 ament_add_gtest(test_ModeSchedule
   test/reference/testModeSchedule.cpp
@@ -302,7 +307,7 @@ ament_add_gtest(test_ModeSchedule
 target_link_libraries(test_ModeSchedule
     ${PROJECT_NAME}
 )
-ament_target_dependencies(test_ModeSchedule ${dependencies})
+target_link_libraries(test_ModeSchedule ${dependencies_targets})
 
 ament_add_gtest(test_softConstraint
   test/soft_constraint/testSoftConstraint.cpp
@@ -311,7 +316,7 @@ ament_add_gtest(test_softConstraint
 target_link_libraries(test_softConstraint
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_softConstraint ${dependencies})
+target_link_libraries(test_softConstraint ${dependencies_targets})
 
 ament_add_gtest(${PROJECT_NAME}_test_thread_support
   test/thread_support/testBufferedValue.cpp
@@ -321,7 +326,7 @@ ament_add_gtest(${PROJECT_NAME}_test_thread_support
 target_link_libraries(${PROJECT_NAME}_test_thread_support
   ${PROJECT_NAME}
 )
-ament_target_dependencies(${PROJECT_NAME}_test_thread_support ${dependencies})
+target_link_libraries(${PROJECT_NAME}_test_thread_support ${dependencies_targets})
 
 ament_add_gtest(${PROJECT_NAME}_test_core
   test/testPrecomputation.cpp
@@ -330,7 +335,7 @@ ament_add_gtest(${PROJECT_NAME}_test_core
 target_link_libraries(${PROJECT_NAME}_test_core
   ${PROJECT_NAME}
 )
-ament_target_dependencies(${PROJECT_NAME}_test_core ${dependencies})
+target_link_libraries(${PROJECT_NAME}_test_core ${dependencies_targets})
 
 ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")

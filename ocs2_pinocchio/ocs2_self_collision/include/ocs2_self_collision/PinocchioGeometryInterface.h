@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ocs2_pinocchio_interface/PinocchioInterface.h>
 #include "pinocchio/collision/distance.hpp"
 #include "pinocchio/collision/collision.hpp"
-#include <hpp/fcl/collision_data.h>
+#include <coal/collision_data.h>
 
 #include <urdf_model/model.h>
 
@@ -76,7 +76,7 @@ class PinocchioGeometryInterface final {
    * @param [in] pinocchioInterface: pinocchio interface of the robot model
    * @return An array of distances between pairs of collision bodies defined in the constructor.
    */
-  std::vector<hpp::fcl::DistanceResult> computeDistances(const PinocchioInterface& pinocchioInterface) const;
+  std::vector<coal::DistanceResult> computeDistances(const PinocchioInterface& pinocchioInterface) const;
 
   /** Get the number of collision pairs */
   size_t getNumCollisionPairs() const;

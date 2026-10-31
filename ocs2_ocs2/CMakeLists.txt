@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_ocs2)
 
@@ -7,7 +7,6 @@ find_package(ocs2_core REQUIRED)
 find_package(ocs2_ddp REQUIRED)
 # find_package(ocs2_frank_wolfe REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -38,12 +37,15 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_ddp_TARGETS}
+)
+
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 
 
 #############

@@ -9,15 +9,16 @@
   <license>TODO</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  
+
 
   <depend>ocs2_core</depend>
   <depend>ocs2_robotic_tools</depend>
   <depend>ocs2_pinocchio_interface</depend>
   <depend>ocs2_robotic_assets</depend>
   <depend>pinocchio</depend>
+  <depend>coal</depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
-  </export> 
+  </export>
 </package>

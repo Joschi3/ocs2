@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ocs2_pinocchio_interface/PinocchioInterface.h>
 
-#include <hpp/fcl/shape/geometric_shapes.h>
+#include <coal/shape/geometric_shapes.h>
 
 namespace ocs2 {
 
@@ -59,7 +59,7 @@ class SphereApproximation {
    * @param [in] maxExcess : maximum allowed excess from the object surface to the sphere surface
    * @param [in] shrinkRatio: ratio of shrinking maxExcess when recursive approximation of the cylinder base is necessary
    */
-  SphereApproximation(const hpp::fcl::CollisionGeometry& geometry, size_t geomObjectId, scalar_t maxExcess, scalar_t shrinkRatio);
+  SphereApproximation(const coal::CollisionGeometry& geometry, size_t geomObjectId, scalar_t maxExcess, scalar_t shrinkRatio);
 
   /** Get the index of the geometry object stored in GeometryModel */
   size_t getGeomObjId() const { return geomObjId_; };

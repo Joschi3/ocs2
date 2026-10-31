@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_oc)
 
@@ -6,7 +6,6 @@ project(ocs2_oc)
 find_package(ament_cmake REQUIRED)
 find_package(ocs2_core REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -35,6 +34,11 @@ include_directories(
 set(dependencies
     Eigen3
     ocs2_core
+)
+
+set(dependencies_targets
+  Eigen3::Eigen
+  ${ocs2_core_TARGETS}
 )
 
 add_library(${PROJECT_NAME}
@@ -71,9 +75,7 @@ add_library(${PROJECT_NAME}
   src/search_strategy/FilterLinesearch.cpp
   src/trajectory_adjustment/TrajectorySpreading.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}
     ${Boost_LIBRARIES}
 )
@@ -82,9 +84,7 @@ target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )
@@ -119,9 +119,7 @@ ament_add_gtest(test_${PROJECT_NAME}_multiple_shooting
   test/multiple_shooting/testTranscriptionMetrics.cpp
   test/multiple_shooting/testTranscriptionPerformanceIndex.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_multiple_shooting
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_multiple_shooting ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_multiple_shooting
   ${PROJECT_NAME}
 )
@@ -129,9 +127,7 @@ target_link_libraries(test_${PROJECT_NAME}_multiple_shooting
 ament_add_gtest(test_${PROJECT_NAME}_data
   test/oc_data/testTimeDiscretization.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_data
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_data ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_data
   ${PROJECT_NAME}
 )
@@ -143,16 +139,12 @@ ament_add_gtest(test_${PROJECT_NAME}_rollout
 target_link_libraries(test_${PROJECT_NAME}_rollout
   ${PROJECT_NAME} ${ocs2_core_TARGETS}
 )
-ament_target_dependencies(test_${PROJECT_NAME}_rollout
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_rollout ${dependencies_targets})
 
 ament_add_gtest(test_change_of_variables
   test/testChangeOfInputVariables.cpp
 )
-ament_target_dependencies(test_change_of_variables
-  ${dependencies}
-)
+target_link_libraries(test_change_of_variables ${dependencies_targets})
 target_link_libraries(test_change_of_variables
   ${PROJECT_NAME}
 )
@@ -160,9 +152,7 @@ target_link_libraries(test_change_of_variables
 ament_add_gtest(test_trajectory_spreading
   test/trajectory_adjustment/TrajectorySpreadingTest.cpp
 )
-ament_target_dependencies(test_trajectory_spreading
-  ${dependencies}
-)
+target_link_libraries(test_trajectory_spreading ${dependencies_targets})
 target_link_libraries(test_trajectory_spreading
   ${PROJECT_NAME}
 )
@@ -173,9 +163,7 @@ ament_add_gtest(test_ocp_to_kkt
 target_link_libraries(test_ocp_to_kkt
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_ocp_to_kkt
-  ${dependencies}
-)
+target_link_libraries(test_ocp_to_kkt ${dependencies_targets})
 
 ament_add_gtest(test_precondition
   test/precondition/testPrecondition.cpp
@@ -183,9 +171,7 @@ ament_add_gtest(test_precondition
 target_link_libraries(test_precondition
   ${PROJECT_NAME}
 )
-ament_target_dependencies(test_precondition
-  ${dependencies}
-)
+target_link_libraries(test_precondition ${dependencies_targets})
 
 ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")

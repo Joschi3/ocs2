@@ -67,4 +67,12 @@ PinocchioInterface getPinocchioInterfaceFromUrdfModel(const std::shared_ptr<::ur
  */
 PinocchioInterface getPinocchioInterfaceFromUrdfModel(const std::shared_ptr<::urdf::ModelInterface>& urdfTree,
                                                       const PinocchioInterface::JointModel& rootJoint);
+
+/** Serializes a URDF model tree back to an URDF XML string.
+ * Replacement for urdf::exportURDF, which was removed in urdfdom 5. Used to build pinocchio geometry models, which can only
+ * be parsed from XML, from a (possibly modified) URDF model tree.
+ * @param [in] urdfModel: The URDF model tree.
+ * @return The URDF as XML string.
+ */
+std::string getUrdfXmlString(const ::urdf::ModelInterface& urdfModel);
 }  // namespace ocs2

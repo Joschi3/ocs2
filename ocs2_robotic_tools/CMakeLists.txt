@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_robotic_tools)
 
@@ -12,7 +12,6 @@ find_package(ocs2_core REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -31,22 +30,23 @@ include_directories(
   ${EIGEN3_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/common/RotationTransforms.cpp
   src/common/LoopshapingRobotInterface.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )
@@ -81,13 +81,11 @@ ament_add_gtest(rotation_transform_tests
 target_link_libraries(rotation_transform_tests
   ${PROJECT_NAME}
 )
-ament_target_dependencies(rotation_transform_tests
-  ${dependencies}
-)
+target_link_libraries(rotation_transform_tests ${dependencies_targets})
 target_compile_options(rotation_transform_tests PRIVATE ${OCS2_CXX_FLAGS})
-  
-            
-ament_export_dependencies(${dependencies})  
+
+
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 

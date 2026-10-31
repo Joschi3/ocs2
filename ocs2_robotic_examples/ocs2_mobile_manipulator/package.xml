@@ -21,10 +21,11 @@
   <depend>ocs2_pinocchio_interface</depend>
   <depend>ocs2_self_collision</depend>
   <depend>pinocchio</depend>
+  <depend>coal</depend>
 
   <test_depend>ament_cmake_gtest</test_depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
   </export>
 </package>

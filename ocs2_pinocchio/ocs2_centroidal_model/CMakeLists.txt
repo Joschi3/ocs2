@@ -12,24 +12,12 @@ find_package(urdf REQUIRED)
 
 # system libs
 find_package(urdfdom REQUIRED)
-find_package(hpp-fcl REQUIRED)
+find_package(coal REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 
-# hpp-fcl target name can vary
-set(HPPFCL_TARGET "")
-if(TARGET hpp-fcl)
-  set(HPPFCL_TARGET hpp-fcl)
-elseif(TARGET hpp::fcl)
-  set(HPPFCL_TARGET hpp::fcl)
-elseif(DEFINED HPP_FCL_LIBRARIES)
-  set(HPPFCL_TARGET ${HPP_FCL_LIBRARIES})
-else()
-  set(HPPFCL_TARGET hpp-fcl)
-endif()
-
-set(URDFDOM_LIBS urdfdom_model urdfdom_world urdfdom_sensor)
+set(URDFDOM_LIBS urdfdom::urdfdom_model urdfdom::urdfdom_world urdfdom::urdfdom_sensor)
 
 set(FLAGS
   ${OCS2_CXX_FLAGS}
@@ -55,23 +43,22 @@ add_library(${PROJECT_NAME}
   src/ModelHelperFunctions.cpp
 )
 
-# ament deps (calls target_link_libraries in PLAIN mode)
-ament_target_dependencies(${PROJECT_NAME}
-  ocs2_core
-  ocs2_robotic_tools
-  ocs2_robotic_assets
-  ocs2_pinocchio_interface
-  urdf
+# ament deps (PLAIN signature)
+target_link_libraries(${PROJECT_NAME}
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${urdf_TARGETS}
 )
 
 # Link non-ament/system deps in PLAIN mode too (no PUBLIC/PRIVATE keywords)
 target_link_libraries(${PROJECT_NAME}
   pinocchio::pinocchio
-  ${HPPFCL_TARGET}
+  coal::coal
   ${URDFDOM_LIBS}
   Eigen3::Eigen
   Boost::filesystem
-  Boost::system
   Boost::log_setup
   Boost::log
 )
@@ -106,11 +93,10 @@ if(BUILD_TESTING)
   target_link_libraries(${PROJECT_NAME}_test
     ${PROJECT_NAME}
     pinocchio::pinocchio
-    ${HPPFCL_TARGET}
+    coal::coal
     ${URDFDOM_LIBS}
     Eigen3::Eigen
     Boost::filesystem
-    Boost::system
     Boost::log_setup
     Boost::log
   )

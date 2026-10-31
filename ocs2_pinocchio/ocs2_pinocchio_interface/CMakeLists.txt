@@ -4,7 +4,7 @@ project(ocs2_pinocchio_interface)
 set(dependencies
   ocs2_core
   ocs2_robotic_tools
-  hpp-fcl
+  coal
   pinocchio
   urdf
   urdfdom
@@ -17,12 +17,11 @@ find_package(urdf REQUIRED)
 find_package(urdfdom REQUIRED)
 find_package(urdfdom_headers REQUIRED)
 
-find_package(hpp-fcl REQUIRED)
-find_package(pinocchio REQUIRED) 
+find_package(coal REQUIRED)
+find_package(pinocchio REQUIRED)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -41,6 +40,17 @@ include_directories(
   ${pinocchio_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  coal::coal
+  pinocchio::pinocchio
+  ${urdf_TARGETS}
+  urdfdom::urdfdom_model
+  urdfdom::urdfdom_world
+  urdfdom::urdfdom_sensor
+)
+
 # ocs2 pinocchio interface library
 add_library(${PROJECT_NAME} SHARED
   src/PinocchioInterface.cpp
@@ -49,9 +59,7 @@ add_library(${PROJECT_NAME} SHARED
   src/PinocchioEndEffectorKinematicsCppAd.cpp
   src/urdf.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_PINOCCHIO_FLAGS})
 
 #############
@@ -84,12 +92,12 @@ if(BUILD_TESTING)
   target_link_libraries(testPinocchioInterface
     ${PROJECT_NAME}
   )
-  ament_target_dependencies(testPinocchioInterface ${dependencies}) 
+  target_link_libraries(testPinocchioInterface ${dependencies_targets})
   target_compile_options(testPinocchioInterface PUBLIC ${OCS2_PINOCCHIO_FLAGS})
 endif()
 
 # Propagate dependencies
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 

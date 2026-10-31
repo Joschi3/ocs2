@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_sphere_approximation)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(ament_cmake REQUIRED)
-find_package(Boost REQUIRED COMPONENTS log_setup log filesystem system)
+find_package(Boost REQUIRED COMPONENTS log_setup log filesystem)
 
 set(ament_deps
   ocs2_core
@@ -19,14 +19,13 @@ endforeach()
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(pinocchio REQUIRED)        # pinocchio::pinocchio
-find_package(hpp-fcl REQUIRED)          # hpp-fcl::hpp-fcl
+find_package(coal REQUIRED)          # coal::coal
 find_package(tinyxml2 REQUIRED)         # tinyxml2::tinyxml2
 find_package(urdfdom_headers REQUIRED)
 
 # ---- Build flags ----
 set(FLAGS
   ${OCS2_CXX_FLAGS}
-  -DPINOCCHIO_WITH_HPP_FCL
   -Wno-ignored-attributes
   -Wno-invalid-partial_specialization
   -DPINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR
@@ -38,6 +37,14 @@ include_directories(
   ${EIGEN3_INCLUDE_DIRS}
 )
 
+set(ament_deps_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
+  ${urdf_TARGETS}
+)
+
 # ---- Library ----
 add_library(${PROJECT_NAME}
   src/SphereApproximation.cpp
@@ -45,11 +52,11 @@ add_library(${PROJECT_NAME}
   src/PinocchioSphereKinematics.cpp
   src/PinocchioSphereKinematicsCppAd.cpp
 )
-ament_target_dependencies(${PROJECT_NAME} ${ament_deps})
+target_link_libraries(${PROJECT_NAME} ${ament_deps_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${FLAGS})
 target_link_libraries(${PROJECT_NAME}
   pinocchio::pinocchio
-  hpp-fcl::hpp-fcl
+  coal::coal
   tinyxml2::tinyxml2
 )
 
@@ -72,7 +79,7 @@ find_package(ament_cmake_gtest REQUIRED)
 ament_add_gtest(PinocchioSphereKinematicsTest
   test/testPinocchioSphereKinematics.cpp
 )
-ament_target_dependencies(PinocchioSphereKinematicsTest ${ament_deps})
+target_link_libraries(PinocchioSphereKinematicsTest ${ament_deps_targets})
 target_compile_options(PinocchioSphereKinematicsTest PUBLIC ${FLAGS})
 target_link_libraries(PinocchioSphereKinematicsTest
   ${PROJECT_NAME}

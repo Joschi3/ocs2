@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_self_collision)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -19,9 +19,9 @@ endforeach()
 # -----------------------------
 # Third-party (non-ament) deps
 # -----------------------------
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 find_package(pinocchio REQUIRED)
-find_package(hpp-fcl  REQUIRED)
+find_package(coal REQUIRED)
 find_package(Eigen3   3.3 REQUIRED NO_MODULE)
 find_package(tinyxml2 REQUIRED)
 
@@ -42,9 +42,14 @@ set(FLAGS
   -Wno-invalid-partial-specialization   # silence warning with unsupported Eigen Tensor
 )
 set(DEFS
-  PINOCCHIO_WITH_HPP_FCL
   PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR
   PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR
+)
+
+set(ament_deps_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
 )
 
 # -----------------------------
@@ -68,15 +73,14 @@ target_include_directories(${PROJECT_NAME}
 target_compile_options(${PROJECT_NAME} PUBLIC ${FLAGS})
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${DEFS})
 
-# ament packages (this call uses PLAIN signature; keep all tll calls PLAIN)
-ament_target_dependencies(${PROJECT_NAME} ${ament_deps})
+# ament packages (PLAIN signature; keep all tll calls PLAIN)
+target_link_libraries(${PROJECT_NAME} ${ament_deps_targets})
 
 # Link third-party imported targets (PLAIN signature to avoid mixing with ament)
 target_link_libraries(${PROJECT_NAME}
   pinocchio::pinocchio
-  hpp-fcl::hpp-fcl
+  coal::coal
   Eigen3::Eigen
-  Boost::system
   Boost::filesystem
   Boost::log_setup
   Boost::log
@@ -103,7 +107,7 @@ ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_dependencies(
   ${ament_deps}
   pinocchio
-  hpp-fcl
+  coal
   Eigen3
   tinyxml2
 )

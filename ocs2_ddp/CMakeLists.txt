@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_ddp)
 
@@ -7,7 +7,6 @@ find_package(ocs2_core REQUIRED)
 find_package(ocs2_mpc REQUIRED)
 find_package(ocs2_qp_solver REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -40,6 +39,13 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_qp_solver_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/riccati_equations/ContinuousTimeRiccatiEquations.cpp
   src/riccati_equations/DiscreteTimeRiccatiEquations.cpp
@@ -55,17 +61,13 @@ add_library(${PROJECT_NAME}
   src/DDP_Settings.cpp
   src/DDP_HelperFunctions.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )
@@ -97,7 +99,7 @@ find_package(ament_cmake_gtest REQUIRED)
 
 ament_add_gtest(exp0_ddp_test test/Exp0Test.cpp)
 target_link_libraries(exp0_ddp_test ${PROJECT_NAME})
-ament_target_dependencies(exp0_ddp_test ${dependencies})
+target_link_libraries(exp0_ddp_test ${dependencies_targets})
 
 ament_add_gtest(exp1_ddp_test
   test/Exp1Test.cpp
@@ -105,7 +107,7 @@ ament_add_gtest(exp1_ddp_test
 target_link_libraries(exp1_ddp_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(exp1_ddp_test ${dependencies})
+target_link_libraries(exp1_ddp_test ${dependencies_targets})
 
 ament_add_gtest(correctness_test
   test/CorrectnessTest.cpp
@@ -113,7 +115,7 @@ ament_add_gtest(correctness_test
 target_link_libraries(correctness_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(correctness_test ${dependencies})
+target_link_libraries(correctness_test ${dependencies_targets})
 
 ament_add_gtest(riccati_ode_test
   test/RiccatiTest.cpp
@@ -121,7 +123,7 @@ ament_add_gtest(riccati_ode_test
 target_link_libraries(riccati_ode_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(riccati_ode_test ${dependencies})
+target_link_libraries(riccati_ode_test ${dependencies_targets})
 
 ament_add_gtest(circular_kinematics_ddp_test
   test/CircularKinematicsTest.cpp
@@ -129,7 +131,7 @@ ament_add_gtest(circular_kinematics_ddp_test
 target_link_libraries(circular_kinematics_ddp_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(circular_kinematics_ddp_test ${dependencies})
+target_link_libraries(circular_kinematics_ddp_test ${dependencies_targets})
 
 ament_add_gtest(hybrid_slq_test
   test/HybridSlqTest.cpp
@@ -137,7 +139,7 @@ ament_add_gtest(hybrid_slq_test
 target_link_libraries(hybrid_slq_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(hybrid_slq_test ${dependencies})
+target_link_libraries(hybrid_slq_test ${dependencies_targets})
 
 ament_add_gtest(bouncing_mass_test
   test/bouncingmass/BouncingMassTest.cpp
@@ -147,7 +149,7 @@ ament_add_gtest(bouncing_mass_test
 target_link_libraries(bouncing_mass_test
   ${PROJECT_NAME}
 )
-ament_target_dependencies(bouncing_mass_test ${dependencies})
+target_link_libraries(bouncing_mass_test ${dependencies_targets})
 
 ament_add_gtest(testContinuousTimeLqr
   test/testContinuousTimeLqr.cpp
@@ -155,7 +157,7 @@ ament_add_gtest(testContinuousTimeLqr
 target_link_libraries(testContinuousTimeLqr
   ${PROJECT_NAME}
 )
-ament_target_dependencies(testContinuousTimeLqr ${dependencies})
+target_link_libraries(testContinuousTimeLqr ${dependencies_targets})
 
 ament_add_gtest(testDdpHelperFunction
   test/testDdpHelperFunction.cpp
@@ -163,7 +165,7 @@ ament_add_gtest(testDdpHelperFunction
 target_link_libraries(testDdpHelperFunction
   ${PROJECT_NAME}
 )
-ament_target_dependencies(testDdpHelperFunction ${dependencies})
+target_link_libraries(testDdpHelperFunction ${dependencies_targets})
 
 ament_add_gtest(testReachingTask
   test/testReachingTask.cpp
@@ -171,7 +173,7 @@ ament_add_gtest(testReachingTask
 target_link_libraries(testReachingTask
   ${PROJECT_NAME}
 )
-ament_target_dependencies(testReachingTask ${dependencies})
+target_link_libraries(testReachingTask ${dependencies_targets})
 
 ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")

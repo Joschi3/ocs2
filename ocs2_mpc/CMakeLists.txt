@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_mpc)
 
@@ -7,7 +7,6 @@ find_package(ocs2_core REQUIRED)
 find_package(ocs2_oc REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -31,6 +30,11 @@ set(dependencies
     ocs2_oc
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/LoopshapingSystemObservation.cpp
   src/MPC_BASE.cpp
@@ -40,17 +44,13 @@ add_library(${PROJECT_NAME}
   src/MPC_MRT_Interface.cpp
   # src/MPC_OCS2.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )

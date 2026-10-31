@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_self_collision_visualization)
 
@@ -17,7 +17,7 @@ set(dependencies
   std_msgs
   geometry_msgs
   visualization_msgs
-  hpp-fcl
+  coal
   pinocchio
 )
 
@@ -35,11 +35,10 @@ find_package(visualization_msgs REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 find_package(pinocchio REQUIRED)
-find_package(hpp-fcl REQUIRED)
+find_package(coal REQUIRED)
 # requires liboctomap-dev and libassimp-dev
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -53,7 +52,6 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 set(FLAGS
   ${OCS2_CXX_FLAGS}
   ${pinocchio_CFLAGS_OTHER}
-  -DPINOCCHIO_WITH_HPP_FCL
   -Wno-ignored-attributes
   -Wno-invalid-partial-specialization   # to silence warning with unsupported Eigen Tensor
   -DPINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR
@@ -64,16 +62,28 @@ include_directories(
   include
   ${EIGEN3_INCLUDE_DIRS}
   ${pinocchio_INCLUDE_DIRS}
-  ${hpp-fcl_INCLUDE_DIRS}
+  ${coal_INCLUDE_DIRS}
+)
+
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${ocs2_self_collision_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${rclcpp_TARGETS}
+  ${std_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${visualization_msgs_TARGETS}
+  coal::coal
+  pinocchio::pinocchio
 )
 
 # ocs2 pinocchio interface library
 add_library(${PROJECT_NAME}
   src/GeometryInterfaceVisualization.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${FLAGS})
 
 
@@ -91,7 +101,7 @@ install(
 )
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

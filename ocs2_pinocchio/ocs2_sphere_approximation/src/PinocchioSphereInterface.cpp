@@ -33,8 +33,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <pinocchio/multibody/geometry.hpp>
 #include <pinocchio/parsers/urdf.hpp>
 
-#include <urdf_parser/urdf_parser.h>
-#include <tinyxml2.h>
+#include <sstream>
+
+#include <ocs2_pinocchio_interface/urdf.h>
 
 #include <ocs2_sphere_approximation/PinocchioSphereInterface.h>
 
@@ -121,19 +122,7 @@ void PinocchioSphereInterface::buildGeomFromPinocchioInterface(const PinocchioIn
   }
 
   // TODO: Replace with pinocchio function that uses the ModelInterface directly
-  // Export the URDF model (TinyXML1 -> tinyxml2 in ROS 2).
-  // exportURDF returns a heap-allocated XMLDocument in current urdfdom.
-  std::unique_ptr<tinyxml2::XMLDocument> urdf_doc(
-      urdf::exportURDF(*pinocchioInterface.getUrdfModelPtr()));
-  if (!urdf_doc) {
-    throw std::runtime_error("urdf::exportURDF() returned null XMLDocument.");
-  }
-
-  // Serialize to string for Pinocchio’s stream-based parser.
-  tinyxml2::XMLPrinter printer;
-  urdf_doc->Print(&printer);
-  const std::string urdf_xml{printer.CStr()};
-  std::istringstream urdf_stream(urdf_xml);
+  std::istringstream urdf_stream(getUrdfXmlString(*pinocchioInterface.getUrdfModelPtr()));
 
   // Build collision geometry from the XML stream.
   pinocchio::urdf::buildGeom(

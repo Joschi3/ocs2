@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_perceptive)
 
@@ -12,7 +12,6 @@ find_package(ocs2_core REQUIRED)
 find_package(ocs2_robotic_tools REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -32,21 +31,22 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/end_effector/EndEffectorDistanceConstraint.cpp
   src/end_effector/EndEffectorDistanceConstraintCppAd.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_lintTarget
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_lintTarget ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_lintTarget
   ${PROJECT_NAME}
 )

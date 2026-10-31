@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_ipm)
 
@@ -17,7 +17,6 @@ find_package(ocs2_oc REQUIRED)
 find_package(blasfeo_ament REQUIRED)
 find_package(hpipm_ament REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -35,6 +34,14 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_oc_TARGETS}
+  blasfeo
+  ${hpipm_ament_TARGETS}
+)
+
 # Multiple shooting solver library
 add_library(${PROJECT_NAME}
   src/IpmHelpers.cpp
@@ -44,9 +51,7 @@ add_library(${PROJECT_NAME}
   src/IpmSolver.cpp
 )
 
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}
   hpipm
 )
@@ -82,9 +87,7 @@ ament_add_gtest(test_${PROJECT_NAME}
   test/testUnconstrained.cpp
   test/testValuefunction.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
 )

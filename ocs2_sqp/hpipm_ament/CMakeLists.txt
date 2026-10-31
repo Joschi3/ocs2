@@ -9,7 +9,6 @@ find_package(ocs2_oc REQUIRED)
 find_package(ocs2_qp_solver REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -73,7 +72,10 @@ FetchContent_Declare(hpipmDownload
   BUILD_COMMAND $(MAKE)
   INSTALL_COMMAND "$(MAKE) install"
 )
+# The pinned upstream release still declares cmake_minimum_required < 3.5, which CMake >= 4 rejects
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 FetchContent_MakeAvailable(hpipmDownload)
+unset(CMAKE_POLICY_VERSION_MINIMUM)
 
 # Copy headers to where ament expects them
 file(GLOB_RECURSE HEADERS "${HPIPM_DOWNLOAD_DIR}/include/*.h")
@@ -104,14 +106,20 @@ set(dependencies
   Eigen3
 )
 
+set(dependencies_targets
+  blasfeo
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+  ${ocs2_qp_solver_TARGETS}
+  Eigen3::Eigen
+)
+
 # Hpipm interface
 add_library(${PROJECT_NAME}
   src/HpipmInterface.cpp
   src/HpipmInterfaceSettings.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 #############
@@ -138,9 +146,7 @@ find_package(ament_cmake_gtest REQUIRED)
 ament_add_gtest(test_${PROJECT_NAME}
   test/testHpipmInterface.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
   hpipm

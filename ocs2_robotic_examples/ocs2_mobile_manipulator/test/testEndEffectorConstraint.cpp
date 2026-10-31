@@ -75,8 +75,9 @@ class testEndEffectorConstraint : public ::testing::Test {
   std::unique_ptr<PinocchioEndEffectorKinematics> eeKinematicsPtr;
   std::unique_ptr<MobileManipulatorPreComputation> preComputationPtr;
   std::shared_ptr<ReferenceManager> referenceManagerPtr;
-  MobileManipulatorPinocchioMapping pinocchioMapping;
+  // modelInfo must be declared before pinocchioMapping, which is constructed from it
   ManipulatorModelInfo modelInfo;
+  MobileManipulatorPinocchioMapping pinocchioMapping;
 
  protected:
   ManipulatorModelInfo loadManipulatorModelInfo() {

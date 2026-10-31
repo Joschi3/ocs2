@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_mobile_manipulator_ros)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -28,8 +28,8 @@ foreach(pkg IN LISTS ament_deps)
   find_package(${pkg} REQUIRED)
 endforeach()
 
-# System deps: handled outside ament_target_dependencies
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+# System deps: linked separately
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 ###########
@@ -49,20 +49,40 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+set(ament_deps_targets
+  ${rclcpp_TARGETS}
+  ${tf2_ros_TARGETS}
+  ${urdf_TARGETS}
+  ${kdl_parser_TARGETS}
+  ${robot_state_publisher_TARGETS}
+  ${visualization_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_core_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${ocs2_self_collision_TARGETS}
+  ${ocs2_self_collision_visualization_TARGETS}
+  ${ocs2_mobile_manipulator_TARGETS}
+)
+
 # MPC node
 add_executable(mobile_manipulator_mpc_node
   src/MobileManipulatorMpcNode.cpp
 )
-ament_target_dependencies(mobile_manipulator_mpc_node ${ament_deps})
+target_link_libraries(mobile_manipulator_mpc_node ${ament_deps_targets})
 target_compile_options(mobile_manipulator_mpc_node PUBLIC ${FLAGS})
-# Keep target_link_libraries "plain" to match ament_target_dependencies usage
+# Keep target_link_libraries "plain"
 target_link_libraries(mobile_manipulator_mpc_node ${Boost_LIBRARIES})
 
 # DistanceVisualization node
 add_executable(mobile_manipulator_distance_visualization
   src/MobileManipulatorDistanceVisualization.cpp
 )
-ament_target_dependencies(mobile_manipulator_distance_visualization ${ament_deps})
+target_link_libraries(mobile_manipulator_distance_visualization ${ament_deps_targets})
 target_compile_options(mobile_manipulator_distance_visualization PUBLIC ${FLAGS})
 target_link_libraries(mobile_manipulator_distance_visualization ${Boost_LIBRARIES})
 
@@ -71,7 +91,7 @@ add_executable(mobile_manipulator_dummy_mrt_node
   src/MobileManipulatorDummyMRT.cpp
   src/MobileManipulatorDummyVisualization.cpp
 )
-ament_target_dependencies(mobile_manipulator_dummy_mrt_node ${ament_deps})
+target_link_libraries(mobile_manipulator_dummy_mrt_node ${ament_deps_targets})
 target_compile_options(mobile_manipulator_dummy_mrt_node PUBLIC ${FLAGS})
 target_link_libraries(mobile_manipulator_dummy_mrt_node ${Boost_LIBRARIES})
 
@@ -79,7 +99,7 @@ target_link_libraries(mobile_manipulator_dummy_mrt_node ${Boost_LIBRARIES})
 add_executable(mobile_manipulator_target
   src/MobileManipulatorTarget.cpp
 )
-ament_target_dependencies(mobile_manipulator_target ${ament_deps})
+target_link_libraries(mobile_manipulator_target ${ament_deps_targets})
 target_compile_options(mobile_manipulator_target PUBLIC ${FLAGS})
 target_link_libraries(mobile_manipulator_target ${Boost_LIBRARIES})
 

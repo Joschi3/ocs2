@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_mobile_manipulator)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -22,8 +22,8 @@ foreach(dep IN LISTS ament_deps)
 endforeach()
 
 # Third-party (non-ament) packages via CMake CONFIG
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
-find_package(hpp-fcl REQUIRED)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
+find_package(coal REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
@@ -45,6 +45,16 @@ set(DEFS
 configure_file(
   "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/package_path.h.in"
   "${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/package_path.h" @ONLY
+)
+
+set(ament_deps_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${ocs2_self_collision_TARGETS}
 )
 
 # -----------------------------
@@ -73,15 +83,14 @@ target_include_directories(${PROJECT_NAME}
 target_compile_options(${PROJECT_NAME} PUBLIC ${FLAGS})
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${DEFS})
 
-# ament deps (uses PLAIN signature internally – keep all tll calls PLAIN)
-ament_target_dependencies(${PROJECT_NAME} ${ament_deps})
+# ament deps (PLAIN signature; keep all tll calls PLAIN)
+target_link_libraries(${PROJECT_NAME} ${ament_deps_targets})
 
 # Link 3rd-party imported targets (PLAIN signature to avoid mixing)
 target_link_libraries(${PROJECT_NAME}
   pinocchio::pinocchio
-  hpp-fcl::hpp-fcl
+  coal::coal
   Eigen3::Eigen
-  Boost::system
   Boost::filesystem
   Boost::log_setup
   Boost::log
@@ -113,14 +122,13 @@ find_package(ament_cmake_gtest REQUIRED)
 macro(add_ocs2_test APP_NAME APP_SRC)
   ament_add_gtest(${APP_NAME} ${APP_SRC} TIMEOUT 300)
   target_include_directories(${APP_NAME} PRIVATE ${PROJECT_BINARY_DIR}/include)
-  ament_target_dependencies(${APP_NAME} ${ament_deps})
+  target_link_libraries(${APP_NAME} ${ament_deps_targets})
   # Link third-party libs and the library under test (PLAIN signature)
   target_link_libraries(${APP_NAME}
     ${PROJECT_NAME}
     pinocchio::pinocchio
-    hpp-fcl::hpp-fcl
+    coal::coal
     Eigen3::Eigen
-    Boost::system
     Boost::filesystem
     Boost::log_setup
     Boost::log

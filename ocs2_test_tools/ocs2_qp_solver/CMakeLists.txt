@@ -1,13 +1,12 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_qp_solver)
 
-find_package(ament_cmake REQUIRED) 
-find_package(ocs2_core REQUIRED) 
+find_package(ament_cmake REQUIRED)
+find_package(ocs2_core REQUIRED)
 find_package(ocs2_oc REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -28,6 +27,11 @@ set(dependencies
     ocs2_oc
 )
 
+set(dependencies_targets
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+)
+
 # Declare a C++ library
 add_library(${PROJECT_NAME}
   src/Ocs2QpSolver.cpp
@@ -35,9 +39,7 @@ add_library(${PROJECT_NAME}
   src/QpSolver.cpp
   src/QpTrajectories.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 #############
@@ -71,14 +73,12 @@ ament_add_gtest(test_${PROJECT_NAME}
   test/testQpSolver.cpp
   test/testOcs2QpSolver.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 

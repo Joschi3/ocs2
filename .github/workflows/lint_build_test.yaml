@@ -3,9 +3,8 @@ on:
   push:
     branches:
       - jazzy
+      - lyrical
   pull_request:
-    branches:
-      - jazzy
 defaults:
   run:
     shell: bash
@@ -20,57 +19,58 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        run: |
-          sudo apt-get update && sudo apt-get install -y black clang-format cppcheck libxml2-utils
-
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
 
       - name: Install and Run pre-commit
         uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files
 
-
-
-
   build-and-test:
-    needs: Linting
     strategy:
+      fail-fast: false
       matrix:
-        setup:
-          - rosdistro: jazzy
-            os: ubuntu-24.04
-          - rosdistro: rolling
-            os: ubuntu-latest
-    runs-on: ${{ matrix.setup.os }}
+        rosdistro: [jazzy, lyrical]
+    name: Build & Test (${{ matrix.rosdistro }})
+    # The job runs inside the ROS container, the host OS does not matter
+    runs-on: ubuntu-latest
     container:
-      image: ros:${{ matrix.setup.rosdistro }}-ros-base
+      image: ros:${{ matrix.rosdistro }}-ros-base
+    env:
+      # Hosted runners have 4 cores / 16 GB RAM. OCS2 translation units need up to ~2 GB each,
+      # so limit colcon workers and compile jobs per package to avoid OOM kills.
+      COLCON_WORKERS: 2
+      MAKEFLAGS: -j2
+      CMAKE_BUILD_PARALLEL_LEVEL: 2
     steps:
-      - name: install build tools
+      - name: Install build tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ros-dev-tools
-
-      - name: Checkout dependencies (Pinocchio, hpp-fcl, assets)
-        shell: bash
-        run: |
-          git clone https://github.com/Joschi3/ocs2_robotic_assets.git src/ocs2_robotic_assets
+          apt-get update
+          apt-get install -y ros-dev-tools git
 
       - uses: actions/checkout@v4
         with:
-          path: src/repo
+          path: src/ocs2
+
+      - name: Checkout ocs2_robotic_assets
+        run: git clone --depth 1 https://github.com/Joschi3/ocs2_robotic_assets.git src/ocs2_robotic_assets
+
       - name: rosdep
         run: |
-          rosdep update --rosdistro ${{ matrix.setup.rosdistro }} --include-eol-distros
-          rosdep install -y --from-paths src --ignore-src --rosdistro ${{ matrix.setup.rosdistro }}
-      - name: build
+          rosdep update --rosdistro ${{ matrix.rosdistro }}
+          rosdep install -y --from-paths src --ignore-src --rosdistro ${{ matrix.rosdistro }}
+
+      - name: Build
         run: |
-          source /opt/ros/${{ matrix.setup.rosdistro }}/setup.bash
-          colcon build
-      - name: test
+          source /opt/ros/${{ matrix.rosdistro }}/setup.bash
+          colcon build \
+            --parallel-workers ${COLCON_WORKERS} \
+            --event-handlers console_cohesion+ \
+            --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
+
+      - name: Test
         run: |
-          source /opt/ros/${{ matrix.setup.rosdistro }}/setup.bash
-          colcon test
+          source install/setup.bash
+          colcon test --parallel-workers ${COLCON_WORKERS} --event-handlers console_cohesion+
           colcon test-result --verbose

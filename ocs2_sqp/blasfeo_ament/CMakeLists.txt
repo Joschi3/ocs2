@@ -33,7 +33,10 @@ FetchContent_Declare(blasfeoDownload
 	BUILD_COMMAND $(MAKE)
 	INSTALL_COMMAND "$(MAKE) install"
 )
+# The pinned upstream release still declares cmake_minimum_required < 3.5, which CMake >= 4 rejects
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 FetchContent_MakeAvailable(blasfeoDownload)
+unset(CMAKE_POLICY_VERSION_MINIMUM)
 
 # Copy header to where ament_cmake expects them
 file(GLOB_RECURSE HEADERS "${BLASFEO_DOWNLOAD_DIR}/include/*.h")
