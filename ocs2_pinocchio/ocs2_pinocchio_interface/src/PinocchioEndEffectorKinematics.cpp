@@ -168,13 +168,22 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
   const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> orientations;
+  orientations.reserve(endEffectorFrameIds_.size());
+  matrix_t J(6, model.nv);
+  const matrix_t zeroVelocityJacobian = matrix_t::Zero(4, model.nv);
   for (const auto& frameId : endEffectorFrameIds_) {
-    matrix_t J = matrix_t::Zero(6, model.nv);
+    J.setZero();
     getFrameJacobianReadOnly(model, data, frameId, rf, J);
 
+    // orientation computed from the parent joint, the former Data copy refreshed oMf[frameId] here
+    const auto& frame = model.frames[frameId];
+    const quaternion_t q(data.oMi[frame.parentJoint].rotation() * frame.placement.rotation());
+
+    // quaternion coefficients [x, y, z, w] and their derivative through the world angular velocity Jacobian
     VectorFunctionLinearApproximation ori;
-    ori.f = data.oMi[model.frames[frameId].parentJoint].act(model.frames[frameId].placement.translation());  // BUG: Should be orientation? //TODO: FIX THIS
-    std::tie(ori.dfdx, std::ignore) = mappingPtr_->getOcs2Jacobian(state, J.bottomRows<3>(), matrix_t::Zero(3, model.nv));
+    ori.f = q.coeffs();
+    const matrix_t Jq = angularVelocityToQuaternionTimeDerivative(q) * J.bottomRows<3>();
+    std::tie(ori.dfdx, std::ignore) = mappingPtr_->getOcs2Jacobian(state, Jq, zeroVelocityJacobian);
     orientations.emplace_back(std::move(ori));
   }
   return orientations;

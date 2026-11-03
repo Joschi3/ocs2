@@ -355,6 +355,50 @@ TEST_F(TestEndEffectorKinematics, testOrientationError) {
   EXPECT_TRUE(eeOrientationError.isApprox(eeOrientationErrorAd));
 }
 
+TEST_F(TestEndEffectorKinematics, testOrientationApproximation) {
+  const auto& model = pinocchioInterfacePtr->getModel();
+  auto& data = pinocchioInterfacePtr->getData();
+  const auto frameId = model.getFrameId("WRIST_2");
+
+  // quaternion of the end effector, sign aligned with reference to remove the q / -q ambiguity
+  auto eeQuaternion = [&](const ocs2::vector_t& state, const quaternion_t* reference) -> ocs2::vector_t {
+    pinocchio::Data d(model);
+    pinocchio::forwardKinematics(model, d, pinocchioMapping.getPinocchioJointPosition(state));
+    pinocchio::updateFramePlacements(model, d);
+    quaternion_t quat(d.oMf[frameId].rotation());
+    if (reference != nullptr && quat.dot(*reference) < 0.0) {
+      quat.coeffs() *= -1.0;
+    }
+    return quat.coeffs();
+  };
+
+  pinocchio::forwardKinematics(model, data, q);
+  pinocchio::updateFramePlacements(model, data);
+  pinocchio::computeJointJacobians(model, data);
+  eeKinematicsPtr->setPinocchioInterface(*pinocchioInterfacePtr);
+
+  const auto oriLin = eeKinematicsPtr->getOrientationLinearApproximation(x)[0];
+  const quaternion_t nominal(oriLin.f(3), oriLin.f(0), oriLin.f(1), oriLin.f(2));
+
+  // value: matches getOrientation(), up to sign
+  const quaternion_t orientation = eeKinematicsPtr->getOrientation(x)[0];
+  EXPECT_NEAR(std::abs(orientation.dot(nominal)), 1.0, 1e-12);
+  EXPECT_NEAR(oriLin.f.norm(), 1.0, 1e-12);
+
+  // Jacobian: central finite differences
+  const ocs2::scalar_t h = 1e-6;
+  ocs2::matrix_t finiteDifference(4, x.size());
+  for (int i = 0; i < x.size(); ++i) {
+    ocs2::vector_t xPlus = x, xMinus = x;
+    xPlus(i) += h;
+    xMinus(i) -= h;
+    finiteDifference.col(i) = (eeQuaternion(xPlus, &nominal) - eeQuaternion(xMinus, &nominal)) / (2.0 * h);
+  }
+  ASSERT_EQ(oriLin.dfdx.rows(), 4);
+  ASSERT_EQ(oriLin.dfdx.cols(), x.size());
+  EXPECT_TRUE(oriLin.dfdx.isApprox(finiteDifference, 1e-6)) << "analytical:\n" << oriLin.dfdx << "\nfinite difference:\n" << finiteDifference;
+}
+
 TEST_F(TestEndEffectorKinematics, testOrientationErrorApproximation) {
   const auto& model = pinocchioInterfacePtr->getModel();
   auto& data = pinocchioInterfacePtr->getData();

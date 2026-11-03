@@ -116,6 +116,11 @@ class PinocchioEndEffectorKinematics final : public EndEffectorKinematics<scalar
    */
   std::vector<VectorFunctionLinearApproximation> getPositionLinearApproximation(const vector_t& state) const override;
 
+  /** Get the end effector orientation quaternion linear approximation, f = q.coeffs() ([x, y, z, w]).
+   * @note requires pinocchioInterface to be updated with:
+   *       pinocchio::forwardKinematics(model, data, q)
+   *       pinocchio::computeJointJacobians(model, data)
+   */
   std::vector<VectorFunctionLinearApproximation> getOrientationLinearApproximation(const vector_t& state) const override;
 
   /** Get the end effector velocity linear approximation

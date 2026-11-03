@@ -102,7 +102,8 @@ class EndEffectorKinematics {
    * Get end-effector orientation linear approximation in world frame
    *
    * @param [in] state: state vector
-   * @return array of orientation function linear approximations
+   * @return array of orientation function linear approximations: f is the orientation quaternion as coefficients
+   *         [x, y, z, w] (Eigen q.coeffs() order) and dfdx its 4 x nx Jacobian
    */
   virtual std::vector<VectorFunctionLinearApproximation> getOrientationLinearApproximation(const vector_t& state) const = 0;
 
