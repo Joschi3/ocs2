@@ -117,7 +117,7 @@ inline CG<Base> CodeHandler<Base>::solveFor(const SourceCodePath& path) {
                 break;
             }
             case CGOpCode::Alias:
-                // do nothing 
+                // do nothing
                 break;
             case CGOpCode::Sub:
             {
@@ -154,7 +154,7 @@ inline CG<Base> CodeHandler<Base>::solveFor(const SourceCodePath& path) {
                          */
                     }
                 } else {
-                    // 
+                    //
                     const Argument<Base>& base = args[0];
                     rightHs = log(rightHs) / log(CG<Base>(base));
                 }

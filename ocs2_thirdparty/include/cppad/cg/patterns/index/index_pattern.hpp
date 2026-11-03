@@ -36,7 +36,7 @@ public:
      **********************************************************************/
     /**
      * Detects the index pattern for the provided points (y = f(x))
-     * 
+     *
      * @param indexX the index of the independents (x)
      * @param x2y maps the independents to the dependents (indexes[x] = y )
      * @return the generated index pattern (must be deleted by user)
@@ -46,7 +46,7 @@ public:
 
     /**
      * Detects the index pattern for the provided points (y = f(x))
-     * 
+     *
      * @param indexX the index of the independents (x)
      * @param x2y maps the independents to the dependents (x,y)
      * @return the generated index pattern (must be deleted by user)

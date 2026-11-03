@@ -188,14 +188,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_FO
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,2) = (( c_q_LF_HFE_ *  s_q_LF_KFE_) + ( s_q_LF_HFE_ *  c_q_LF_KFE_));
     (*this)(1,0) = ((( s_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) + (( s_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
@@ -246,14 +246,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_FOOT_X_fr_ba
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,1) = ((( s_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) + (( s_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
     (*this)(0,2) = (((- c_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) - (( c_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
@@ -304,14 +304,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_FO
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,2) = (( c_q_LH_HFE_ *  s_q_LH_KFE_) + ( s_q_LH_HFE_ *  c_q_LH_KFE_));
     (*this)(1,0) = ((( s_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) + (( s_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
@@ -362,14 +362,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_FOOT_X_fr_ba
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,1) = ((( s_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) + (( s_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
     (*this)(0,2) = (((- c_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) - (( c_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
@@ -420,14 +420,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_FO
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,2) = (( c_q_RF_HFE_ *  s_q_RF_KFE_) + ( s_q_RF_HFE_ *  c_q_RF_KFE_));
     (*this)(1,0) = ((( s_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) + (( s_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
@@ -478,14 +478,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_FOOT_X_fr_ba
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,1) = ((( s_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) + (( s_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
     (*this)(0,2) = (((- c_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) - (( c_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
@@ -536,14 +536,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_FO
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,2) = (( c_q_RH_HFE_ *  s_q_RH_KFE_) + ( s_q_RH_HFE_ *  c_q_RH_KFE_));
     (*this)(1,0) = ((( s_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) + (( s_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
@@ -594,14 +594,14 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_FOOT_X_fr_ba
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,1) = ((( s_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) + (( s_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
     (*this)(0,2) = (((- c_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) - (( c_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
@@ -701,10 +701,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(1,1) =  s_q_LF_HAA_;
     (*this)(1,2) =  c_q_LF_HAA_;
     (*this)(2,1) = - c_q_LF_HAA_;
@@ -744,12 +744,12 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_KF
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) =  c_q_LF_HFE_;
     (*this)(0,1) = - s_q_LF_HFE_;
     (*this)(1,0) = ( s_q_LF_HAA_ *  s_q_LF_HFE_);
@@ -849,10 +849,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(1,1) =  s_q_LH_HAA_;
     (*this)(1,2) =  c_q_LH_HAA_;
     (*this)(2,1) = - c_q_LH_HAA_;
@@ -892,12 +892,12 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_KF
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) =  c_q_LH_HFE_;
     (*this)(0,1) = - s_q_LH_HFE_;
     (*this)(1,0) = ( s_q_LH_HAA_ *  s_q_LH_HFE_);
@@ -997,10 +997,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(1,1) =  s_q_RF_HAA_;
     (*this)(1,2) =  c_q_RF_HAA_;
     (*this)(2,1) = - c_q_RF_HAA_;
@@ -1040,12 +1040,12 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_KF
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) =  c_q_RF_HFE_;
     (*this)(0,1) = - s_q_RF_HFE_;
     (*this)(1,0) = ( s_q_RF_HAA_ *  s_q_RF_HFE_);
@@ -1145,10 +1145,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(1,1) =  s_q_RH_HAA_;
     (*this)(1,2) =  c_q_RH_HAA_;
     (*this)(2,1) = - c_q_RH_HAA_;
@@ -1188,12 +1188,12 @@ const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_KF
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) =  c_q_RH_HFE_;
     (*this)(0,1) = - s_q_RH_HFE_;
     (*this)(1,0) = ( s_q_RH_HAA_ *  s_q_RH_HFE_);
@@ -1251,10 +1251,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,1) =  s_q_LF_HAA_;
     (*this)(0,2) = - c_q_LF_HAA_;
     (*this)(1,1) =  c_q_LF_HAA_;
@@ -1301,10 +1301,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(1,0) =  s_q_LF_HAA_;
     (*this)(1,1) =  c_q_LF_HAA_;
     (*this)(2,0) = - c_q_LF_HAA_;
@@ -1351,10 +1351,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,2) =  c_q_LF_HFE_;
     (*this)(1,0) =  c_q_LF_HFE_;
@@ -1401,10 +1401,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,1) =  c_q_LF_HFE_;
     (*this)(2,0) =  c_q_LF_HFE_;
@@ -1451,10 +1451,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) =  s_q_LF_KFE_;
     (*this)(1,0) = - s_q_LF_KFE_;
@@ -1501,10 +1501,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) = - s_q_LF_KFE_;
     (*this)(1,0) =  s_q_LF_KFE_;
@@ -1551,10 +1551,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,1) =  s_q_RF_HAA_;
     (*this)(0,2) = - c_q_RF_HAA_;
     (*this)(1,1) =  c_q_RF_HAA_;
@@ -1601,10 +1601,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(1,0) =  s_q_RF_HAA_;
     (*this)(1,1) =  c_q_RF_HAA_;
     (*this)(2,0) = - c_q_RF_HAA_;
@@ -1651,10 +1651,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,2) =  c_q_RF_HFE_;
     (*this)(1,0) =  c_q_RF_HFE_;
@@ -1701,10 +1701,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,1) =  c_q_RF_HFE_;
     (*this)(2,0) =  c_q_RF_HFE_;
@@ -1751,10 +1751,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) =  s_q_RF_KFE_;
     (*this)(1,0) = - s_q_RF_KFE_;
@@ -1801,10 +1801,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) = - s_q_RF_KFE_;
     (*this)(1,0) =  s_q_RF_KFE_;
@@ -1851,10 +1851,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,1) =  s_q_LH_HAA_;
     (*this)(0,2) = - c_q_LH_HAA_;
     (*this)(1,1) =  c_q_LH_HAA_;
@@ -1901,10 +1901,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(1,0) =  s_q_LH_HAA_;
     (*this)(1,1) =  c_q_LH_HAA_;
     (*this)(2,0) = - c_q_LH_HAA_;
@@ -1951,10 +1951,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,2) =  c_q_LH_HFE_;
     (*this)(1,0) =  c_q_LH_HFE_;
@@ -2001,10 +2001,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,1) =  c_q_LH_HFE_;
     (*this)(2,0) =  c_q_LH_HFE_;
@@ -2051,10 +2051,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) =  s_q_LH_KFE_;
     (*this)(1,0) = - s_q_LH_KFE_;
@@ -2101,10 +2101,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) = - s_q_LH_KFE_;
     (*this)(1,0) =  s_q_LH_KFE_;
@@ -2151,10 +2151,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,1) =  s_q_RH_HAA_;
     (*this)(0,2) = - c_q_RH_HAA_;
     (*this)(1,1) =  c_q_RH_HAA_;
@@ -2201,10 +2201,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(1,0) =  s_q_RH_HAA_;
     (*this)(1,1) =  c_q_RH_HAA_;
     (*this)(2,0) = - c_q_RH_HAA_;
@@ -2251,10 +2251,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,2) =  c_q_RH_HFE_;
     (*this)(1,0) =  c_q_RH_HFE_;
@@ -2301,10 +2301,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,1) =  c_q_RH_HFE_;
     (*this)(2,0) =  c_q_RH_HFE_;
@@ -2351,10 +2351,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) =  s_q_RH_KFE_;
     (*this)(1,0) = - s_q_RH_KFE_;
@@ -2401,10 +2401,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK& iit::camel::tpl::MotionTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) = - s_q_RH_KFE_;
     (*this)(1,0) =  s_q_RH_KFE_;
@@ -2445,14 +2445,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_FOO
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,2) = (( c_q_LF_HFE_ *  s_q_LF_KFE_) + ( s_q_LF_HFE_ *  c_q_LF_KFE_));
     (*this)(0,3) = (((((- 0.104 *  c_q_LF_HAA_) -  0.19716) *  c_q_LF_HFE_) *  s_q_LF_KFE_) + ((((- 0.104 *  c_q_LF_HAA_) -  0.19716) *  s_q_LF_HFE_) *  c_q_LF_KFE_));
@@ -2503,14 +2503,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_FOOT_X_fr_bas
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,1) = ((( s_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) + (( s_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
     (*this)(0,2) = (((- c_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) - (( c_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
@@ -2561,14 +2561,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_FOO
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,2) = (( c_q_LH_HFE_ *  s_q_LH_KFE_) + ( s_q_LH_HFE_ *  c_q_LH_KFE_));
     (*this)(0,3) = (((((- 0.104 *  c_q_LH_HAA_) -  0.19716) *  c_q_LH_HFE_) *  s_q_LH_KFE_) + ((((- 0.104 *  c_q_LH_HAA_) -  0.19716) *  s_q_LH_HFE_) *  c_q_LH_KFE_));
@@ -2619,14 +2619,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_FOOT_X_fr_bas
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,1) = ((( s_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) + (( s_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
     (*this)(0,2) = (((- c_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) - (( c_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
@@ -2677,14 +2677,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_FOO
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,2) = (( c_q_RF_HFE_ *  s_q_RF_KFE_) + ( s_q_RF_HFE_ *  c_q_RF_KFE_));
     (*this)(0,3) = ((((( 0.104 *  c_q_RF_HAA_) +  0.19716) *  c_q_RF_HFE_) *  s_q_RF_KFE_) + (((( 0.104 *  c_q_RF_HAA_) +  0.19716) *  s_q_RF_HFE_) *  c_q_RF_KFE_));
@@ -2735,14 +2735,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_FOOT_X_fr_bas
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,1) = ((( s_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) + (( s_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
     (*this)(0,2) = (((- c_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) - (( c_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
@@ -2793,14 +2793,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_FOO
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,2) = (( c_q_RH_HFE_ *  s_q_RH_KFE_) + ( s_q_RH_HFE_ *  c_q_RH_KFE_));
     (*this)(0,3) = ((((( 0.104 *  c_q_RH_HAA_) +  0.19716) *  c_q_RH_HFE_) *  s_q_RH_KFE_) + (((( 0.104 *  c_q_RH_HAA_) +  0.19716) *  s_q_RH_HFE_) *  c_q_RH_KFE_));
@@ -2851,14 +2851,14 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_FOOT_X_fr_bas
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,1) = ((( s_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) + (( s_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
     (*this)(0,2) = (((- c_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) - (( c_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
@@ -2958,10 +2958,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,4) = ((- 0.104 *  c_q_LF_HAA_) -  0.08381);
     (*this)(0,5) = ( 0.104 *  s_q_LF_HAA_);
     (*this)(1,1) =  s_q_LF_HAA_;
@@ -3001,12 +3001,12 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_KFE
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) =  c_q_LF_HFE_;
     (*this)(0,1) = - s_q_LF_HFE_;
     (*this)(0,3) = (((- 0.104 *  c_q_LF_HAA_) -  0.18411) *  s_q_LF_HFE_);
@@ -3106,10 +3106,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,4) = ((- 0.104 *  c_q_LH_HAA_) -  0.08381);
     (*this)(0,5) = ( 0.104 *  s_q_LH_HAA_);
     (*this)(1,1) =  s_q_LH_HAA_;
@@ -3149,12 +3149,12 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_KFE
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) =  c_q_LH_HFE_;
     (*this)(0,1) = - s_q_LH_HFE_;
     (*this)(0,3) = (((- 0.104 *  c_q_LH_HAA_) -  0.18411) *  s_q_LH_HFE_);
@@ -3254,10 +3254,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,4) = (( 0.104 *  c_q_RF_HAA_) +  0.08381);
     (*this)(0,5) = (- 0.104 *  s_q_RF_HAA_);
     (*this)(1,1) =  s_q_RF_HAA_;
@@ -3297,12 +3297,12 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_KFE
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) =  c_q_RF_HFE_;
     (*this)(0,1) = - s_q_RF_HFE_;
     (*this)(0,3) = ((( 0.104 *  c_q_RF_HAA_) +  0.18411) *  s_q_RF_HFE_);
@@ -3402,10 +3402,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,4) = (( 0.104 *  c_q_RH_HAA_) +  0.08381);
     (*this)(0,5) = (- 0.104 *  s_q_RH_HAA_);
     (*this)(1,1) =  s_q_RH_HAA_;
@@ -3445,12 +3445,12 @@ const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_KFE
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) =  c_q_RH_HFE_;
     (*this)(0,1) = - s_q_RH_HFE_;
     (*this)(0,3) = ((( 0.104 *  c_q_RH_HAA_) +  0.18411) *  s_q_RH_HFE_);
@@ -3508,10 +3508,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,1) =  s_q_LF_HAA_;
     (*this)(0,2) = - c_q_LF_HAA_;
     (*this)(0,3) = (- 0.104 *  c_q_LF_HAA_);
@@ -3558,10 +3558,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,3) = (- 0.104 *  c_q_LF_HAA_);
     (*this)(0,4) = ( 0.104 *  s_q_LF_HAA_);
     (*this)(1,0) =  s_q_LF_HAA_;
@@ -3608,10 +3608,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,2) =  c_q_LF_HFE_;
     (*this)(0,3) = ( 0.08381 *  c_q_LF_HFE_);
@@ -3658,10 +3658,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,1) =  c_q_LF_HFE_;
     (*this)(0,3) = ( 0.08381 *  c_q_LF_HFE_);
@@ -3708,10 +3708,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) =  s_q_LF_KFE_;
     (*this)(0,3) = (- 0.1003 *  s_q_LF_KFE_);
@@ -3758,10 +3758,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) = - s_q_LF_KFE_;
     (*this)(0,3) = (- 0.1003 *  s_q_LF_KFE_);
@@ -3808,10 +3808,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,1) =  s_q_RF_HAA_;
     (*this)(0,2) = - c_q_RF_HAA_;
     (*this)(0,3) = ( 0.104 *  c_q_RF_HAA_);
@@ -3858,10 +3858,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,3) = ( 0.104 *  c_q_RF_HAA_);
     (*this)(0,4) = (- 0.104 *  s_q_RF_HAA_);
     (*this)(1,0) =  s_q_RF_HAA_;
@@ -3908,10 +3908,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,2) =  c_q_RF_HFE_;
     (*this)(0,3) = (- 0.08381 *  c_q_RF_HFE_);
@@ -3958,10 +3958,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,1) =  c_q_RF_HFE_;
     (*this)(0,3) = (- 0.08381 *  c_q_RF_HFE_);
@@ -4008,10 +4008,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) =  s_q_RF_KFE_;
     (*this)(0,3) = ( 0.1003 *  s_q_RF_KFE_);
@@ -4058,10 +4058,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) = - s_q_RF_KFE_;
     (*this)(0,3) = ( 0.1003 *  s_q_RF_KFE_);
@@ -4108,10 +4108,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,1) =  s_q_LH_HAA_;
     (*this)(0,2) = - c_q_LH_HAA_;
     (*this)(0,3) = (- 0.104 *  c_q_LH_HAA_);
@@ -4158,10 +4158,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,3) = (- 0.104 *  c_q_LH_HAA_);
     (*this)(0,4) = ( 0.104 *  s_q_LH_HAA_);
     (*this)(1,0) =  s_q_LH_HAA_;
@@ -4208,10 +4208,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,2) =  c_q_LH_HFE_;
     (*this)(0,3) = ( 0.08381 *  c_q_LH_HFE_);
@@ -4258,10 +4258,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,1) =  c_q_LH_HFE_;
     (*this)(0,3) = ( 0.08381 *  c_q_LH_HFE_);
@@ -4308,10 +4308,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) =  s_q_LH_KFE_;
     (*this)(0,3) = (- 0.1003 *  s_q_LH_KFE_);
@@ -4358,10 +4358,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) = - s_q_LH_KFE_;
     (*this)(0,3) = (- 0.1003 *  s_q_LH_KFE_);
@@ -4408,10 +4408,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,1) =  s_q_RH_HAA_;
     (*this)(0,2) = - c_q_RH_HAA_;
     (*this)(0,3) = ( 0.104 *  c_q_RH_HAA_);
@@ -4458,10 +4458,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,3) = ( 0.104 *  c_q_RH_HAA_);
     (*this)(0,4) = (- 0.104 *  s_q_RH_HAA_);
     (*this)(1,0) =  s_q_RH_HAA_;
@@ -4508,10 +4508,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,2) =  c_q_RH_HFE_;
     (*this)(0,3) = (- 0.08381 *  c_q_RH_HFE_);
@@ -4558,10 +4558,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,1) =  c_q_RH_HFE_;
     (*this)(0,3) = (- 0.08381 *  c_q_RH_HFE_);
@@ -4608,10 +4608,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) =  s_q_RH_KFE_;
     (*this)(0,3) = ( 0.1003 *  s_q_RH_KFE_);
@@ -4658,10 +4658,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK& iit::camel::tpl::ForceTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) = - s_q_RH_KFE_;
     (*this)(0,3) = ( 0.1003 *  s_q_RH_KFE_);
@@ -4696,14 +4696,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,2) = (( c_q_LF_HFE_ *  s_q_LF_KFE_) + ( s_q_LF_HFE_ *  c_q_LF_KFE_));
     (*this)(0,3) = ((((((- 0.08795 *  s_q_LF_HFE_) - ( 0.33797 *  c_q_LF_HFE_)) *  s_q_LF_KFE_) + ((( 0.08795 *  c_q_LF_HFE_) - ( 0.33797 *  s_q_LF_HFE_)) *  c_q_LF_KFE_)) - ( 0.285 *  s_q_LF_HFE_)) +  0.3598);
@@ -4734,14 +4734,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_FOOT_X_
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_KFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) = (( c_q_LF_HFE_ *  c_q_LF_KFE_) - ( s_q_LF_HFE_ *  s_q_LF_KFE_));
     (*this)(0,1) = ((( s_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) + (( s_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
     (*this)(0,2) = (((- c_q_LF_HAA_ *  c_q_LF_HFE_) *  s_q_LF_KFE_) - (( c_q_LF_HAA_ *  s_q_LF_HFE_) *  c_q_LF_KFE_));
@@ -4772,14 +4772,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,2) = (( c_q_LH_HFE_ *  s_q_LH_KFE_) + ( s_q_LH_HFE_ *  c_q_LH_KFE_));
     (*this)(0,3) = (((((( 0.08795 *  s_q_LH_HFE_) - ( 0.33797 *  c_q_LH_HFE_)) *  s_q_LH_KFE_) + (((- 0.33797 *  s_q_LH_HFE_) - ( 0.08795 *  c_q_LH_HFE_)) *  c_q_LH_KFE_)) - ( 0.285 *  s_q_LH_HFE_)) -  0.3598);
@@ -4810,14 +4810,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_FOOT_X_
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_KFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) = (( c_q_LH_HFE_ *  c_q_LH_KFE_) - ( s_q_LH_HFE_ *  s_q_LH_KFE_));
     (*this)(0,1) = ((( s_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) + (( s_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
     (*this)(0,2) = (((- c_q_LH_HAA_ *  c_q_LH_HFE_) *  s_q_LH_KFE_) - (( c_q_LH_HAA_ *  s_q_LH_HFE_) *  c_q_LH_KFE_));
@@ -4848,14 +4848,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,2) = (( c_q_RF_HFE_ *  s_q_RF_KFE_) + ( s_q_RF_HFE_ *  c_q_RF_KFE_));
     (*this)(0,3) = ((((((- 0.08795 *  s_q_RF_HFE_) - ( 0.33797 *  c_q_RF_HFE_)) *  s_q_RF_KFE_) + ((( 0.08795 *  c_q_RF_HFE_) - ( 0.33797 *  s_q_RF_HFE_)) *  c_q_RF_KFE_)) - ( 0.285 *  s_q_RF_HFE_)) +  0.3598);
@@ -4886,14 +4886,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_FOOT_X_
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_KFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) = (( c_q_RF_HFE_ *  c_q_RF_KFE_) - ( s_q_RF_HFE_ *  s_q_RF_KFE_));
     (*this)(0,1) = ((( s_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) + (( s_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
     (*this)(0,2) = (((- c_q_RF_HAA_ *  c_q_RF_HFE_) *  s_q_RF_KFE_) - (( c_q_RF_HAA_ *  s_q_RF_HFE_) *  c_q_RF_KFE_));
@@ -4924,14 +4924,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,2) = (( c_q_RH_HFE_ *  s_q_RH_KFE_) + ( s_q_RH_HFE_ *  c_q_RH_KFE_));
     (*this)(0,3) = (((((( 0.08795 *  s_q_RH_HFE_) - ( 0.33797 *  c_q_RH_HFE_)) *  s_q_RH_KFE_) + (((- 0.33797 *  s_q_RH_HFE_) - ( 0.08795 *  c_q_RH_HFE_)) *  c_q_RH_KFE_)) - ( 0.285 *  s_q_RH_HFE_)) -  0.3598);
@@ -4962,14 +4962,14 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_FOOT_X_
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_KFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) = (( c_q_RH_HFE_ *  c_q_RH_KFE_) - ( s_q_RH_HFE_ *  s_q_RH_KFE_));
     (*this)(0,1) = ((( s_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) + (( s_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
     (*this)(0,2) = (((- c_q_RH_HAA_ *  c_q_RH_HFE_) *  s_q_RH_KFE_) - (( c_q_RH_HAA_ *  s_q_RH_HFE_) *  c_q_RH_KFE_));
@@ -5025,10 +5025,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LF_HFE::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(1,1) =  s_q_LF_HAA_;
     (*this)(1,2) =  c_q_LF_HAA_;
     (*this)(1,3) = (( 0.08381 *  c_q_LF_HAA_) +  0.104);
@@ -5052,12 +5052,12 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HFE_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,0) =  c_q_LF_HFE_;
     (*this)(0,1) = - s_q_LF_HFE_;
     (*this)(0,3) = ( 0.3598 - ( 0.285 *  s_q_LF_HFE_));
@@ -5113,10 +5113,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LH_HFE::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(1,1) =  s_q_LH_HAA_;
     (*this)(1,2) =  c_q_LH_HAA_;
     (*this)(1,3) = (( 0.08381 *  c_q_LH_HAA_) +  0.104);
@@ -5140,12 +5140,12 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HFE_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,0) =  c_q_LH_HFE_;
     (*this)(0,1) = - s_q_LH_HFE_;
     (*this)(0,3) = ((- 0.285 *  s_q_LH_HFE_) -  0.3598);
@@ -5201,10 +5201,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RF_HFE::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(1,1) =  s_q_RF_HAA_;
     (*this)(1,2) =  c_q_RF_HAA_;
     (*this)(1,3) = ((- 0.08381 *  c_q_RF_HAA_) -  0.104);
@@ -5228,12 +5228,12 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HFE_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,0) =  c_q_RF_HFE_;
     (*this)(0,1) = - s_q_RF_HFE_;
     (*this)(0,3) = ( 0.3598 - ( 0.285 *  s_q_RF_HFE_));
@@ -5289,10 +5289,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RH_HFE::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(1,1) =  s_q_RH_HAA_;
     (*this)(1,2) =  c_q_RH_HAA_;
     (*this)(1,3) = ((- 0.08381 *  c_q_RH_HAA_) -  0.104);
@@ -5316,12 +5316,12 @@ const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HFE_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,0) =  c_q_RH_HFE_;
     (*this)(0,1) = - s_q_RH_HFE_;
     (*this)(0,3) = ((- 0.285 *  s_q_RH_HFE_) -  0.3598);
@@ -5353,10 +5353,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(0,1) =  s_q_LF_HAA_;
     (*this)(0,2) = - c_q_LF_HAA_;
     (*this)(0,3) = (- 0.104 *  s_q_LF_HAA_);
@@ -5385,10 +5385,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HAA_;
     Scalar c_q_LF_HAA_;
-    
+
     s_q_LF_HAA_ = TRAIT::sin( q(LF_HAA));
     c_q_LF_HAA_ = TRAIT::cos( q(LF_HAA));
-    
+
     (*this)(1,0) =  s_q_LF_HAA_;
     (*this)(1,1) =  c_q_LF_HAA_;
     (*this)(2,0) = - c_q_LF_HAA_;
@@ -5413,10 +5413,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_HIP::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,2) =  c_q_LF_HFE_;
     (*this)(0,3) = (- 0.0599 *  c_q_LF_HFE_);
@@ -5445,10 +5445,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_HIP_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_HFE_;
     Scalar c_q_LF_HFE_;
-    
+
     s_q_LF_HFE_ = TRAIT::sin( q(LF_HFE));
     c_q_LF_HFE_ = TRAIT::cos( q(LF_HFE));
-    
+
     (*this)(0,0) =  s_q_LF_HFE_;
     (*this)(0,1) =  c_q_LF_HFE_;
     (*this)(2,0) =  c_q_LF_HFE_;
@@ -5473,10 +5473,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_SHANK_X_fr_LF_THIGH::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) =  s_q_LF_KFE_;
     (*this)(0,3) = (- 0.285 *  s_q_LF_KFE_);
@@ -5505,10 +5505,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LF_THIGH_X_fr_LF_SHANK::update(const JState& q) {
     Scalar s_q_LF_KFE_;
     Scalar c_q_LF_KFE_;
-    
+
     s_q_LF_KFE_ = TRAIT::sin( q(LF_KFE));
     c_q_LF_KFE_ = TRAIT::cos( q(LF_KFE));
-    
+
     (*this)(0,0) =  c_q_LF_KFE_;
     (*this)(0,1) = - s_q_LF_KFE_;
     (*this)(1,0) =  s_q_LF_KFE_;
@@ -5533,10 +5533,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(0,1) =  s_q_RF_HAA_;
     (*this)(0,2) = - c_q_RF_HAA_;
     (*this)(0,3) = ( 0.104 *  s_q_RF_HAA_);
@@ -5565,10 +5565,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HAA_;
     Scalar c_q_RF_HAA_;
-    
+
     s_q_RF_HAA_ = TRAIT::sin( q(RF_HAA));
     c_q_RF_HAA_ = TRAIT::cos( q(RF_HAA));
-    
+
     (*this)(1,0) =  s_q_RF_HAA_;
     (*this)(1,1) =  c_q_RF_HAA_;
     (*this)(2,0) = - c_q_RF_HAA_;
@@ -5593,10 +5593,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_HIP::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,2) =  c_q_RF_HFE_;
     (*this)(0,3) = (- 0.0599 *  c_q_RF_HFE_);
@@ -5625,10 +5625,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_HIP_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_HFE_;
     Scalar c_q_RF_HFE_;
-    
+
     s_q_RF_HFE_ = TRAIT::sin( q(RF_HFE));
     c_q_RF_HFE_ = TRAIT::cos( q(RF_HFE));
-    
+
     (*this)(0,0) =  s_q_RF_HFE_;
     (*this)(0,1) =  c_q_RF_HFE_;
     (*this)(2,0) =  c_q_RF_HFE_;
@@ -5653,10 +5653,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_SHANK_X_fr_RF_THIGH::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) =  s_q_RF_KFE_;
     (*this)(0,3) = (- 0.285 *  s_q_RF_KFE_);
@@ -5685,10 +5685,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RF_THIGH_X_fr_RF_SHANK::update(const JState& q) {
     Scalar s_q_RF_KFE_;
     Scalar c_q_RF_KFE_;
-    
+
     s_q_RF_KFE_ = TRAIT::sin( q(RF_KFE));
     c_q_RF_KFE_ = TRAIT::cos( q(RF_KFE));
-    
+
     (*this)(0,0) =  c_q_RF_KFE_;
     (*this)(0,1) = - s_q_RF_KFE_;
     (*this)(1,0) =  s_q_RF_KFE_;
@@ -5713,10 +5713,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(0,1) =  s_q_LH_HAA_;
     (*this)(0,2) = - c_q_LH_HAA_;
     (*this)(0,3) = (- 0.104 *  s_q_LH_HAA_);
@@ -5745,10 +5745,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HAA_;
     Scalar c_q_LH_HAA_;
-    
+
     s_q_LH_HAA_ = TRAIT::sin( q(LH_HAA));
     c_q_LH_HAA_ = TRAIT::cos( q(LH_HAA));
-    
+
     (*this)(1,0) =  s_q_LH_HAA_;
     (*this)(1,1) =  c_q_LH_HAA_;
     (*this)(2,0) = - c_q_LH_HAA_;
@@ -5773,10 +5773,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_HIP::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,2) =  c_q_LH_HFE_;
     (*this)(0,3) = ( 0.0599 *  c_q_LH_HFE_);
@@ -5805,10 +5805,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_HIP_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_HFE_;
     Scalar c_q_LH_HFE_;
-    
+
     s_q_LH_HFE_ = TRAIT::sin( q(LH_HFE));
     c_q_LH_HFE_ = TRAIT::cos( q(LH_HFE));
-    
+
     (*this)(0,0) =  s_q_LH_HFE_;
     (*this)(0,1) =  c_q_LH_HFE_;
     (*this)(2,0) =  c_q_LH_HFE_;
@@ -5833,10 +5833,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_SHANK_X_fr_LH_THIGH::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) =  s_q_LH_KFE_;
     (*this)(0,3) = (- 0.285 *  s_q_LH_KFE_);
@@ -5865,10 +5865,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_LH_THIGH_X_fr_LH_SHANK::update(const JState& q) {
     Scalar s_q_LH_KFE_;
     Scalar c_q_LH_KFE_;
-    
+
     s_q_LH_KFE_ = TRAIT::sin( q(LH_KFE));
     c_q_LH_KFE_ = TRAIT::cos( q(LH_KFE));
-    
+
     (*this)(0,0) =  c_q_LH_KFE_;
     (*this)(0,1) = - s_q_LH_KFE_;
     (*this)(1,0) =  s_q_LH_KFE_;
@@ -5893,10 +5893,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_base::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(0,1) =  s_q_RH_HAA_;
     (*this)(0,2) = - c_q_RH_HAA_;
     (*this)(0,3) = ( 0.104 *  s_q_RH_HAA_);
@@ -5925,10 +5925,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_base_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HAA_;
     Scalar c_q_RH_HAA_;
-    
+
     s_q_RH_HAA_ = TRAIT::sin( q(RH_HAA));
     c_q_RH_HAA_ = TRAIT::cos( q(RH_HAA));
-    
+
     (*this)(1,0) =  s_q_RH_HAA_;
     (*this)(1,1) =  c_q_RH_HAA_;
     (*this)(2,0) = - c_q_RH_HAA_;
@@ -5953,10 +5953,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_HIP::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,2) =  c_q_RH_HFE_;
     (*this)(0,3) = ( 0.0599 *  c_q_RH_HFE_);
@@ -5985,10 +5985,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_HIP_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_HFE_;
     Scalar c_q_RH_HFE_;
-    
+
     s_q_RH_HFE_ = TRAIT::sin( q(RH_HFE));
     c_q_RH_HFE_ = TRAIT::cos( q(RH_HFE));
-    
+
     (*this)(0,0) =  s_q_RH_HFE_;
     (*this)(0,1) =  c_q_RH_HFE_;
     (*this)(2,0) =  c_q_RH_HFE_;
@@ -6013,10 +6013,10 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_SHANK_X_fr_RH_THIGH::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) =  s_q_RH_KFE_;
     (*this)(0,3) = (- 0.285 *  s_q_RH_KFE_);
@@ -6045,14 +6045,13 @@ template <typename TRAIT>
 const typename iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK& iit::camel::tpl::HomogeneousTransforms<TRAIT>::Type_fr_RH_THIGH_X_fr_RH_SHANK::update(const JState& q) {
     Scalar s_q_RH_KFE_;
     Scalar c_q_RH_KFE_;
-    
+
     s_q_RH_KFE_ = TRAIT::sin( q(RH_KFE));
     c_q_RH_KFE_ = TRAIT::cos( q(RH_KFE));
-    
+
     (*this)(0,0) =  c_q_RH_KFE_;
     (*this)(0,1) = - s_q_RH_KFE_;
     (*this)(1,0) =  s_q_RH_KFE_;
     (*this)(1,1) =  c_q_RH_KFE_;
     return *this;
 }
-

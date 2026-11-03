@@ -39,7 +39,7 @@ std::vector<CG<Base> > prepareGraphForward0WithLoops(CodeHandler<Base>& handler,
     std::vector<CGBase> tmps;
 
     /**
-     * original equations outside the loops 
+     * original equations outside the loops
      */
     if (funNoLoops != nullptr) {
         const std::vector<size_t>& origEq = funNoLoops->getOrigDependentIndexes();

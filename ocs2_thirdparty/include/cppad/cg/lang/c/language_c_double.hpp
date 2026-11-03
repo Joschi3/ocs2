@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Specialization of the C language function names for doubles
- * 
+ *
  * @author Joao Leal
  */
 template<>

@@ -148,7 +148,7 @@ inline size_t LanguageLatex<Base>::printArrayCreationUsingLoop(size_t startPos,
 
     const Argument<Base>& ref = args[starti];
     if (ref.getOperation() != nullptr) {
-        // 
+        //
         const OperationNode<Base>& refOp = *ref.getOperation();
         if (refOp.getOperationType() == CGOpCode::Inv) {
             /**

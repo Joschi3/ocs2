@@ -21,7 +21,7 @@ namespace cg {
 /**
  * Useful class for generating source code for the creation of a dynamic
  * library.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>
@@ -46,7 +46,7 @@ public:
      * using the C language.
      *
      * @param modelLibGen
-     * @param libraryName The path of the dynamic library to be created 
+     * @param libraryName The path of the dynamic library to be created
      *                    (without the extension)
      */
     inline DynamicModelLibraryProcessor(ModelLibraryCSourceGen<Base>& modelLibGen,
@@ -68,7 +68,7 @@ public:
 
     /**
      * Provides a custom library extension defined by the user
-     * 
+     *
      * @return a custom library extension
      */
     inline const std::string* getCustomLibraryExtension() const {
@@ -77,7 +77,7 @@ public:
 
     /**
      * Defines a custom extension for the library that will be created
-     * 
+     *
      * @param libraryExtension the custom extension name
      */
     inline void setCustomLibraryExtension(const std::string& libraryExtension) {
@@ -109,7 +109,7 @@ public:
 
     /**
      * Compiles all models and generates a dynamic library.
-     * 
+     *
      * @param compiler The compiler used to compile the sources and create
      *                 the dynamic library
      * @param loadLib Whether or not to load the dynamic library
@@ -162,12 +162,12 @@ public:
 
     /**
      * Compiles all models and generates a static library.
-     * 
+     *
      * @param compiler The compiler used to compile the sources
      * @param ar The archiver used to assemble the compiled source into a
      *           static library
-     * @param posIndepCode Whether or not to compile the source 
-     *                     with position independent code (static libraries 
+     * @param posIndepCode Whether or not to compile the source
+     *                     with position independent code (static libraries
      *                     typically do not use this feature)
      */
 

@@ -17,7 +17,7 @@
   <depend>ocs2_quadruped_loopshaping_interface</depend>
   <depend>segmented_planes_terrain_model</depend>
 
-  <export>                               
+  <export>
     <build_type>ament_cmake</build_type>
   </export>
 </package>

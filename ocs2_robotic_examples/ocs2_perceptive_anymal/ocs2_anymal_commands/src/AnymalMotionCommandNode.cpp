@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   const std::string controllerName = [&]
   {
     std::vector<std::string> programArgs = rclcpp::remove_ros_arguments(argc, argv);
-    
+
     if (programArgs.size() <= 1)
     {
       throw std::runtime_error("No operation mode specified. Aborting.");

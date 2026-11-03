@@ -84,7 +84,7 @@ public:
         // try to merge with the next free space
         it = _freeArrayStartSpace.find(arrayEnd + 1); // next
         if (it != _freeArrayStartSpace.end()) {
-            arrayEnd = it->second; // merge space 
+            arrayEnd = it->second; // merge space
             _freeArrayStartSpace.erase(it);
             _freeArrayEndSpace.erase(arrayEnd);
         }
@@ -167,7 +167,7 @@ public:
             size_t bestSpace = bestEnd - bestStart + 1;
             _freeArrayStartSpace.erase(bestStart);
             if (bestSpace == arraySize) {
-                // entire space 
+                // entire space
                 _freeArrayEndSpace.erase(bestEnd);
             } else {
                 // some space left

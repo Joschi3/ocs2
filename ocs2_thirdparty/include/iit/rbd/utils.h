@@ -71,7 +71,7 @@ public:
             const MatrixBase<Derived>& mx)
     {
         eigen_assert(mx.rows() == 3  &&  mx.cols() == 3);
-        
+
         double cx = std::cos(rx);
         double sx = std::sin(rx);
         double cy = std::cos(ry);

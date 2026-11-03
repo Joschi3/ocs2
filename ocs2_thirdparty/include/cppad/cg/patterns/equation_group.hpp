@@ -29,12 +29,12 @@ public:
      */
     std::set<EquationPattern<Base>*> equations;
     /**
-     * Which dependents (equation indexes) must be evaluated at the same 
+     * Which dependents (equation indexes) must be evaluated at the same
      * time due to shared indexed temporary variables
      */
     std::vector<std::set<size_t> > linkedDependents;
     /**
-     * Which equation pattern should be evaluated at the same 
+     * Which equation pattern should be evaluated at the same
      * time due to shared non-indexed temporary variables
      */
     std::vector<std::set<EquationPattern<Base>*> > linkedEquationsByNonIndexedRel;

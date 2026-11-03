@@ -72,4 +72,3 @@ struct TraitSelector<CppAD::AD<CppAD::cg::CG<double>>>
 
 
 #endif /* TRAITSELECTOR_OCS2_H_ */
-

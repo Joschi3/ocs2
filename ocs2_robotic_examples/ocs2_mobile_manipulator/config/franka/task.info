@@ -1,7 +1,7 @@
 ; robot model meta-information
 model_information {
   manipulatorModelType     0      // 0: Default-arm, 1: Wheel-based manipulator, 2: Floating-arm manipulator, 3: Fully actuated floating-arm manipulator
-  
+
   ; motion joints in the URDF to consider fixed
   removeJoints {
     [0] "panda_finger_joint1"
@@ -78,7 +78,7 @@ mpc
   timeHorizon                     1.0   ; [s]
   solutionTimeWindow              0.2   ; [s]
   coldStart                       false
-  
+
   debugPrint                      false
 
   mpcDesiredFrequency             100   ; [Hz]
@@ -170,7 +170,7 @@ inputCost
         (1,1)  5.0  ; turning velocity
       }
     }
-    
+
     ; input costs for the arm DOFs
     arm
     {
@@ -201,7 +201,7 @@ finalEndEffector
 }
 
 selfCollision
-{ 
+{
   ; activate self-collision constraint
   activate  true
 
@@ -246,7 +246,7 @@ jointVelocityLimits
 
   ; relaxed log barrier delta
   delta   1e-3
-  
+
   lowerBound
   {
     ; velocity limits for the different types of arm base DOFs

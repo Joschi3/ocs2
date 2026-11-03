@@ -124,7 +124,7 @@ void iit::Ballbot::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(1, 1) = L(1, 1) - L(4, 1) * L(4, 1);
     L(1, 0) = L(1, 0) - L(4, 1) * L(4, 0);
     L(0, 0) = L(0, 0) - L(4, 0) * L(4, 0);
-    
+
     // Joint jbase_y, index 3 :
     L(3, 3) = std::sqrt(L(3, 3));
     L(3, 2) = L(3, 2) / L(3, 3);
@@ -136,7 +136,7 @@ void iit::Ballbot::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(1, 1) = L(1, 1) - L(3, 1) * L(3, 1);
     L(1, 0) = L(1, 0) - L(3, 1) * L(3, 0);
     L(0, 0) = L(0, 0) - L(3, 0) * L(3, 0);
-    
+
     // Joint jbase_z, index 2 :
     L(2, 2) = std::sqrt(L(2, 2));
     L(2, 1) = L(2, 1) / L(2, 2);
@@ -144,15 +144,15 @@ void iit::Ballbot::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(1, 1) = L(1, 1) - L(2, 1) * L(2, 1);
     L(1, 0) = L(1, 0) - L(2, 1) * L(2, 0);
     L(0, 0) = L(0, 0) - L(2, 0) * L(2, 0);
-    
+
     // Joint jball_y, index 1 :
     L(1, 1) = std::sqrt(L(1, 1));
     L(1, 0) = L(1, 0) / L(1, 1);
     L(0, 0) = L(0, 0) - L(1, 0) * L(1, 0);
-    
+
     // Joint jball_x, index 0 :
     L(0, 0) = std::sqrt(L(0, 0));
-    
+
 }
 
 template <typename TRAIT>
@@ -205,4 +205,3 @@ void iit::Ballbot::dyn::tpl::JSIM<TRAIT>::computeLInverse() {
     Linv(4, 1) = - Linv(1, 1) * ((Linv(4, 2) * L(2, 1)) + (Linv(4, 3) * L(3, 1)) + (Linv(4, 4) * L(4, 1)) + 0);
     Linv(4, 0) = - Linv(0, 0) * ((Linv(4, 1) * L(1, 0)) + (Linv(4, 2) * L(2, 0)) + (Linv(4, 3) * L(3, 0)) + (Linv(4, 4) * L(4, 0)) + 0);
 }
-

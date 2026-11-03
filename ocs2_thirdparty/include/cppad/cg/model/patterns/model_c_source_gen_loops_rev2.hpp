@@ -65,11 +65,11 @@ void ModelCSourceGen<Base>::prepareSparseReverseTwoWithLoops(const std::map<size
 
     size_t m = _fun.Range();
     size_t n = _fun.Domain();
-    
+
     CodeHandler<Base> handler;
     handler.setJobTimer(_jobTimer);
     handler.setZeroDependents(false);
-    
+
     auto& indexJrowDcl = *handler.makeIndexDclrNode("jrow");
     auto& indexLocalItDcl = *handler.makeIndexDclrNode("it");
     auto& indexLocalItCountDcl = *handler.makeIndexDclrNode("itCount");
@@ -271,7 +271,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseTwoWithLoops(const std::map<size
 
             /**
              * Model index pattern
-             * 
+             *
              * detect the index pattern for the model iterations
              * based on jrow and the local loop iteration
              */
@@ -359,7 +359,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseTwoWithLoops(const std::map<size
                 moveNonIndexedOutsideLoop(handler, *loopStart, *loopEnd);
 
                 /**
-                 * 
+                 *
                  */
                 pxCustom.resize(1);
 
@@ -487,7 +487,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseTwoWithLoops(const std::map<size
 
             CppAD::sparse_hessian_work work; // temporary structure for CPPAD
             // "cppad.symmetric" may have missing values for functions using
-            // atomic functions which only provide half of the elements 
+            // atomic functions which only provide half of the elements
             // (some values could be zeroed)
             work.color_method = "cppad.general";
             fun.SparseHessian(tx0, pyNoLoop, _funNoLoops->getHessianOrigEqsSparsity(), row, col, hessNoLoop, work);
@@ -544,7 +544,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseTwoWithLoops(const std::map<size
     }
 
     /**
-     * 
+     *
      */
     string functionRev2 = _name + "_" + FUNCTION_SPARSE_REVERSE_TWO;
     _sources[functionRev2 + ".c"] = generateGlobalForRevWithLoopsFunctionSource(elements,
@@ -722,7 +722,7 @@ std::vector<std::pair<CG<Base>, IndexPattern*> > generateReverseTwoGroupOps(Code
 
         /***************************************************************
          * temporary - indexed
-         * 
+         *
          *      d f_i       .    d x_k1
          * d x_l2  d z_k1        d x_j1
          */
@@ -801,8 +801,8 @@ std::vector<std::pair<CG<Base>, IndexPattern*> > generateReverseTwoGroupOps(Code
             }
 
             /**
-             * temporary - non-indexed 
-             * 
+             * temporary - non-indexed
+             *
              *      d f_i       .    d x_k1
              * d x_j2  d z_k1        d x_j1
              */
@@ -1008,8 +1008,8 @@ inline std::map<HessianTermContrib<Base>, std::set<size_t> > groupHessianRowsByC
 }
 
 /**
- * Create subgroups from groups with the same contributions at the 
- * same Hessian rows. Each subgroup has a sub-set of the group's 
+ * Create subgroups from groups with the same contributions at the
+ * same Hessian rows. Each subgroup has a sub-set of the group's
  * contributions which have the same relations between Hessian row index
  * and set of iteration indexes.
  */
@@ -1089,7 +1089,7 @@ inline void subgroupHessianRowsByContrib(const HessianWithLoopsInfo<Base>& info,
     }
 
     /**
-     * 
+     *
      */
     map<HessianTermContrib<Base>, HessianRowGroup<Base>*> c2subgroups; // add pair<jrow, set<iter> > here
 
@@ -1168,7 +1168,7 @@ std::pair<CG<Base>, IndexPattern*> createReverseMode2Contribution(CodeHandler<Ba
 
     } else {
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution to the Hessian is only evaluated at the
          * relevant iterations
          */
@@ -1218,7 +1218,7 @@ CG<Base> createReverseMode2Contribution(CodeHandler<Base>& handler,
 
     } else {
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution to the Hessian is only evaluated at the
          * relevant iterations
          */
@@ -1243,7 +1243,7 @@ public:
     std::set<pairss> indexedTemp;
     // (tapeJ1(j1), tapeJ2)
     std::set<pairss> nonIndexedIndexed;
-    //(j1, j2) 
+    //(j1, j2)
     std::set<pairss> nonIndexedNonIndexed;
     // (j1, tapeJ2)
     std::set<pairss> tempIndexed;

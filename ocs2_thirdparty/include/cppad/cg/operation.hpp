@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Operation types for OperationNode
- * 
+ *
  * @author Joao Leal
  */
 enum class CGOpCode {
@@ -156,7 +156,7 @@ inline std::ostream& operator<<(std::ostream& os, const CGOpCode& op) {
 
     // this test ensures that all indices are within the table
     CPPADCG_ASSERT_UNKNOWN(int(op) >= 0 && size_t(op) < size_t(CGOpCode::NumberOp));
-    
+
     os << OpNameTable[size_t(op)];
 
     return os;

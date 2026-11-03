@@ -2,7 +2,6 @@ name: Lint, Build & Test
 on:
   push:
     branches:
-      - jazzy
       - lyrical
   pull_request:
 defaults:
@@ -31,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rosdistro: [jazzy, lyrical]
+        rosdistro: [lyrical]
     name: Build & Test (${{ matrix.rosdistro }})
     # The job runs inside the ROS container, the host OS does not matter
     runs-on: ubuntu-latest

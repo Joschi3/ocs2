@@ -44,9 +44,9 @@ from ocs2_ballbot import (
 
 class ballbot_python_tests(unittest.TestCase):
     def setUp(self):
-        packageDir = rospkg.RosPack().get_path('ocs2_ballbot')
-        taskFile = os.path.join(packageDir, 'config/mpc/task.info')
-        libFolder = os.path.join(packageDir, 'auto_generated')
+        packageDir = rospkg.RosPack().get_path("ocs2_ballbot")
+        taskFile = os.path.join(packageDir, "config/mpc/task.info")
+        libFolder = os.path.join(packageDir, "auto_generated")
         print("Instantiating MPC interface")
         self.mpc = mpc_interface(taskFile, libFolder)
         self.stateDim = 10

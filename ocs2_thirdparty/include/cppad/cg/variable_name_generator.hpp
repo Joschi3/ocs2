@@ -37,7 +37,7 @@ typedef struct FuncArgument {
 
 /**
  * Creates variables names for the source code.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>
@@ -50,7 +50,7 @@ public:
 
     /**
      * Provides the dependent variable arguments used by a function.
-     * 
+     *
      * @return the dependent variable arguments
      */
     virtual const std::vector<FuncArgument>& getDependent() const {
@@ -59,7 +59,7 @@ public:
 
     /**
      * Provides the independent variable arguments used by a function.
-     * 
+     *
      * @return the independent variable arguments
      */
     virtual const std::vector<FuncArgument>& getIndependent() const {
@@ -68,7 +68,7 @@ public:
 
     /**
      * Provides the temporary variable arguments used by a function.
-     * 
+     *
      * @return the temporary variable arguments
      */
     virtual const std::vector<FuncArgument>& getTemporary() const {
@@ -97,7 +97,7 @@ public:
 
     /**
      * Creates a name for a dependent variable.
-     * 
+     *
      * @param index the dependent variable index
      * @return the generated name
      */
@@ -105,7 +105,7 @@ public:
 
     /**
      * Creates a name for a dependent variable.
-     * 
+     *
      * @param variable the node representing the independent variable
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (unique for independent variables)
@@ -116,7 +116,7 @@ public:
 
     /**
      * Creates a name for a temporary variable.
-     * 
+     *
      * @param variable the node representing the temporary variable
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -127,7 +127,7 @@ public:
 
     /**
      * Creates a name for a temporary dense array variable.
-     * 
+     *
      * @param variable the node representing the dense array variable creation
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -138,7 +138,7 @@ public:
 
     /**
      * Creates a name for a temporary sparse array variable.
-     * 
+     *
      * @param variable the node representing the sparse array variable creation
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -150,7 +150,7 @@ public:
     /**
      * Creates a name for a reference to an indexed dependent variable
      * expression.
-     * 
+     *
      * @param var the node representing an indexed dependent variable
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -162,9 +162,9 @@ public:
                                                  const IndexPattern& ip) = 0;
 
     /**
-     * Creates a name for a reference to an indexed independent variable 
+     * Creates a name for a reference to an indexed independent variable
      * expression.
-     * 
+     *
      * @param var the node representing an indexed independent variable
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (unique for indexed independent variables)
@@ -177,7 +177,7 @@ public:
 
     /**
      * Defines the ID ranges used by each variable type.
-     * 
+     *
      * @param minTempID the lowest ID of temporary variables
      * @param maxTempID the highest used ID of temporary variables
      * @param maxTempArrayID the highest used ID of temporary dense array
@@ -191,10 +191,10 @@ public:
                                         size_t maxTempSparseArrayID) = 0;
 
     /**
-     * Provides the array name where independent variables are provided to the 
+     * Provides the array name where independent variables are provided to the
      * function.
      * It should only be called if independents are saved in an array.
-     * 
+     *
      * @param indep the independent variable node (CGInvOp)
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (unique for independent variable arrays)
@@ -204,10 +204,10 @@ public:
                                                        size_t id) = 0;
 
     /**
-     * Provides the index in the associated independent array of an 
+     * Provides the index in the associated independent array of an
      * independent variable.
      * It should only be called if independents are saved in an array.
-     * 
+     *
      * @param indep the independent variable node (CGInvOp)
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (unique for independent variable arrays)
@@ -219,7 +219,7 @@ public:
     /**
      * Whether or not two independent variables are considered to be part of
      * the same independent variable array at consecutive locations.
-     * 
+     *
      * @param indepFirst the independent node (CGInvOp) with the lower index
      * @param idFirst an ID assigned by the CodeHandler to the first node
      *                (unique for independent variables)
@@ -236,7 +236,7 @@ public:
     /**
      * Determines whether or not two independents are part of the same
      * independent variable array.
-     * 
+     *
      * @param indep1 the first independent node (CGInvOp or CGLoopIndexedIndepOp)
      * @param id1 an ID assigned by the CodeHandler to indep1
      *            (unique for independent variables)
@@ -253,7 +253,7 @@ public:
     /**
      * Provides the array name for the temporary variables.
      * It should only be called if temporary variables are saved in an array.
-     * 
+     *
      * @param var the temporary variable node
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -263,10 +263,10 @@ public:
                                                         size_t id) = 0;
 
     /**
-     * Provides the index in the associated temporary array of a temporary 
+     * Provides the index in the associated temporary array of a temporary
      * variable.
      * It should only be called if temporary variables are saved in an array.
-     * 
+     *
      * @param var the temporary variable node
      * @param id an ID assigned by the CodeHandler to the operation node
      *           (potentially not unique)
@@ -278,7 +278,7 @@ public:
     /**
      * Whether or not two temporary variables are considered to be part of
      * the same temporary variable array at consecutive locations.
-     * 
+     *
      * @param varFirst the temporary variable node with the lower index
      * @param idFirst an ID assigned by the CodeHandler to the first node
      *                (potentially not unique)
@@ -295,7 +295,7 @@ public:
     /**
      * Determines whether or not two temporary variables are part of the same
      * temporary variable array.
-     * 
+     *
      * @param var1 the temporary variable node
      * @param id1 an ID assigned by the CodeHandler to var1
      *            (potentially not unique)

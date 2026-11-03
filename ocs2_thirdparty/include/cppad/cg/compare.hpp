@@ -105,4 +105,3 @@ inline bool operator!=(const CG<Base> &left, double right) {
 } // END CppAD namespace
 
 #endif
-

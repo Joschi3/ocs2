@@ -1,7 +1,7 @@
 ; robot model meta-information
 model_information {
   manipulatorModelType     0      // 0: Default-arm, 1: Wheel-based manipulator, 2: Floating-arm manipulator, 3: Fully actuated floating-arm manipulator
-  
+
   ; motion joints in the URDF to consider fixed
   removeJoints {
     [0] "j2n6s300_joint_finger_1"
@@ -82,7 +82,7 @@ mpc
   timeHorizon                     1.0   ; [s]
   solutionTimeWindow              0.2   ; [s]
   coldStart                       false
-  
+
   debugPrint                      false
 
   mpcDesiredFrequency             100   ; [Hz]
@@ -205,7 +205,7 @@ finalEndEffector
 }
 
 selfCollision
-{ 
+{
   ; activate self-collision constraint
   activate  false
 
@@ -232,7 +232,7 @@ jointVelocityLimits
 
   ; relaxed log barrier delta
   delta   1e-3
-  
+
   lowerBound
   {
     ; velocity limits for the different types of arm base DOFs

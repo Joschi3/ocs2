@@ -27,7 +27,7 @@
   <depend>robot_state_publisher</depend>
   <depend>segmented_planes_terrain_model</depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
   </export>
 </package>

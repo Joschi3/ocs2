@@ -185,7 +185,7 @@ void ModelCSourceGen<Base>::analyseSparseHessianWithLoops(const std::vector<size
 
 
                 /**
-                 * indexed - non-indexed 
+                 * indexed - non-indexed
                  * d      d f_i    ->   d      d f_i
                  * d x_j2 d x_l1        d x_l2 d x_j1
                  */
@@ -576,7 +576,7 @@ std::vector<CG<Base> > ModelCSourceGen<Base>::prepareSparseHessianWithLoops(Code
     std::vector<map<size_t, set<size_t> > > noLoopEvalHessLocations;
     map<LoopModel<Base>*, HessianWithLoopsInfo<Base> > loopHessInfo;
 
-    /** 
+    /**
      * Load locations in the compressed Hessian
      * d      d y_i
      * d x_j2 d x_j1
@@ -790,10 +790,10 @@ std::vector<CG<Base> > ModelCSourceGen<Base>::prepareSparseHessianWithLoops(Code
 
             /*******************************************************************
              * temporary - indexed
-             * 
+             *
              *      d f_i       .    d x_k1
              * d x_l2  d z_k1        d x_j1
-             * 
+             *
              * -> usually done by  (indexed - temporary) by exploiting the symmetry
              */
             if (!infog.tempIndexedPositions.empty()) {
@@ -868,8 +868,8 @@ std::vector<CG<Base> > ModelCSourceGen<Base>::prepareSparseHessianWithLoops(Code
                 }
 
                 /**
-                 * temporary - non-indexed 
-                 * 
+                 * temporary - non-indexed
+                 *
                  *      d f_i       .    d x_k1
                  * d x_j2  d z_k1        d x_j1
                  */
@@ -1029,7 +1029,7 @@ std::pair<CG<Base>, IndexPattern*> createHessianContribution(CodeHandler<Base>& 
 
     } else {
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution to the Hessian is only evaluated at the
          * relevant iterations
          */
@@ -1081,7 +1081,7 @@ CG<Base> createHessianContribution(CodeHandler<Base>& handler,
     } else {
 
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution to the Hessian is only evaluated at the
          * relevant iterations
          */

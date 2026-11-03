@@ -63,7 +63,7 @@ inline cg::CG<Base> log10(const cg::CG<Base> &x) {
 }
 
 namespace cg  {
-  
+
   using CppAD::abs;
   using CppAD::fabs;
   using CppAD::acos;
@@ -79,7 +79,7 @@ namespace cg  {
   using CppAD::sqrt;
   using CppAD::tan;
   using CppAD::tanh;
-  
+
 #if CPPAD_USE_CPLUSPLUS_2011
   using CppAD::erf;
   using CppAD::asinh;
@@ -88,7 +88,7 @@ namespace cg  {
   using CppAD::expm1;
   using CppAD::log1p;
 #endif
-  
+
   using CppAD::log10;
 
 } // END cg namespace

@@ -256,7 +256,7 @@ std::string ModelCSourceGen<Base>::generateSparseJacobianForRevSingleThreadSourc
                                                                                   const std::string& functionRevFor,
                                                                                   const std::string& revForSuffix,
                                                                                   bool forward) {
-    
+
     LanguageC<Base> langC(_baseTypeName);
     std::string argsDcl = langC.generateDefaultFunctionArgumentsDcl();
     std::vector<std::string> argsDcl2 = langC.generateDefaultFunctionArgumentsDcl2();

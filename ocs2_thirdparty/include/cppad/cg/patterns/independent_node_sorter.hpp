@@ -19,7 +19,7 @@ namespace CppAD {
 namespace cg {
 
 /**
- * Class used to sort independent variable nodes in ascending order 
+ * Class used to sort independent variable nodes in ascending order
  * according to their index (saved in the info vector of the nodes)
  */
 template<class Base>

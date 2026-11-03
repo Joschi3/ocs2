@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Generates the model using the dot language used by graphviz.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>
@@ -102,7 +102,7 @@ public:
     /**
      * Provides the maximum precision used to print constant values in the
      * generated source code
-     * 
+     *
      * @return the maximum number of digits
      */
     virtual size_t getParameterPrecision() const {
@@ -112,7 +112,7 @@ public:
     /**
      * Defines the maximum precision used to print constant values in the
      * generated source code
-     * 
+     *
      * @param p the maximum number of digits
      */
     virtual void setParameterPrecision(size_t p) {
@@ -148,14 +148,14 @@ public:
     }
 
     /**
-     * 
+     *
      */
     inline void setCombineParameterNodes(bool combineParameterNodes) {
         _combineParameterNodes = combineParameterNodes;
     }
-    
+
     /**
-     * 
+     *
      */
     inline bool isCombineParameterNodes() const {
         return _combineParameterNodes;
@@ -198,7 +198,7 @@ public:
     }
 
     /***************************************************************************
-     * 
+     *
      **************************************************************************/
 
     inline void printStaticIndexArray(std::ostringstream& os,
@@ -414,7 +414,7 @@ protected:
             }
         }
 
-        // constant dependent variables 
+        // constant dependent variables
         bool commentWritten = false;
         for (size_t i = 0; i < dependent.size(); i++) {
             if (dependent[i].isParameter()) {
@@ -496,9 +496,9 @@ protected:
     /**
      * Whether or not this operation assign its expression to a variable by
      * itself.
-     * 
+     *
      * @param var the operation node
-     * @return 
+     * @return
      */
     virtual bool directlyAssignsVariable(const OperationNode<Base>& var) const {
         CGOpCode op = var.getOperationType();
@@ -1308,7 +1308,7 @@ protected:
 
     virtual std::string printElseIf(OperationNode<Base>& node) {
         /**
-         * the first argument is the condition, the second argument is the 
+         * the first argument is the condition, the second argument is the
          * if start node, the following arguments are assignments in the
          * previous if branch
          */

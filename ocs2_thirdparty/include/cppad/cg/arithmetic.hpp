@@ -249,4 +249,3 @@ operator*(const CG<Base>& left, const T& right) {
 } // END CppAD namespace
 
 #endif
-

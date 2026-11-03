@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Generates C source code for a bundle of models.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>
@@ -72,7 +72,7 @@ public:
     /**
      * Creates a new helper class for the generation of dynamic libraries
      * using the C language.
-     * 
+     *
      * @param model A model compilation helper (must only be deleted after
      *              this object)
      */
@@ -101,7 +101,7 @@ public:
 
     /**
      * Adds additional models to be compiled into the created library.
-     * 
+     *
      * @param model a model compilation helper (must only be deleted after
      *              this object)
      */
@@ -125,8 +125,8 @@ public:
     }
 
     /**
-     * Provides the user defined custom sources. 
-     * 
+     * Provides the user defined custom sources.
+     *
      * @return maps filenames to the file content for the user defined
      *         sources.
      */
@@ -160,7 +160,7 @@ public:
 
     /**
      * Saves the generated C source code into several files.
-     * 
+     *
      * @param sourcesFolder A directory path where the files should be
      *                      created (any existing files with the same names
      *                      will be overridden).

@@ -47,7 +47,7 @@ class SegmentedPlanesSignedDistanceField : public SignedDistanceField {
 
   grid_map::SignedDistanceField& asGridmapSdf() { return sdf_; }
   const grid_map::SignedDistanceField& asGridmapSdf() const { return sdf_; }
-  const grid_map::GridMap& gridMap() const {return gridMap_; } 
+  const grid_map::GridMap& gridMap() const {return gridMap_; }
 
  protected:
   SegmentedPlanesSignedDistanceField(

@@ -106,7 +106,7 @@ public:
 
     /**
      * Evaluates the Jacobian and the Hessian of the loop model
-     * 
+     *
      * @param individualColoring whether or not there are atomic
      *                           functions in the model
      */

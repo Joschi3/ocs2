@@ -25,7 +25,7 @@ inline void LanguageC<Base>::generateNames4RandomIndexPatterns(const std::set<Ra
 
     std::set<std::string> usedNames;
 
-    // save existing names so that they are not to overridden 
+    // save existing names so that they are not to overridden
     // (independent variable names might have already used them)
     for (RandomIndexPattern* ip : randomPatterns) {
         if (!ip->getName().empty()) {

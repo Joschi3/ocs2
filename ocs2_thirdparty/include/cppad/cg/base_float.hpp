@@ -40,7 +40,7 @@ public:
         return std::numeric_limits<float>::quiet_NaN();
     }
 
-    static const int digits10 
+    static const int digits10
         = std::numeric_limits<float>::digits10;
 };
 
@@ -67,4 +67,3 @@ inline cg::CG<float> azmul(const cg::CG<float>& left,
 } // END CppAD namespace
 
 #endif
-

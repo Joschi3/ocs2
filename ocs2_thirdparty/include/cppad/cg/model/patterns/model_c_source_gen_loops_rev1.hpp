@@ -23,7 +23,7 @@ namespace cg {
  **************************************************************************/
 
 /**
- * 
+ *
  * @param sources maps files names to the generated source code
  * @param elements  [equation]{vars}
  */
@@ -99,7 +99,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseOneWithLoops(const std::map<size
      **********************************************************************/
 
     /**
-     * original equations outside the loops 
+     * original equations outside the loops
      */
     // temporaries (zero orders)
     std::vector<CGBase> tmps;
@@ -172,7 +172,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseOneWithLoops(const std::map<size
     }
 
     /***********************************************************************
-     * equations in loops 
+     * equations in loops
      **********************************************************************/
     typename map<LoopModel<Base>*, std::vector<JacobianWithLoopsRowInfo> >::iterator itl2Eq;
     for (itl2Eq = loopEqInfo.begin(); itl2Eq != loopEqInfo.end(); ++itl2Eq) {
@@ -337,7 +337,7 @@ void ModelCSourceGen<Base>::prepareSparseReverseOneWithLoops(const std::map<size
     }
 
     /**
-     * 
+     *
      */
     string functionRev1 = _name + "_" + FUNCTION_SPARSE_REVERSE_ONE;
     _sources[functionRev1 + ".c"] = generateGlobalForRevWithLoopsFunctionSource(elements,

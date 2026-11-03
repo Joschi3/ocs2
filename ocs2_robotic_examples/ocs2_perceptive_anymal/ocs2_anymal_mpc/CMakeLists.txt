@@ -5,7 +5,7 @@ project(ocs2_anymal_mpc)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(ocs2_anymal_models REQUIRED)
-find_package(ocs2_quadruped_interface REQUIRED) 
+find_package(ocs2_quadruped_interface REQUIRED)
 
 ## Eigen3
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
@@ -79,8 +79,8 @@ install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}/
 )
-install(TARGETS 
-  ${PROJECT_NAME}_mpc_node 
+install(TARGETS
+  ${PROJECT_NAME}_mpc_node
   ${PROJECT_NAME}_dummy_mrt_node
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -104,7 +104,7 @@ if(BUILD_TESTING)
   set_tests_properties(${PROJECT_NAME}_test PROPERTIES TIMEOUT 1200)
 endif()
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

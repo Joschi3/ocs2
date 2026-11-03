@@ -212,15 +212,15 @@ void iit::camel::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(10, 10) = L(10, 10) - L(11, 10) * L(11, 10);
     L(10, 9) = L(10, 9) - L(11, 10) * L(11, 9);
     L(9, 9) = L(9, 9) - L(11, 9) * L(11, 9);
-    
+
     // Joint RH_HFE, index 10 :
     L(10, 10) = std::sqrt(L(10, 10));
     L(10, 9) = L(10, 9) / L(10, 10);
     L(9, 9) = L(9, 9) - L(10, 9) * L(10, 9);
-    
+
     // Joint RH_HAA, index 9 :
     L(9, 9) = std::sqrt(L(9, 9));
-    
+
     // Joint LH_KFE, index 8 :
     L(8, 8) = std::sqrt(L(8, 8));
     L(8, 7) = L(8, 7) / L(8, 8);
@@ -228,15 +228,15 @@ void iit::camel::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(7, 7) = L(7, 7) - L(8, 7) * L(8, 7);
     L(7, 6) = L(7, 6) - L(8, 7) * L(8, 6);
     L(6, 6) = L(6, 6) - L(8, 6) * L(8, 6);
-    
+
     // Joint LH_HFE, index 7 :
     L(7, 7) = std::sqrt(L(7, 7));
     L(7, 6) = L(7, 6) / L(7, 7);
     L(6, 6) = L(6, 6) - L(7, 6) * L(7, 6);
-    
+
     // Joint LH_HAA, index 6 :
     L(6, 6) = std::sqrt(L(6, 6));
-    
+
     // Joint RF_KFE, index 5 :
     L(5, 5) = std::sqrt(L(5, 5));
     L(5, 4) = L(5, 4) / L(5, 5);
@@ -244,15 +244,15 @@ void iit::camel::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(4, 4) = L(4, 4) - L(5, 4) * L(5, 4);
     L(4, 3) = L(4, 3) - L(5, 4) * L(5, 3);
     L(3, 3) = L(3, 3) - L(5, 3) * L(5, 3);
-    
+
     // Joint RF_HFE, index 4 :
     L(4, 4) = std::sqrt(L(4, 4));
     L(4, 3) = L(4, 3) / L(4, 4);
     L(3, 3) = L(3, 3) - L(4, 3) * L(4, 3);
-    
+
     // Joint RF_HAA, index 3 :
     L(3, 3) = std::sqrt(L(3, 3));
-    
+
     // Joint LF_KFE, index 2 :
     L(2, 2) = std::sqrt(L(2, 2));
     L(2, 1) = L(2, 1) / L(2, 2);
@@ -260,15 +260,15 @@ void iit::camel::dyn::tpl::JSIM<TRAIT>::computeL() {
     L(1, 1) = L(1, 1) - L(2, 1) * L(2, 1);
     L(1, 0) = L(1, 0) - L(2, 1) * L(2, 0);
     L(0, 0) = L(0, 0) - L(2, 0) * L(2, 0);
-    
+
     // Joint LF_HFE, index 1 :
     L(1, 1) = std::sqrt(L(1, 1));
     L(1, 0) = L(1, 0) / L(1, 1);
     L(0, 0) = L(0, 0) - L(1, 0) * L(1, 0);
-    
+
     // Joint LF_HAA, index 0 :
     L(0, 0) = std::sqrt(L(0, 0));
-    
+
 }
 
 template <typename TRAIT>
@@ -341,4 +341,3 @@ void iit::camel::dyn::tpl::JSIM<TRAIT>::computeLInverse() {
     Linv(11, 10) = - Linv(10, 10) * ((Linv(11, 11) * L(11, 10)) + 0);
     Linv(11, 9) = - Linv(9, 9) * ((Linv(11, 10) * L(10, 9)) + (Linv(11, 11) * L(11, 9)) + 0);
 }
-

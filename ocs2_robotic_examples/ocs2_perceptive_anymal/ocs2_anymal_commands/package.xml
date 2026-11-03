@@ -18,7 +18,7 @@
   <depend>ocs2_switched_model_interface</depend>
   <depend>grid_map_filters_rsl</depend>
 
-  <export>                               
+  <export>
     <build_type>ament_cmake</build_type>
   </export>
 </package>

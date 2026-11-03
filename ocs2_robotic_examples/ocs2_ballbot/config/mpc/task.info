@@ -178,6 +178,3 @@ Q_final
   (8,8) 0.0  ; thetay_dot
   (9,9) 0.0  ; thetax_dot
 }
-
-
-

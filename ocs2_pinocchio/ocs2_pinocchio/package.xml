@@ -15,8 +15,8 @@
   <exec_depend>ocs2_self_collision</exec_depend>
   <exec_depend>ocs2_self_collision_visualization</exec_depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
-  </export> 
+  </export>
 
 </package>

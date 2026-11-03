@@ -90,7 +90,7 @@ Was a ipopt_prefix specified on the cmake command line.
 \def CPPAD_DEPRECATED
 This symbol is not currently being used.
 */
-# define CPPAD_DEPRECATED 
+# define CPPAD_DEPRECATED
 
 /*!
 \def CPPAD_BOOSTVECTOR

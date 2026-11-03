@@ -63,50 +63,50 @@ void iit::Ballbot::dyn::tpl::InverseDynamics<TRAIT>::C_terms(JointState& jForces
 {
     // Link 'dummy_ball1'
     dummy_ball1_v(iit::rbd::LZ) = qd(JBALL_X);   // dummy_ball1_v = vJ, for the first link of a fixed base robot
-    
+
     // The first joint is prismatic, no centripetal terms.
     dummy_ball1_f.setZero();
-    
+
     // Link 'ball'
     ball_v = ((xm->fr_ball_X_fr_dummy_ball1) * dummy_ball1_v);
     ball_v(iit::rbd::LZ) += qd(JBALL_Y);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(ball_v, vcross);
-    
+
     ball_a = (vcross.col(iit::rbd::LZ) * qd(JBALL_Y));
-    
+
     ball_f = ball_I * ball_a + iit::rbd::vxIv(ball_v, ball_I);
-    
+
     // Link 'dummy_base1'
     dummy_base1_v = ((xm->fr_dummy_base1_X_fr_ball) * ball_v);
     dummy_base1_v(iit::rbd::AZ) += qd(JBASE_Z);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(dummy_base1_v, vcross);
-    
+
     dummy_base1_a = (xm->fr_dummy_base1_X_fr_ball) * ball_a + vcross.col(iit::rbd::AZ) * qd(JBASE_Z);
-    
+
     dummy_base1_f = dummy_base1_I * dummy_base1_a + iit::rbd::vxIv(dummy_base1_v, dummy_base1_I);
-    
+
     // Link 'dummy_base2'
     dummy_base2_v = ((xm->fr_dummy_base2_X_fr_dummy_base1) * dummy_base1_v);
     dummy_base2_v(iit::rbd::AZ) += qd(JBASE_Y);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(dummy_base2_v, vcross);
-    
+
     dummy_base2_a = (xm->fr_dummy_base2_X_fr_dummy_base1) * dummy_base1_a + vcross.col(iit::rbd::AZ) * qd(JBASE_Y);
-    
+
     dummy_base2_f = dummy_base2_I * dummy_base2_a + iit::rbd::vxIv(dummy_base2_v, dummy_base2_I);
-    
+
     // Link 'base'
     base_v = ((xm->fr_base_X_fr_dummy_base2) * dummy_base2_v);
     base_v(iit::rbd::AZ) += qd(JBASE_X);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(base_v, vcross);
-    
+
     base_a = (xm->fr_base_X_fr_dummy_base2) * dummy_base2_a + vcross.col(iit::rbd::AZ) * qd(JBASE_X);
-    
+
     base_f = base_I * base_a + iit::rbd::vxIv(base_v, base_I);
-    
+
 
     secondPass(jForces);
 }
@@ -118,54 +118,54 @@ void iit::Ballbot::dyn::tpl::InverseDynamics<TRAIT>::firstPass(const JointState&
     dummy_ball1_a = (xm->fr_dummy_ball1_X_fr_world).col(iit::rbd::LZ) * Scalar(iit::rbd::g);
     dummy_ball1_a(iit::rbd::LZ) += qdd(JBALL_X);
     dummy_ball1_v(iit::rbd::LZ) = qd(JBALL_X);   // dummy_ball1_v = vJ, for the first link of a fixed base robot
-    
+
     // The first joint is prismatic, no centripetal terms.
     dummy_ball1_f = dummy_ball1_I * dummy_ball1_a - fext[DUMMY_BALL1];
-    
+
     // First pass, link 'ball'
     ball_v = ((xm->fr_ball_X_fr_dummy_ball1) * dummy_ball1_v);
     ball_v(iit::rbd::LZ) += qd(JBALL_Y);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(ball_v, vcross);
-    
+
     ball_a = (xm->fr_ball_X_fr_dummy_ball1) * dummy_ball1_a + vcross.col(iit::rbd::LZ) * qd(JBALL_Y);
     ball_a(iit::rbd::LZ) += qdd(JBALL_Y);
-    
+
     ball_f = ball_I * ball_a + iit::rbd::vxIv(ball_v, ball_I) - fext[BALL];
-    
+
     // First pass, link 'dummy_base1'
     dummy_base1_v = ((xm->fr_dummy_base1_X_fr_ball) * ball_v);
     dummy_base1_v(iit::rbd::AZ) += qd(JBASE_Z);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(dummy_base1_v, vcross);
-    
+
     dummy_base1_a = (xm->fr_dummy_base1_X_fr_ball) * ball_a + vcross.col(iit::rbd::AZ) * qd(JBASE_Z);
     dummy_base1_a(iit::rbd::AZ) += qdd(JBASE_Z);
-    
+
     dummy_base1_f = dummy_base1_I * dummy_base1_a + iit::rbd::vxIv(dummy_base1_v, dummy_base1_I) - fext[DUMMY_BASE1];
-    
+
     // First pass, link 'dummy_base2'
     dummy_base2_v = ((xm->fr_dummy_base2_X_fr_dummy_base1) * dummy_base1_v);
     dummy_base2_v(iit::rbd::AZ) += qd(JBASE_Y);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(dummy_base2_v, vcross);
-    
+
     dummy_base2_a = (xm->fr_dummy_base2_X_fr_dummy_base1) * dummy_base1_a + vcross.col(iit::rbd::AZ) * qd(JBASE_Y);
     dummy_base2_a(iit::rbd::AZ) += qdd(JBASE_Y);
-    
+
     dummy_base2_f = dummy_base2_I * dummy_base2_a + iit::rbd::vxIv(dummy_base2_v, dummy_base2_I) - fext[DUMMY_BASE2];
-    
+
     // First pass, link 'base'
     base_v = ((xm->fr_base_X_fr_dummy_base2) * dummy_base2_v);
     base_v(iit::rbd::AZ) += qd(JBASE_X);
-    
+
     iit::rbd::motionCrossProductMx<Scalar>(base_v, vcross);
-    
+
     base_a = (xm->fr_base_X_fr_dummy_base2) * dummy_base2_a + vcross.col(iit::rbd::AZ) * qd(JBASE_X);
     base_a(iit::rbd::AZ) += qdd(JBASE_X);
-    
+
     base_f = base_I * base_a + iit::rbd::vxIv(base_v, base_I) - fext[BASE];
-    
+
 }
 
 template <typename TRAIT>

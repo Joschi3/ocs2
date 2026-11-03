@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Specialization of the C language function names for floats (requires C99)
- * 
+ *
  * @author Joao Leal
  */
 template<>

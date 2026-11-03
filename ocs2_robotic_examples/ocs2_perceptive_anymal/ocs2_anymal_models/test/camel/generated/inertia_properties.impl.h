@@ -158,4 +158,3 @@ iit::camel::dyn::tpl::InertiaProperties<TRAIT>::InertiaProperties()
                 Scalar(-2.3657558E-4)) );
 
 }
-

@@ -9,5 +9,3 @@ iit::Ballbot::tpl::Jacobians<TRAIT>::Jacobians
 template <typename TRAIT>
 void iit::Ballbot::tpl::Jacobians<TRAIT>::updateParameters() {
 }
-
-

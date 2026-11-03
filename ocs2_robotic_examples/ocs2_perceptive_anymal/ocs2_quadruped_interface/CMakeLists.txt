@@ -21,17 +21,17 @@ set(dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ocs2_core REQUIRED)
 find_package(ocs2_ddp REQUIRED)
-find_package(ocs2_mpc REQUIRED) 
+find_package(ocs2_mpc REQUIRED)
 find_package(ocs2_sqp REQUIRED)
 find_package(ocs2_ros_interfaces REQUIRED)
-find_package(ocs2_robotic_tools REQUIRED) 
+find_package(ocs2_robotic_tools REQUIRED)
 find_package(ocs2_switched_model_interface REQUIRED)
 find_package(ocs2_anymal_commands REQUIRED)
-find_package(rclcpp REQUIRED) 
-find_package(tf2 REQUIRED) 
+find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
 find_package(kdl_parser REQUIRED)
 find_package(robot_state_publisher REQUIRED)
-find_package(segmented_planes_terrain_model REQUIRED) 
+find_package(segmented_planes_terrain_model REQUIRED)
 find_package(PCL REQUIRED)
 
 ## Eigen3
@@ -106,7 +106,7 @@ install(DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}/
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

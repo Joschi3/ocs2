@@ -478,4 +478,3 @@ inline cg::CG<Base> log1p(const cg::CG<Base>& x);
 #include <cppad/cg/declare_cg_loops.hpp>
 
 #endif
-

@@ -34,7 +34,7 @@ inline std::string getWorkingDirectory();
 
 /**
  * creates a new folder (system dependent)
- * 
+ *
  * @param folder the path to the folder
  * @throws CGException on failure to create the folder
  */
@@ -42,7 +42,7 @@ inline void createFolder(const std::string& folder);
 
 /**
  * Creates a new path (system dependent)
- * 
+ *
  * @param baseFolder the path to the base folder
  * @param file the file or folder name inside the base folder
  * @return the new path
@@ -52,7 +52,7 @@ inline std::string createPath(const std::string& baseFolder,
 
 /**
  * Escapes a file or folder path (system dependent)
- * 
+ *
  * @param path the file/folder path
  * @return the escaped file/folder path
  */
@@ -89,7 +89,7 @@ inline bool isFile(const std::string& path);
 /**
  * Calls an external executable (system dependent).
  * In the case of an error during execution an exception will be thrown.
- * 
+ *
  * @param executable the executable path
  * @param args the command line arguments to the executable
  * @param stdOutErrMessage standard output and standard error message

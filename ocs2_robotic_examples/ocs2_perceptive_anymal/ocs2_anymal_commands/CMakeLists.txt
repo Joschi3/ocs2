@@ -67,7 +67,7 @@ add_executable(target_command_node
   src/AnymalPoseCommandNode.cpp
 )
 target_link_libraries(target_command_node ${dependencies_targets})
-target_link_libraries(target_command_node   
+target_link_libraries(target_command_node
   ${PROJECT_NAME}
 )
 target_compile_options(target_command_node PRIVATE ${OCS2_CXX_FLAGS})
@@ -76,7 +76,7 @@ add_executable(gait_command_node
   src/AnymalGaitNode.cpp
 )
 target_link_libraries(gait_command_node ${dependencies_targets})
-target_link_libraries(gait_command_node   
+target_link_libraries(gait_command_node
   ${PROJECT_NAME}
 )
 target_compile_options(gait_command_node PRIVATE ${OCS2_CXX_FLAGS})
@@ -85,7 +85,7 @@ add_executable(motion_command_node
   src/AnymalMotionCommandNode.cpp
   )
 target_link_libraries(motion_command_node ${dependencies_targets})
-target_link_libraries(motion_command_node   
+target_link_libraries(motion_command_node
   ${PROJECT_NAME}
 )
 target_compile_options(motion_command_node PRIVATE ${OCS2_CXX_FLAGS})
@@ -104,9 +104,9 @@ install(
 )
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-install(TARGETS 
-  target_command_node 
-  gait_command_node 
+install(TARGETS
+  target_command_node
+  gait_command_node
   motion_command_node
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -132,7 +132,7 @@ target_link_libraries(test_${PROJECT_NAME}
   -lstdc++fs
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

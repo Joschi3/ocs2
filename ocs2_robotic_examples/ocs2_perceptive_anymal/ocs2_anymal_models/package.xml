@@ -18,7 +18,7 @@
   <depend>ocs2_robotic_tools</depend>
   <depend>rclcpp</depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
   </export>
 </package>

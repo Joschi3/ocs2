@@ -98,9 +98,9 @@ install(
   INCLUDES DESTINATION include/${PROJECT_NAME}
 )
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
-install(TARGETS 
-  ${PROJECT_NAME}_mpc_node 
-  ${PROJECT_NAME}_dummy_mrt_node 
+install(TARGETS
+  ${PROJECT_NAME}_mpc_node
+  ${PROJECT_NAME}_dummy_mrt_node
   ${PROJECT_NAME}_perceptive_demo
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -129,7 +129,7 @@ if(BUILD_TESTING)
   set_tests_properties(${PROJECT_NAME}_test PROPERTIES TIMEOUT 3600)
 endif()
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

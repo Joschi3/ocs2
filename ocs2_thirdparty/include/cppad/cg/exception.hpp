@@ -21,7 +21,7 @@ namespace cg {
 
 /**
  * The exception used by CppADCodeGen
- * 
+ *
  * @author Joao Leal
  */
 class CGException : public std::exception {

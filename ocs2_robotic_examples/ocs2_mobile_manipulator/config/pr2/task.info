@@ -1,7 +1,7 @@
 ; robot model meta-information
 model_information {
   manipulatorModelType     1      // 0: Default-arm, 1: Wheel-based manipulator, 2: Floating-arm manipulator, 3: Fully actuated floating-arm manipulator
-  
+
   ; motion joints in the URDF to consider fixed
   removeJoints {
     [0]  "fl_caster_rotation_joint"
@@ -113,7 +113,7 @@ mpc
   timeHorizon                     1.0   ; [s]
   solutionTimeWindow              0.2   ; [s]
   coldStart                       false
-  
+
   debugPrint                      false
 
   mpcDesiredFrequency             100   ; [Hz]
@@ -206,7 +206,7 @@ inputCost
         (1,1)  1.5  ; turning velocity
       }
     }
-    
+
     ; input costs for the arm DOFs
     arm
     {
@@ -238,7 +238,7 @@ finalEndEffector
 }
 
 selfCollision
-{ 
+{
   ; activate self-collision constraint
   activate  false
 

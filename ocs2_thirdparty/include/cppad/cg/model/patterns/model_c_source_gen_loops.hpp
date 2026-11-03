@@ -66,10 +66,10 @@ public:
     // original J index -> {locationIt0, locationIt1, ...}
     std::map<size_t, std::vector<size_t> > nonIndexedPositions;
 
-    // original J index 
+    // original J index
     std::set<size_t> nonIndexedEvals;
 
-    // original J index -> k index 
+    // original J index -> k index
     std::map<size_t, std::set<size_t> > tmpEvals;
 };
 
@@ -632,7 +632,7 @@ CG<Base> createConditionalContribution(CodeHandler<Base>& handler,
 }
 
 /**
- * 
+ *
  * @param handler source code handler
  * @param locationsIter2Pos maps each iteration to the location of the result
  * @param iterCount the number of iteration of the loop
@@ -642,7 +642,7 @@ CG<Base> createConditionalContribution(CodeHandler<Base>& handler,
  *                    dependent array
  * @param iterationIndexOp the iteration index operation for this loop
  * @param ifElses conditions used inside the loop
- * @return 
+ * @return
  */
 template<class Base>
 std::pair<CG<Base>, IndexPattern*> createLoopResult(CodeHandler<Base>& handler,
@@ -662,7 +662,7 @@ std::pair<CG<Base>, IndexPattern*> createLoopResult(CodeHandler<Base>& handler,
 
     } else {
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution is only evaluated at the relevant iterations
          */
 
@@ -697,7 +697,7 @@ std::pair<CG<Base>, IndexPattern*> createLoopResult(CodeHandler<Base>& handler,
 
         // {dependent index pattern location, }
         std::vector<size_t> ainfo{handler.addLoopDependentIndexPattern(*pattern), assignOrAdd};
-        // {indexed expression, dependency on the index} 
+        // {indexed expression, dependency on the index}
         std::vector<Argument<Base> > indexedArgs{asArgument(value), iterationIndexOp};
 
         OperationNode<Base>* yIndexed = handler.makeNode(CGOpCode::LoopIndexedDep, ainfo, indexedArgs);
@@ -766,7 +766,7 @@ public:
 };
 
 /**
- * 
+ *
  * @param loopGroups Used elements from the arrays provided by the group
  *                   function calls (loop->group->{array->{compressed position} })
  * @param matrixInfo maps each element to its position
@@ -828,7 +828,7 @@ inline void determineForRevUsagePatterns(const std::map<LoopModel<Base>*, std::m
                 data->startLocPattern.reset(IndexPattern::detect(arrayStart));
             } else {
                 /**
-                 * combine calls to this group function which provide 
+                 * combine calls to this group function which provide
                  * the same number of elements
                  */
                 map<size_t, map<size_t, size_t> > elCount2localIt2jcols;
@@ -1148,7 +1148,7 @@ void printForRevUsageFunction(std::ostringstream& out,
 }
 
 /**
- * 
+ *
  * @param elements
  * @param loopGroups Used elements from the arrays provided by the group
  *                   function calls (loop->group->{array->{compressed position} })
@@ -1159,7 +1159,7 @@ void printForRevUsageFunction(std::ostringstream& out,
  * @param baseTypeName
  * @param suffix
  * @param generateLocalFunctionName
- * @return 
+ * @return
  */
 template<class Base>
 std::string generateGlobalForRevWithLoopsFunctionSource(const std::map<size_t, std::vector<size_t> >& elements,
@@ -1215,7 +1215,7 @@ std::string generateGlobalForRevWithLoopsFunctionSource(const std::map<size_t, s
         out << "      case " << jrow << ":\n";
 
         /**
-         * contributions from equations not in loops 
+         * contributions from equations not in loops
          * (must come before contributions from loops because of the assignments)
          */
         const auto itnl = nonLoopElements.find(jrow);

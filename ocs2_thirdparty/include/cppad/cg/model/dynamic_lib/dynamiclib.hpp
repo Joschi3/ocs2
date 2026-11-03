@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Abstract class used to load compiled models in a dynamic library
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>

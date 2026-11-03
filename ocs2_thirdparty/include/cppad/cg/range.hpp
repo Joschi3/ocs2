@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Combines ordered and non-overlapping regions of iteration indexes.
- * 
+ *
  * @param iterRegions the existing iteration regions
  * @param newIterRegions the iteration regions to be added
  */
@@ -56,7 +56,7 @@ inline void combineNonOverlapingIterationRanges(std::vector<size_t>& iterRegions
 
 /**
  * Combines ordered regions of iteration indexes.
- * 
+ *
  * @param iterRegions the existing iteration regions
  * @param newIterRegions the iteration regions to be added
  */
@@ -111,11 +111,11 @@ inline void combineOverlapingIterationRanges(std::vector<size_t>& iterRegions,
 }
 
 /**
- * Determines the iteration regions not present in the provided iteration 
+ * Determines the iteration regions not present in the provided iteration
  * regions.
- * 
- * @param iterRegions a vector filled with ordered and non-overlapping 
- *                    iteration regions each defined with pairs of integers 
+ *
+ * @param iterRegions a vector filled with ordered and non-overlapping
+ *                    iteration regions each defined with pairs of integers
  *                    (start1, end1, start2, end2, ...)
  * @return the iterations not present in iterRegions
  */
@@ -151,8 +151,8 @@ inline std::vector<size_t> invertIterationRanges(const std::vector<size_t>& iter
 
 /**
  * Determines the iteration regions that an 'if' branch can be called for.
- * 
- * @param bScope a node that marks the beginning of the if branch. It must 
+ *
+ * @param bScope a node that marks the beginning of the if branch. It must
  *               be of type CGStartIfOp, CGElseIfOp or CGElseOp.
  * @param iterationIndexOp the iteration index node used in the condition(s)
  * @return the iteration regions

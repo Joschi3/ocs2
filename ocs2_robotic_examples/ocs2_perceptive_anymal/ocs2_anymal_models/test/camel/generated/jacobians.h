@@ -37,7 +37,7 @@ class Jacobians {
             const Type_fr_base_J_fr_LF_FOOT& update(const JState&);
         protected:
         };
-        
+
         class Type_fr_base_J_fr_LH_FOOT : public JacobianT<Scalar, 3, Type_fr_base_J_fr_LH_FOOT>
         {
         public:
@@ -46,7 +46,7 @@ class Jacobians {
             const Type_fr_base_J_fr_LH_FOOT& update(const JState&);
         protected:
         };
-        
+
         class Type_fr_base_J_fr_RF_FOOT : public JacobianT<Scalar, 3, Type_fr_base_J_fr_RF_FOOT>
         {
         public:
@@ -55,7 +55,7 @@ class Jacobians {
             const Type_fr_base_J_fr_RF_FOOT& update(const JState&);
         protected:
         };
-        
+
         class Type_fr_base_J_fr_RH_FOOT : public JacobianT<Scalar, 3, Type_fr_base_J_fr_RH_FOOT>
         {
         public:
@@ -64,7 +64,7 @@ class Jacobians {
             const Type_fr_base_J_fr_RH_FOOT& update(const JState&);
         protected:
         };
-        
+
     public:
         Jacobians();
         void updateParameters();

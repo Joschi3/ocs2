@@ -217,4 +217,3 @@ inline CG<Base>& CG<Base>::operator*=(const T &right) {
 } // END CppAD namespace
 
 #endif
-

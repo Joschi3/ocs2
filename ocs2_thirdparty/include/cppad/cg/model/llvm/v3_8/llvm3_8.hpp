@@ -18,7 +18,7 @@
 /**
  * LLVM requires the use of it own flags which can make it difficult to compile
  * libraries not using NDEBUG often required by LLVM.
- * The define LLVM_CPPFLAG_NDEBUG can be used to apply NDEBUG only to LLVM 
+ * The define LLVM_CPPFLAG_NDEBUG can be used to apply NDEBUG only to LLVM
  * headers.
  */
 #ifdef LLVM_WITH_NDEBUG

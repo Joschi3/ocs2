@@ -1,5 +1,5 @@
 centroidalModelType             1      // 0: FullCentroidalDynamics, 1: Single Rigid Body Dynamics
-  
+
 legged_robot_interface
 {
   verbose                               false  // show the loaded parameters
@@ -248,7 +248,7 @@ R
 frictionConeSoftConstraint
 {
   frictionCoefficient    0.5
-  
+
   ; relaxed log barrier parameters
   mu                     0.1
   delta                  5.0

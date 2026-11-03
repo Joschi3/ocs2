@@ -76,7 +76,7 @@ void ModelCSourceGen<Base>::analyseSparseJacobianWithLoops(const std::vector<siz
 
     size_t nnz = rows.size();
 
-    /** 
+    /**
      * Load locations in the compressed Jacobian
      */
     for (size_t el = 0; el < nnz; el++) {
@@ -140,7 +140,7 @@ void ModelCSourceGen<Base>::analyseSparseJacobianWithLoops(const std::vector<siz
                 if (loopRow.find(tapeJ) != loopRow.end()) {
                     loopEvalRow.insert(tapeJ);
 
-                    //this indexed variable must be request for all iterations 
+                    //this indexed variable must be request for all iterations
                     std::vector<size_t>& positions = rowInfo.indexedPositions[tapeJ];
                     positions.resize(iterations, (std::numeric_limits<size_t>::max)());
                     if (positions[iteration] != (std::numeric_limits<size_t>::max)()) {
@@ -158,7 +158,7 @@ void ModelCSourceGen<Base>::analyseSparseJacobianWithLoops(const std::vector<siz
             if (pos != nullptr && loopRow.find(pos->tape) != loopRow.end()) {
                 loopEvalRow.insert(pos->tape);
 
-                //this non-indexed element must be request for all iterations 
+                //this non-indexed element must be request for all iterations
                 std::vector<size_t>& positions = rowInfo.nonIndexedPositions[j];
                 positions.resize(iterations, (std::numeric_limits<size_t>::max)());
                 if (positions[iteration] != (std::numeric_limits<size_t>::max)()) {
@@ -246,7 +246,7 @@ std::vector<CG<Base> > ModelCSourceGen<Base>::prepareSparseJacobianWithLoops(Cod
      **********************************************************************/
 
     /**
-     * original equations outside the loops 
+     * original equations outside the loops
      */
     // temporaries (zero orders)
     std::vector<CGBase> tmps;
@@ -365,7 +365,7 @@ std::vector<CG<Base> > ModelCSourceGen<Base>::prepareSparseJacobianWithLoops(Cod
 
         std::vector<std::pair<CGBase, IndexPattern*> > indexedLoopResults(maxJacElSize);
 
-        // create the dependents (jac elements) for indexed and constant 
+        // create the dependents (jac elements) for indexed and constant
         size_t jacLE = 0;
         for (size_t tapeI = 0; tapeI < eqs.size(); tapeI++) {
             JacobianWithLoopsRowInfo& rowInfo = eqs[tapeI];
@@ -501,7 +501,7 @@ std::pair<CG<Base>, IndexPattern*> createJacobianElement(CodeHandler<Base>& hand
         handler.manageLoopDependentIndexPattern(pattern);
     } else {
         /**
-         * must create a conditional element so that this 
+         * must create a conditional element so that this
          * contribution to the Jacobian is only evaluated at the
          * relevant iterations
          */

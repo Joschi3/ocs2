@@ -66,4 +66,3 @@ public:
 } // namespace iit
 
 #endif /* DOUBLETRAIT_OCS2_H_ */
-

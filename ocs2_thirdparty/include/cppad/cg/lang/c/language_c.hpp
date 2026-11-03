@@ -845,7 +845,7 @@ protected:
                 }
 
                 assignCount += printAssignment(node);
-                
+
                 CPPAD_ASSERT_KNOWN(_streamStack.empty(), "Error writing all operations to output stream")
             }
 

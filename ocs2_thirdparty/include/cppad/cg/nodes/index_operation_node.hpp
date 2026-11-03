@@ -20,10 +20,10 @@ namespace cg {
 
 /**
  * An index reference operation node
- * 
+ *
  * This is a custom OperationNode class and therefore cannot be transformed
  * into any other node type (makeAlias() and setOperation() might not work).
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>

@@ -145,7 +145,7 @@ inline size_t LanguageC<Base>::printLoopIndexedDepsUsingLoop(const std::vector<O
     op2->getArguments().push_back(_info->auxIterationIndexOp);
 
     std::ostringstream rightAssign;
-    
+
     rightAssign << _nameGen->generateIndexedDependent(*op2, 0, *p2dip);
 
     /**

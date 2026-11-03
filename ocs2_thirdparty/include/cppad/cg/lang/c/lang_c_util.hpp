@@ -21,7 +21,7 @@ namespace cg {
 
 /**
  * Prints the model to standard output
- * 
+ *
  * @param fun the model
  */
 template<class Base>
@@ -33,7 +33,7 @@ inline void printModel(ADFun<CG<Base> >& fun) {
 
 /**
  * Prints the model to standard output
- * 
+ *
  * @param fun the model
  * @param depNames the names to be used for the dependent variables
  * @param indepNames the names to be used for the independent variables

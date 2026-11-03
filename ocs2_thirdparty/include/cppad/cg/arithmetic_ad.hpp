@@ -65,4 +65,3 @@ inline AD<CG<Base> > operator*(const AD<CG<Base> >& left, const CG<Base>& right)
 } // END CppAD namespace
 
 #endif
-

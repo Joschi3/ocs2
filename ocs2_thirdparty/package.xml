@@ -11,10 +11,9 @@
   <license>Check individual license files for each library</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  
-  <export>                               
-   <build_type>ament_cmake</build_type> 
-  </export> 
+
+  <export>
+   <build_type>ament_cmake</build_type>
+  </export>
 
 </package>
-

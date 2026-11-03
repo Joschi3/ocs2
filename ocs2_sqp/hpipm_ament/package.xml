@@ -14,7 +14,7 @@
   <depend>blasfeo_ament</depend>
 
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
-  </export> 
+  </export>
 </package>

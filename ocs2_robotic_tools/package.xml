@@ -12,14 +12,14 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  
+
   <build_depend>ocs2_core</build_depend>
   <build_depend>ocs2_oc</build_depend>
   <exec_depend>ocs2_core</exec_depend>
   <exec_depend>ocs2_oc</exec_depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
-  </export> 
+  </export>
 
 </package>

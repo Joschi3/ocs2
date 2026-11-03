@@ -23,7 +23,7 @@ namespace cg {
 
 /**
  * Useful class for generating a JIT evaluated model library.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>
@@ -38,7 +38,7 @@ public:
 
     /**
      * Creates a LLVM model library processor.
-     * 
+     *
      * @param librarySourceGen
      */
     LlvmModelLibraryProcessor(ModelLibraryCSourceGen<Base>& librarySourceGen) :
@@ -82,9 +82,9 @@ public:
 
         this->modelLibraryHelper_->startingJob("", JobTimer::JIT_MODEL_LIBRARY);
 
-        llvm::InitializeAllTargetMCs(); 
+        llvm::InitializeAllTargetMCs();
         llvm::InitializeAllTargets();
-        llvm::InitializeAllAsmPrinters(); 
+        llvm::InitializeAllAsmPrinters();
 
         _context.reset(new llvm::LLVMContext());
 
@@ -227,7 +227,7 @@ protected:
 
         CompilerInvocation::setLangDefaults(*invocation->getLangOpts(), IK_C,
                                             llvm::Triple(invocation->TargetOpts->Triple),
-                                            invocation->getPreprocessorOpts(), 
+                                            invocation->getPreprocessorOpts(),
                                             LangStandard::lang_unspecified);
         invocation->getFrontendOpts().DisableFree = false; // make sure we free memory (by default it does not)
 

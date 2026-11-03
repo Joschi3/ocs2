@@ -252,7 +252,7 @@ inline void callExecutable(const std::string& executable,
         for (size_t i = 0; i < args.size(); i++) {
             args2[i + 1] = toCharArray(args[i]);
         }
-        args2.back() = (char *) nullptr; // END             
+        args2.back() = (char *) nullptr; // END
 
         int eCode = execv(executable.c_str(), &args2[0]);
 

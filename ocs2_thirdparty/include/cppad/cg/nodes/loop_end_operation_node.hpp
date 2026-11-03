@@ -20,10 +20,10 @@ namespace cg {
 
 /**
  * An operation node that marks the end of a loop.
- * 
+ *
  * This is a custom OperationNode class and therefore cannot be transformed
  * into any other node type (makeAlias() and setOperation() might not work).
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>

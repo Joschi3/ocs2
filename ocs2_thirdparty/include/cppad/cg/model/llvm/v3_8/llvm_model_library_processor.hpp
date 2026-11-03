@@ -23,7 +23,7 @@ namespace cg {
 
 /**
  * Useful class for generating a JIT evaluated model library.
- * 
+ *
  * @author Joao Leal
  */
 template<class Base>

@@ -55,13 +55,13 @@ using quaternion_t = Eigen::Quaternion<scalar_t, Eigen::DontAlign>;
 
 /**
  * @brief Test fixture for checking end-effector tracking using kinematic formulation for MPC.
- * 
+ *
  * @tparam A tuple containing the task file, library folder, URDF file, goal position and goal orientation.
  */
 class DummyMobileManipulatorParametersTests
     : public testing::TestWithParam <std::tuple<std::string, std::string, std::string, vector3_t, quaternion_t>> {
 protected:
-  
+
   // Constants
   static constexpr scalar_t tolerance = 1e-2;
   static constexpr scalar_t f_mpc = 10.0;
@@ -272,7 +272,7 @@ INSTANTIATE_TEST_CASE_P(
                         vector3_t(0.4, 0.1, 0.5), quaternion_t(0.33, 0.0, 0.0, 0.95)),
         // kinova jaco2: 6-Dof arm
         std::make_tuple("kinova/task_j2n6.info", "kinova/j2n6",
-                        "kinova/urdf/j2n6s300.urdf", vector3_t(0.2, 0.2, 0.6), 
+                        "kinova/urdf/j2n6s300.urdf", vector3_t(0.2, 0.2, 0.6),
                         quaternion_t(0.33, 0.0, 0.0, 0.95)),
         // kinova jaco2: 7-Dof arm
         std::make_tuple("kinova/task_j2n7.info", "kinova/j2n7",
@@ -280,14 +280,14 @@ INSTANTIATE_TEST_CASE_P(
                         quaternion_t(0.33, 0.0, 0.0, 0.95)),
         // mabi-mobile: SE(2) + 6-Dof arm
         std::make_tuple("mabi_mobile/task.info", "mabi_mobile",
-                        "mabi_mobile/urdf/mabi_mobile.urdf", 
+                        "mabi_mobile/urdf/mabi_mobile.urdf",
                         vector3_t(-0.5, -0.8, 0.6), quaternion_t(0.33, 0.0, 0.0, 0.95)),
         // OSRF PR2: SE(2) + 7-Dof arm
         std::make_tuple("pr2/task.info", "pr2", "pr2/urdf/pr2.urdf",
                         vector3_t(-0.5, -0.8, 0.6), quaternion_t(0.33, 0.0, 0.0, 0.95)),
         // ridgeback with ur5: SE(2) + 6-Dof arm
         std::make_tuple("ridgeback_ur5/task.info", "ridgeback_ur5",
-                        "ridgeback_ur5/urdf/ridgeback_ur5.urdf", 
+                        "ridgeback_ur5/urdf/ridgeback_ur5.urdf",
                         vector3_t(-0.5, -0.8, 0.6), quaternion_t(0.33, 0.0, 0.0, 0.95))
       ),
     [](const testing::TestParamInfo<DummyMobileManipulatorParametersTests::ParamType>& info) {

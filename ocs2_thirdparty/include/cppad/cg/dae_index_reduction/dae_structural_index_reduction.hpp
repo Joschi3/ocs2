@@ -95,5 +95,4 @@ public:
 } // END cg namespace
 } // END CppAD namespace
 
-#endif	
-
+#endif

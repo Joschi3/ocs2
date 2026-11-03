@@ -15,11 +15,11 @@ set(dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ocs2_core REQUIRED)
 find_package(ocs2_msgs REQUIRED)
-find_package(ocs2_oc REQUIRED) 
+find_package(ocs2_oc REQUIRED)
 find_package(ocs2_ros_interfaces REQUIRED)
-find_package(ocs2_robotic_tools REQUIRED) 
+find_package(ocs2_robotic_tools REQUIRED)
 find_package(ocs2_switched_model_msgs REQUIRED)
-find_package(rclcpp REQUIRED) 
+find_package(rclcpp REQUIRED)
 
 ## Eigen3
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
@@ -183,7 +183,7 @@ target_link_libraries(test_${PROJECT_NAME}_convexTerrain
 	${PROJECT_NAME}
 )
 
-ament_export_dependencies(${dependencies})  
+ament_export_dependencies(${dependencies})
 ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_package()

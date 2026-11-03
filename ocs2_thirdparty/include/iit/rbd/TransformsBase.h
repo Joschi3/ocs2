@@ -35,7 +35,7 @@ template<class State, class ActualMatrix>
 class HomogeneousTransformBase : public StateDependentMatrix<State, 4, 4, ActualMatrix>
 {
 public:
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW    
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 /**
@@ -46,7 +46,7 @@ template<class State, class ActualMatrix>
 class SpatialTransformBase : public StateDependentMatrix<State, 6, 6, ActualMatrix>
 {
 public:
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW    
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 /**
@@ -57,7 +57,7 @@ template<class State, int Cols, class ActualMatrix>
 class JacobianBase : public StateDependentMatrix<State, 6, Cols, ActualMatrix>
 {
 public:
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW    
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 

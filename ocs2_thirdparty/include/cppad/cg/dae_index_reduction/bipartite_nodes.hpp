@@ -101,7 +101,7 @@ protected:
      */
     Enode<Base>* differentiationOf_;
     /**
-     * 
+     *
      */
     Vnode<Base>* assign_;
     /**
@@ -159,7 +159,7 @@ public:
     }
 
     /**
-     * @return the equation that was derived by differentiating this 
+     * @return the equation that was derived by differentiating this
      * equation
      */
     inline Enode<Base>* derivative() const {
@@ -219,7 +219,7 @@ class Vnode : public BiPGraphNode<Base> {
 protected:
     static const std::string TYPE;
     /**
-     * 
+     *
      */
     bool deleted_;
     /**
@@ -232,7 +232,7 @@ protected:
      */
     std::vector<Enode<Base>*> enodes_;
     /**
-     * 
+     *
      */
     Enode<Base>* assign_;
     /**
@@ -256,7 +256,7 @@ protected:
 public:
 
     inline Vnode(size_t index,
-                 int tapeIndex, 
+                 int tapeIndex,
                  const std::string& name) :
         BiPGraphNode<Base>(index),
         deleted_(false),

@@ -69,7 +69,7 @@ inline VectorSet jacobianReverseSparsitySet(ADFun<Base>& fun) {
 
 /**
  * Determines the Jacobian sparsity for a model
- * 
+ *
  * @param fun The model
  * @return The Jacobian sparsity
  */
@@ -79,17 +79,17 @@ inline VectorBool jacobianSparsity(ADFun<Base>& fun) {
     size_t n = fun.Domain();
 
     if (n <= m) {
-        // use forward mode 
+        // use forward mode
         return jacobianForwardSparsity<VectorBool, Base> (fun);
     } else {
-        // use reverse mode 
+        // use reverse mode
         return jacobianReverseSparsity<VectorBool, Base> (fun);
     }
 }
 
 /**
  * Determines the Jacobian sparsity for a model
- * 
+ *
  * @param fun The model
  * @return The Jacobian sparsity
  */
@@ -99,10 +99,10 @@ inline VectorSet jacobianSparsitySet(ADFun<Base>& fun) {
     size_t n = fun.Domain();
 
     if (n <= m) {
-        // use forward mode 
+        // use forward mode
         return jacobianForwardSparsitySet<VectorSet, Base> (fun);
     } else {
-        // use reverse mode 
+        // use reverse mode
         return jacobianReverseSparsitySet<VectorSet, Base> (fun);
     }
 }
@@ -110,7 +110,7 @@ inline VectorSet jacobianSparsitySet(ADFun<Base>& fun) {
 /**
  * Estimates the work load of forward vs reverse mode for the evaluation of
  * a Jacobian
- * 
+ *
  * @return true if the foward mode should be used, false for the reverse mode
  */
 inline bool estimateBestJacobianADMode(const std::vector<size_t>& jacRows,
@@ -125,9 +125,9 @@ inline bool estimateBestJacobianADMode(const std::vector<size_t>& jacRows,
 }
 
 /**
- * Determines the sum of the hessian sparsities for all the dependent 
+ * Determines the sum of the hessian sparsities for all the dependent
  * variables in a model
- * 
+ *
  * @param fun The model
  * @return The sum of the hessian sparsities
  */
@@ -188,7 +188,7 @@ inline VectorSet hessianSparsitySet(ADFun<Base>& fun, bool transpose = false) {
 /**
  * Determines the hessian sparsity for a given dependent variable/equation
  * in a model
- * 
+ *
  * @param fun The model
  * @param i The dependent variable/equation index
  * @return The hessian sparsity
@@ -312,4 +312,3 @@ inline void generateSparsitySet(const VectorSize& row,
 } // END CppAD namespace
 
 #endif
-

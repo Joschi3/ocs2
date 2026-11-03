@@ -20,7 +20,7 @@ namespace cg {
 
 /**
  * Contains some utility methods for atomic functions for the type CG
- * 
+ *
  * @author Joao Leal
  */
 template <class Base>
@@ -33,7 +33,7 @@ protected:
     /**
      * Creates a new atomic function that is responsible for defining the
      * dependencies to calls of a user atomic function.
-     * 
+     *
      * @param name The atomic function name.
      */
     BaseAbstractAtomicFun(const std::string& name) :

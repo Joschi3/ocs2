@@ -38,7 +38,7 @@ public:
 
     /**
      * Creates a new algorithm for index reduction of DAE systems.
-     * 
+     *
      * @param fun The original model (potentially high index)
      */
     DaeIndexReduction(ADFun<CG<Base> >& fun) :
@@ -72,5 +72,4 @@ public:
 } // END cg namespace
 } // END CppAD namespace
 
-#endif	
-
+#endif

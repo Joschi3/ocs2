@@ -53,7 +53,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_world& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_world_X_fr_dummy_ball1 : public TransformMotion<Scalar, Type_fr_world_X_fr_dummy_ball1>
     {
     public:
@@ -62,7 +62,7 @@ public:
         const Type_fr_world_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_ball1 : public TransformMotion<Scalar, Type_fr_ball_X_fr_dummy_ball1>
     {
     public:
@@ -71,7 +71,7 @@ public:
         const Type_fr_ball_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_ball1_X_fr_ball : public TransformMotion<Scalar, Type_fr_dummy_ball1_X_fr_ball>
     {
     public:
@@ -80,7 +80,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_ball : public TransformMotion<Scalar, Type_fr_dummy_base1_X_fr_ball>
     {
     public:
@@ -89,7 +89,7 @@ public:
         const Type_fr_dummy_base1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_base1 : public TransformMotion<Scalar, Type_fr_ball_X_fr_dummy_base1>
     {
     public:
@@ -98,7 +98,7 @@ public:
         const Type_fr_ball_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_dummy_base1 : public TransformMotion<Scalar, Type_fr_dummy_base2_X_fr_dummy_base1>
     {
     public:
@@ -107,7 +107,7 @@ public:
         const Type_fr_dummy_base2_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_dummy_base2 : public TransformMotion<Scalar, Type_fr_dummy_base1_X_fr_dummy_base2>
     {
     public:
@@ -116,7 +116,7 @@ public:
         const Type_fr_dummy_base1_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_base_X_fr_dummy_base2 : public TransformMotion<Scalar, Type_fr_base_X_fr_dummy_base2>
     {
     public:
@@ -125,7 +125,7 @@ public:
         const Type_fr_base_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_base : public TransformMotion<Scalar, Type_fr_dummy_base2_X_fr_base>
     {
     public:
@@ -134,7 +134,7 @@ public:
         const Type_fr_dummy_base2_X_fr_base& update(const JState&);
     protected:
     };
-    
+
 public:
     MotionTransforms();
     void updateParameters();
@@ -175,7 +175,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_world& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_world_X_fr_dummy_ball1 : public TransformForce<Scalar, Type_fr_world_X_fr_dummy_ball1>
     {
     public:
@@ -184,7 +184,7 @@ public:
         const Type_fr_world_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_ball1 : public TransformForce<Scalar, Type_fr_ball_X_fr_dummy_ball1>
     {
     public:
@@ -193,7 +193,7 @@ public:
         const Type_fr_ball_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_ball1_X_fr_ball : public TransformForce<Scalar, Type_fr_dummy_ball1_X_fr_ball>
     {
     public:
@@ -202,7 +202,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_ball : public TransformForce<Scalar, Type_fr_dummy_base1_X_fr_ball>
     {
     public:
@@ -211,7 +211,7 @@ public:
         const Type_fr_dummy_base1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_base1 : public TransformForce<Scalar, Type_fr_ball_X_fr_dummy_base1>
     {
     public:
@@ -220,7 +220,7 @@ public:
         const Type_fr_ball_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_dummy_base1 : public TransformForce<Scalar, Type_fr_dummy_base2_X_fr_dummy_base1>
     {
     public:
@@ -229,7 +229,7 @@ public:
         const Type_fr_dummy_base2_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_dummy_base2 : public TransformForce<Scalar, Type_fr_dummy_base1_X_fr_dummy_base2>
     {
     public:
@@ -238,7 +238,7 @@ public:
         const Type_fr_dummy_base1_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_base_X_fr_dummy_base2 : public TransformForce<Scalar, Type_fr_base_X_fr_dummy_base2>
     {
     public:
@@ -247,7 +247,7 @@ public:
         const Type_fr_base_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_base : public TransformForce<Scalar, Type_fr_dummy_base2_X_fr_base>
     {
     public:
@@ -256,7 +256,7 @@ public:
         const Type_fr_dummy_base2_X_fr_base& update(const JState&);
     protected:
     };
-    
+
 public:
     ForceTransforms();
     void updateParameters();
@@ -297,7 +297,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_world& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_world_X_fr_dummy_ball1 : public TransformHomogeneous<Scalar, Type_fr_world_X_fr_dummy_ball1>
     {
     public:
@@ -306,7 +306,7 @@ public:
         const Type_fr_world_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_ball1 : public TransformHomogeneous<Scalar, Type_fr_ball_X_fr_dummy_ball1>
     {
     public:
@@ -315,7 +315,7 @@ public:
         const Type_fr_ball_X_fr_dummy_ball1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_ball1_X_fr_ball : public TransformHomogeneous<Scalar, Type_fr_dummy_ball1_X_fr_ball>
     {
     public:
@@ -324,7 +324,7 @@ public:
         const Type_fr_dummy_ball1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_ball : public TransformHomogeneous<Scalar, Type_fr_dummy_base1_X_fr_ball>
     {
     public:
@@ -333,7 +333,7 @@ public:
         const Type_fr_dummy_base1_X_fr_ball& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_ball_X_fr_dummy_base1 : public TransformHomogeneous<Scalar, Type_fr_ball_X_fr_dummy_base1>
     {
     public:
@@ -342,7 +342,7 @@ public:
         const Type_fr_ball_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_dummy_base1 : public TransformHomogeneous<Scalar, Type_fr_dummy_base2_X_fr_dummy_base1>
     {
     public:
@@ -351,7 +351,7 @@ public:
         const Type_fr_dummy_base2_X_fr_dummy_base1& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base1_X_fr_dummy_base2 : public TransformHomogeneous<Scalar, Type_fr_dummy_base1_X_fr_dummy_base2>
     {
     public:
@@ -360,7 +360,7 @@ public:
         const Type_fr_dummy_base1_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_base_X_fr_dummy_base2 : public TransformHomogeneous<Scalar, Type_fr_base_X_fr_dummy_base2>
     {
     public:
@@ -369,7 +369,7 @@ public:
         const Type_fr_base_X_fr_dummy_base2& update(const JState&);
     protected:
     };
-    
+
     class Type_fr_dummy_base2_X_fr_base : public TransformHomogeneous<Scalar, Type_fr_dummy_base2_X_fr_base>
     {
     public:
@@ -378,7 +378,7 @@ public:
         const Type_fr_dummy_base2_X_fr_base& update(const JState&);
     protected:
     };
-    
+
 public:
     HomogeneousTransforms();
     void updateParameters();

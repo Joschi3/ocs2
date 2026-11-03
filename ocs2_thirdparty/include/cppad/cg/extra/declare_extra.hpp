@@ -133,4 +133,3 @@ inline void generateSparsitySet(const VectorSize& row,
 }
 
 #endif
-

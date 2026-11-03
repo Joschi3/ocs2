@@ -101,4 +101,3 @@ extern void cppad_colpack_symmetric(
 
 # endif
 # endif
-

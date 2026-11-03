@@ -916,7 +916,7 @@ static void thpool_destroy(ThPool* thpool) {
     }
     free(thpool->threads);
     free(thpool);
-    
+
     if(cppadcg_pool_verbose) {
         fprintf(stdout, "thpool_destroy(): thread pool destroyed\n");
     }
@@ -1419,4 +1419,3 @@ static void bsem_wait(BSem* bsem) {
 )*=*";
 
 const size_t CPPADCG_PTHREAD_POOL_C_FILE_SIZE = 43345;
-

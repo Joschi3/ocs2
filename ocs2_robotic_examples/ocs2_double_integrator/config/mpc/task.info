@@ -37,7 +37,7 @@ ddp
   preComputeRiccatiTerms       true
 
   useFeedbackPolicy            true
-  
+
   strategy                     LINE_SEARCH
   lineSearch
   {
@@ -111,4 +111,3 @@ finalGoal
   (0,0) 2.0    ; x1
   (1,0) 0.0    ; x2
 }
-

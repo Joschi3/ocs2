@@ -38,8 +38,8 @@ namespace ocs2 {
 /******************************************************************************************************/
 /******************************************************************************************************/
 TargetTrajectoriesRosPublisher::TargetTrajectoriesRosPublisher(rclcpp::Node::SharedPtr node, const std::string& topicPrefix) : node_(std::move(node)) {
-  
-  publisher_ = node_->create_publisher<ocs2_msgs::msg::MpcTargetTrajectories>(topicPrefix + "_mpc_target", 1); 
+
+  publisher_ = node_->create_publisher<ocs2_msgs::msg::MpcTargetTrajectories>(topicPrefix + "_mpc_target", 1);
   RCLCPP_INFO(node_->get_logger(), "The TargetTrajectories is publishing on %s_mpc_target topic.", topicPrefix.c_str());
 }
 

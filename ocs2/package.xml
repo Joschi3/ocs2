@@ -27,8 +27,8 @@
   <exec_depend>ocs2_thirdparty</exec_depend>
   <exec_depend>hpipm_ament</exec_depend>
 
-  <export>                               
-   <build_type>ament_cmake</build_type> 
-  </export> 
+  <export>
+   <build_type>ament_cmake</build_type>
+  </export>
 
 </package>
