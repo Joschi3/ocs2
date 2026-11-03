@@ -14,6 +14,13 @@ list(APPEND OCS2_CXX_FLAGS
   "-DBOOST_ALL_DYN_LINK"
   )
 
+# Disable link time optimization (enabled by dpkg-buildflags for Debian packages). With LTO, linking the static
+# ocs2 libraries drops weak CppAD template instantiations and fails with undefined references.
+# ocs2_core also exports -fno-lto as link option to all consumers.
+list(APPEND OCS2_CXX_FLAGS
+  "-fno-lto"
+  )
+
 # Add OpenMP flags
 if (NOT DEFINED OpenMP_CXX_FOUND)
   find_package(OpenMP REQUIRED)

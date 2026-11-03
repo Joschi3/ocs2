@@ -142,6 +142,8 @@ target_link_libraries(${PROJECT_NAME}
     ${Boost_LIBRARIES}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
+# see ocs2_cxx_flags.cmake, consumers must link without LTO as well
+target_link_options(${PROJECT_NAME} PUBLIC -fno-lto)
 
 add_executable(${PROJECT_NAME}_lintTarget
   src/lintTarget.cpp
