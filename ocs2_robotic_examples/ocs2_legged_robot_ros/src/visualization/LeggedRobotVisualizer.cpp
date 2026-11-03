@@ -49,7 +49,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <visualization_msgs/msg/marker_array.hpp>
 
 // URDF related
-#include <urdf/model.h>
+#include <urdf/model.hpp>
 
 #include <kdl_parser/kdl_parser.hpp>
 

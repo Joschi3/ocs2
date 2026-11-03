@@ -31,7 +31,6 @@ find_package(rclcpp REQUIRED)
 find_package(PCL REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -50,14 +49,26 @@ include_directories(
 	${PCL_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${convex_plane_decomposition_TARGETS}
+  ${convex_plane_decomposition_msgs_TARGETS}
+  ${convex_plane_decomposition_ros_TARGETS}
+  ${grid_map_filters_rsl_TARGETS}
+  ${grid_map_ros_TARGETS}
+  ${grid_map_sdf_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_switched_model_interface_TARGETS}
+  ${rclcpp_TARGETS}
+  ${sensor_msgs_TARGETS}
+  ${visualization_msgs_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
 	src/SegmentedPlanesTerrainModel.cpp
 	src/SegmentedPlanesTerrainModelRos.cpp
 	src/SegmentedPlanesTerrainVisualization.cpp
 	)
-ament_target_dependencies(${PROJECT_NAME}
-	${dependencies}
-	)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME}
 	PUBLIC -DCGAL_HAS_THREADS
 	)

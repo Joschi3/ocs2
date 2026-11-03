@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_ballbot_ros)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -27,7 +27,7 @@ find_package(ocs2_robotic_assets REQUIRED)
 find_package(ocs2_ballbot REQUIRED)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 
 add_library(${PROJECT_NAME}
   src/BallbotDummyVisualization.cpp
@@ -38,26 +38,26 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
     ${EIGEN3_INCLUDE_DIRS}
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ament_index_cpp
-  rclcpp
-  tf2_ros
-  sensor_msgs
-  geometry_msgs
-  visualization_msgs
-  urdf
-  kdl_parser
-  robot_state_publisher
-  ocs2_core
-  ocs2_oc
-  ocs2_ddp
-  ocs2_mpc
-  ocs2_sqp
-  ocs2_slp
-  ocs2_ros_interfaces
-  ocs2_robotic_tools
-  ocs2_robotic_assets
-  ocs2_ballbot
+target_link_libraries(${PROJECT_NAME}
+  ${ament_index_cpp_TARGETS}
+  ${rclcpp_TARGETS}
+  ${tf2_ros_TARGETS}
+  ${sensor_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${visualization_msgs_TARGETS}
+  ${urdf_TARGETS}
+  ${kdl_parser_TARGETS}
+  ${robot_state_publisher_TARGETS}
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_sqp_TARGETS}
+  ${ocs2_slp_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
+  ${ocs2_ballbot_TARGETS}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 

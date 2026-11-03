@@ -30,7 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "ocs2_ballbot_ros/BallbotDummyVisualization.h"
 
 #include <ocs2_robotic_tools/common/RotationTransforms.h>
-#include <urdf/model.h>
+#include <urdf/model.hpp>
 
 #include <kdl_parser/kdl_parser.hpp>
 #include <visualization_msgs/msg/marker.hpp>

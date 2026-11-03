@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_double_integrator_ros)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -18,7 +18,7 @@ find_package(ocs2_double_integrator REQUIRED)
 find_package(ocs2_robotic_assets REQUIRED)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 
 add_library(${PROJECT_NAME}
   src/DoubleIntegratorDummyVisualization.cpp
@@ -29,17 +29,17 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
     ${EIGEN3_INCLUDE_DIRS}
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ament_index_cpp
-  rclcpp
-  sensor_msgs
-  ocs2_core
-  ocs2_ddp
-  ocs2_mpc
-  ocs2_ros_interfaces
-  ocs2_robotic_tools
-  ocs2_double_integrator
-  ocs2_robotic_assets
+target_link_libraries(${PROJECT_NAME}
+  ${ament_index_cpp_TARGETS}
+  ${rclcpp_TARGETS}
+  ${sensor_msgs_TARGETS}
+  ${ocs2_core_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_double_integrator_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 

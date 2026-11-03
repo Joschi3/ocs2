@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_switched_model_msgs)
 
 find_package(ament_cmake REQUIRED)

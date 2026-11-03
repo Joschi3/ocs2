@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_quadruped_loopshaping_interface)
 
@@ -13,7 +13,6 @@ find_package(ocs2_quadruped_interface REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(PCL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -33,15 +32,17 @@ include_directories(
 )
 
 # Declare a C++ library
+set(dependencies_targets
+  ${ocs2_quadruped_interface_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/QuadrupedLoopshapingDummyNode.cpp
   src/QuadrupedLoopshapingInterface.cpp
   src/QuadrupedLoopshapingMpc.cpp
   src/QuadrupedLoopshapingMpcNode.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 #############

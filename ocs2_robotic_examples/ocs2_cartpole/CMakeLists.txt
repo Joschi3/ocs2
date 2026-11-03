@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_cartpole)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -10,7 +10,7 @@ find_package(ocs2_ddp REQUIRED)
 find_package(ocs2_mpc REQUIRED)
 find_package(ocs2_robotic_tools REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 
 # Resolve for the package path at compile time.
 configure_file(
@@ -29,15 +29,14 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
     ${EIGEN3_INCLUDE_DIRS}
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ocs2_core
-  ocs2_ddp
-  ocs2_mpc
-  ocs2_robotic_tools
+target_link_libraries(${PROJECT_NAME}
+  ${ocs2_core_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
 )
 target_link_libraries(${PROJECT_NAME}
   Boost::filesystem
-  Boost::system
   dl
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})

@@ -12,19 +12,20 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <!-- <exec_depend>ocs2_ballbot</exec_depend>
+  <exec_depend>ocs2_ballbot</exec_depend>
   <exec_depend>ocs2_ballbot_ros</exec_depend>
   <exec_depend>ocs2_cartpole</exec_depend>
   <exec_depend>ocs2_cartpole_ros</exec_depend>
   <exec_depend>ocs2_double_integrator</exec_depend>
   <exec_depend>ocs2_double_integrator_ros</exec_depend>
   <exec_depend>ocs2_quadrotor</exec_depend>
-  <exec_depend>ocs2_quadrotor_ros</exec_depend> -->
+  <exec_depend>ocs2_quadrotor_ros</exec_depend>
   <exec_depend>ocs2_mobile_manipulator</exec_depend>
   <exec_depend>ocs2_mobile_manipulator_ros</exec_depend>
-  <!-- <exec_depend>ocs2_anymal</exec_depend>
+  <!-- ocs2_anymal requires grid_map, which is not released for ROS 2 Lyrical -->
+  <!-- <exec_depend>ocs2_anymal</exec_depend> -->
   <exec_depend>ocs2_legged_robot</exec_depend>
-  <exec_depend>ocs2_legged_robot_ros</exec_depend> -->
+  <exec_depend>ocs2_legged_robot_ros</exec_depend>
   <exec_depend>xacro</exec_depend>
 
   <export>                               

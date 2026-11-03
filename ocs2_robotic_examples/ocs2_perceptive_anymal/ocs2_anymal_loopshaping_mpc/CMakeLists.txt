@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_anymal_loopshaping_mpc)
 
@@ -17,7 +17,6 @@ find_package(segmented_planes_terrain_model REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -46,20 +45,26 @@ include_directories(
   ${PCL_INCLUDE_DIRS}
 )
 
+set(dependencies_targets
+  ${convex_plane_decomposition_TARGETS}
+  ${convex_plane_decomposition_ros_TARGETS}
+  ${grid_map_ros_TARGETS}
+  ${rclcpp_TARGETS}
+  ${ocs2_anymal_mpc_TARGETS}
+  ${ocs2_quadruped_loopshaping_interface_TARGETS}
+  ${segmented_planes_terrain_model_TARGETS}
+)
+
 add_library(${PROJECT_NAME}
   src/AnymalLoopshapingInterface.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 add_executable(${PROJECT_NAME}_mpc_node
   src/AnymalLoopshapingMpcNode.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_mpc_node
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_mpc_node ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_mpc_node
   ${PROJECT_NAME}
 )
@@ -67,9 +72,7 @@ target_link_libraries(${PROJECT_NAME}_mpc_node
 add_executable(${PROJECT_NAME}_dummy_mrt_node
   src/AnymalLoopshapingDummyMrt.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}_dummy_mrt_node
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_dummy_mrt_node ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_dummy_mrt_node
   ${PROJECT_NAME}
 )
@@ -77,9 +80,7 @@ target_link_libraries(${PROJECT_NAME}_dummy_mrt_node
 add_executable(${PROJECT_NAME}_perceptive_demo
   src/PerceptiveMpcDemo.cpp
   )
-ament_target_dependencies(${PROJECT_NAME}_perceptive_demo
-  ${dependencies}
-)
+target_link_libraries(${PROJECT_NAME}_perceptive_demo ${dependencies_targets})
 target_link_libraries(${PROJECT_NAME}_perceptive_demo
   ${PROJECT_NAME}
 )
@@ -121,9 +122,7 @@ if(BUILD_TESTING)
     test/testMotionTracking.cpp
     test/testSensitivity.cpp
   )
-  ament_target_dependencies(${PROJECT_NAME}_test
-    ${dependencies}
-  )
+  target_link_libraries(${PROJECT_NAME}_test ${dependencies_targets})
   target_link_libraries(${PROJECT_NAME}_test
     ${PROJECT_NAME}
   )

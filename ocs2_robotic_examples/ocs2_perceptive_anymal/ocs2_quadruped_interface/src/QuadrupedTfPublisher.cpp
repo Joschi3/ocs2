@@ -8,7 +8,7 @@
 
 // URDF stuff
 #include <ocs2_switched_model_interface/core/Rotations.h>
-#include <urdf/model.h>
+#include <urdf/model.hpp>
 
 #include <kdl_parser/kdl_parser.hpp>
 

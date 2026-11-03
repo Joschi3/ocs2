@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(ocs2_legged_robot)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -17,7 +17,7 @@ find_package(ocs2_centroidal_model REQUIRED)
 find_package(ocs2_robotic_assets REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(Boost REQUIRED COMPONENTS system filesystem log_setup log)
+find_package(Boost REQUIRED COMPONENTS filesystem log_setup log)
 
 # Resolve for the package path at compile time.
 configure_file(
@@ -49,7 +49,6 @@ add_library(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   pinocchio::pinocchio
   Boost::filesystem
-  Boost::system
   dl
 )
 target_include_directories(${PROJECT_NAME}
@@ -60,17 +59,17 @@ target_include_directories(${PROJECT_NAME}
     ${EIGEN3_INCLUDE_DIRS}
     ${pinocchio_INCLUDE_DIRS}
 )
-ament_target_dependencies(${PROJECT_NAME}
-  ocs2_core
-  ocs2_oc
-  ocs2_ddp
-  ocs2_mpc
-  ocs2_sqp
-  ocs2_ipm
-  ocs2_robotic_tools
-  ocs2_pinocchio_interface
-  ocs2_centroidal_model
-  ocs2_robotic_assets
+target_link_libraries(${PROJECT_NAME}
+  ${ocs2_core_TARGETS}
+  ${ocs2_oc_TARGETS}
+  ${ocs2_ddp_TARGETS}
+  ${ocs2_mpc_TARGETS}
+  ${ocs2_sqp_TARGETS}
+  ${ocs2_ipm_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_pinocchio_interface_TARGETS}
+  ${ocs2_centroidal_model_TARGETS}
+  ${ocs2_robotic_assets_TARGETS}
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_PINOCCHIO_FLAGS})
 

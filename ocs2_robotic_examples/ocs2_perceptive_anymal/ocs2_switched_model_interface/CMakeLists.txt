@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_switched_model_interface)
 
@@ -25,7 +25,6 @@ find_package(rclcpp REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -40,6 +39,16 @@ find_package(Boost REQUIRED COMPONENTS
 include_directories(
 	include
 	${EIGEN3_INCLUDE_DIRS}
+)
+
+set(dependencies_targets
+  ${rclcpp_TARGETS}
+  ${ocs2_core_TARGETS}
+  ${ocs2_msgs_TARGETS}
+  ${ocs2_oc_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_switched_model_msgs_TARGETS}
 )
 
 add_library(${PROJECT_NAME}
@@ -85,9 +94,7 @@ add_library(${PROJECT_NAME}
 	src/core/SwitchedModelPrecomputation.cpp
 	src/core/TorqueApproximation.cpp
 )
-ament_target_dependencies(${PROJECT_NAME}
-	${dependencies}
-)
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 #############
@@ -116,9 +123,7 @@ ament_add_gtest(test_constraints
 	test/constraint/testZeroForceConstraint.cpp
 	test/constraint/testFrictionConeConstraint.cpp
 )
-ament_target_dependencies(test_constraints
-  ${dependencies}
-)
+target_link_libraries(test_constraints ${dependencies_targets})
 target_link_libraries(test_constraints
 	${PROJECT_NAME}
 )
@@ -126,9 +131,7 @@ target_link_libraries(test_constraints
 ament_add_gtest(test_${PROJECT_NAME}_core
 	test/core/testRotation.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_core
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_core ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_core
 	${PROJECT_NAME}
 )
@@ -138,9 +141,7 @@ ament_add_gtest(test_${PROJECT_NAME}_cost
 	test/cost/testFrictionConeCost.cpp
 	test/cost/testTorqueLimitsSoftConstraint.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_cost
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_cost ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_cost
 	${PROJECT_NAME}
 )
@@ -148,9 +149,7 @@ target_link_libraries(test_${PROJECT_NAME}_cost
 ament_add_gtest(test_${PROJECT_NAME}_footplanner
 	test/foot_planner/testSwingPhase.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_footplanner
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_footplanner ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_footplanner
 	${PROJECT_NAME}
 )
@@ -163,9 +162,7 @@ ament_add_gtest(test_${PROJECT_NAME}_logic
 	test/logic/testGaitSchedule.cpp
 	test/logic/testSingleLegLogic.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_logic
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_logic ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_logic
 	${PROJECT_NAME}
 )
@@ -173,9 +170,7 @@ target_link_libraries(test_${PROJECT_NAME}_logic
 ament_add_gtest(test_${PROJECT_NAME}_terrain
 	test/terrain/testTerrainPlane.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_terrain
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_terrain ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_terrain
 	${PROJECT_NAME}
 )
@@ -183,9 +178,7 @@ target_link_libraries(test_${PROJECT_NAME}_terrain
 ament_add_gtest(test_${PROJECT_NAME}_convexTerrain
 	test/terrain/testConvexTerrain.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}_convexTerrain
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME}_convexTerrain ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}_convexTerrain
 	${PROJECT_NAME}
 )

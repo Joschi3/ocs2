@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(ocs2_anymal_commands)
 
@@ -22,7 +22,6 @@ find_package(grid_map_filters_rsl REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 find_package(Boost REQUIRED COMPONENTS
-  system
   filesystem
   log_setup
   log
@@ -41,6 +40,15 @@ include_directories(
 )
 
 # Declare a C++ library
+set(dependencies_targets
+  ${rclcpp_TARGETS}
+  ${ocs2_ros_interfaces_TARGETS}
+  ${ocs2_robotic_tools_TARGETS}
+  ${ocs2_switched_model_interface_TARGETS}
+  ${grid_map_filters_rsl_TARGETS}
+  ${Boost_LIBRARIES}
+)
+
 add_library(${PROJECT_NAME}
   src/LoadMotions.cpp
   src/ModeSequenceKeyboard.cpp
@@ -51,18 +59,14 @@ add_library(${PROJECT_NAME}
   src/ReferenceExtrapolation.cpp
   src/TerrainAdaptation.cpp
   )
-ament_target_dependencies(${PROJECT_NAME}
-  ${dependencies}
-  )
+target_link_libraries(${PROJECT_NAME} ${dependencies_targets})
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
 
 # Declare a C++ Executable
 add_executable(target_command_node
   src/AnymalPoseCommandNode.cpp
 )
-ament_target_dependencies(target_command_node
-  ${dependencies}
-)
+target_link_libraries(target_command_node ${dependencies_targets})
 target_link_libraries(target_command_node   
   ${PROJECT_NAME}
 )
@@ -71,9 +75,7 @@ target_compile_options(target_command_node PRIVATE ${OCS2_CXX_FLAGS})
 add_executable(gait_command_node
   src/AnymalGaitNode.cpp
 )
-ament_target_dependencies(gait_command_node
-  ${dependencies}
-)
+target_link_libraries(gait_command_node ${dependencies_targets})
 target_link_libraries(gait_command_node   
   ${PROJECT_NAME}
 )
@@ -82,9 +84,7 @@ target_compile_options(gait_command_node PRIVATE ${OCS2_CXX_FLAGS})
 add_executable(motion_command_node
   src/AnymalMotionCommandNode.cpp
   )
-ament_target_dependencies(motion_command_node
-  ${dependencies}
-  )
+target_link_libraries(motion_command_node ${dependencies_targets})
 target_link_libraries(motion_command_node   
   ${PROJECT_NAME}
 )
@@ -126,9 +126,7 @@ ament_add_gtest(test_${PROJECT_NAME}
   test/testReferenceExtrapolation.cpp
   test/testTerrainAdaptation.cpp
 )
-ament_target_dependencies(test_${PROJECT_NAME}
-  ${dependencies}
-)
+target_link_libraries(test_${PROJECT_NAME} ${dependencies_targets})
 target_link_libraries(test_${PROJECT_NAME}
   ${PROJECT_NAME}
   -lstdc++fs

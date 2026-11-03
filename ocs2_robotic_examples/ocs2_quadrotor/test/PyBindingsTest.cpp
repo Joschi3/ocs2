@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <gtest/gtest.h>
 
 #include <ocs2_quadrotor/QuadrotorPyBindings.h>

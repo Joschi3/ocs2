@@ -1,0 +1,2 @@
+Requires grid_map and the plane_segmentation packages of elevation_mapping_cupy,
+which are not released for ROS 2 Lyrical. Remove this file once they are available.

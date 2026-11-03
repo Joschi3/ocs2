@@ -8,7 +8,7 @@
 #include <ocs2_ros_interfaces/visualization/VisualizationHelpers.h>
 
 // URDF stuff
-#include <urdf/model.h>
+#include <urdf/model.hpp>
 
 #include <kdl_parser/kdl_parser.hpp>
 
