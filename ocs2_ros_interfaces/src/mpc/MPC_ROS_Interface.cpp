@@ -623,6 +623,10 @@ void MPC_ROS_Interface::shutdownNode() {
 /******************************************************************************************************/
 /******************************************************************************************************/
 void MPC_ROS_Interface::spin() {
+  if (!node_) {
+    throw std::runtime_error(
+        "[MPC_ROS_Interface::spin] launchNodes() must be called before spin().");
+  }
   RCLCPP_INFO(LOGGER, "Start spinning now ...");
   // Equivalent to ros::spin() + check if master is alive
   while (rclcpp::ok()) {
@@ -634,6 +638,10 @@ void MPC_ROS_Interface::spin() {
 /******************************************************************************************************/
 /******************************************************************************************************/
 void MPC_ROS_Interface::launchNodes(const rclcpp::Node::SharedPtr& node) {
+  if (!node) {
+    throw std::runtime_error(
+        "[MPC_ROS_Interface::launchNodes] node is null.");
+  }
   RCLCPP_INFO(LOGGER, "MPC node is setting up ...");
   node_ = node;
 
