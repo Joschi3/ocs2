@@ -54,7 +54,7 @@ jobs:
           path: src/ocs2
 
       - name: Checkout ocs2_robotic_assets
-        run: git clone --depth 1 https://github.com/Joschi3/ocs2_robotic_assets.git src/ocs2_robotic_assets
+        run: git clone --depth 1 --branch lyrical https://github.com/Joschi3/ocs2_robotic_assets.git src/ocs2_robotic_assets
 
       - name: rosdep
         run: |
