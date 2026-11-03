@@ -28,7 +28,7 @@
   <exec_depend>ocs2_legged_robot_ros</exec_depend>
   <exec_depend>xacro</exec_depend>
 
-  <export>                               
+  <export>
    <build_type>ament_cmake</build_type>
   </export>
 

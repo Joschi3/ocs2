@@ -17,4 +17,3 @@
     <node pkg="ocs2_cartpole_ros" type="cartpole_dummy_test" name="cartpole_dummy_test"
             output="screen" args="$(arg task_name)" launch-prefix="gnome-terminal --"/>
 </launch>
-	
