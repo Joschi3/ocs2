@@ -7,6 +7,10 @@
 #include <pinocchio/multibody/geometry.hpp>
 #include <pinocchio/parsers/urdf.hpp>
 
+#include <pinocchio/algorithm/jacobian.hpp>
+#include <pinocchio/algorithm/kinematics.hpp>
+
+#include <ocs2_pinocchio_interface/PinocchioFrameJacobian.h>
 #include <ocs2_pinocchio_interface/PinocchioInterface.h>
 #include <ocs2_pinocchio_interface/urdf.h>
 #include "CartPoleUrdf.h"
@@ -45,5 +49,32 @@ TEST(testPinocchioInterface, urdfXmlStringRoundTrip) {
     EXPECT_EQ(actual.geometry->getNodeType(), expected.geometry->getNodeType());
     // RPY extraction near pitch = pi/2 (gimbal lock) is accurate to ~1e-11 only
     EXPECT_TRUE(actual.placement.isApprox(expected.placement, 1e-9)) << expected.name;
+  }
+}
+
+TEST(testPinocchioInterface, frameJacobianReadOnly) {
+  auto pinocchioInterface = ocs2::getPinocchioInterfaceFromUrdfString(manipulatorArmUrdf);
+  const auto& model = pinocchioInterface.getModel();
+  auto& data = pinocchioInterface.getData();
+
+  const ocs2::vector_t q = ocs2::vector_t::Random(model.nq);
+  pinocchio::computeJointJacobians(model, data, q);
+  pinocchio::updateFramePlacements(model, data);
+
+  for (const auto rf : {pinocchio::LOCAL, pinocchio::WORLD, pinocchio::LOCAL_WORLD_ALIGNED}) {
+    for (pinocchio::FrameIndex frameId = 0; frameId < model.nframes; ++frameId) {
+      // invalidate the frame placement to detect writes to data
+      data.oMf[frameId] = pinocchio::SE3::Identity();
+      const pinocchio::Data& constData = data;
+
+      ocs2::matrix_t J = ocs2::matrix_t::Zero(6, model.nv);
+      ocs2::getFrameJacobianReadOnly(model, constData, frameId, rf, J);
+      EXPECT_TRUE(data.oMf[frameId].isIdentity());
+
+      ocs2::matrix_t Jexpected = ocs2::matrix_t::Zero(6, model.nv);
+      pinocchio::Data dataCopy = data;
+      pinocchio::getFrameJacobian(model, dataCopy, frameId, rf, Jexpected);
+      EXPECT_TRUE(J.isApprox(Jexpected)) << "frame " << model.frames[frameId].name << ", reference frame " << rf;
+    }
   }
 }

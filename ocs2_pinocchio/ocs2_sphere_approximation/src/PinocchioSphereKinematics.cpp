@@ -98,9 +98,7 @@ std::vector<VectorFunctionLinearApproximation> PinocchioSphereKinematics::getPos
 
   const pinocchio::ReferenceFrame rf = pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED;
   const pinocchio::Model& model = pinocchioInterfacePtr_->getModel();
-  // const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
-  // TODO(mspieler): Need to copy here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
-  pinocchio::Data data = pinocchio::Data(pinocchioInterfacePtr_->getData());
+  const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> positions;
 

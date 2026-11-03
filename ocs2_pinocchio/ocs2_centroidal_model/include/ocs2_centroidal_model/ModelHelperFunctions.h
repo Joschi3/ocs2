@@ -154,7 +154,6 @@ Eigen::Matrix<SCALAR_T, 3, 1> getPositionComToContactPointInWorldFrame(const Pin
  *       pinocchio::computeJointJacobians(model, data, q)
  *       pinocchio::updateFramePlacements(model, data)
  */
-// TODO: Need to copy data here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
 template <typename SCALAR_T>
 Eigen::Matrix<SCALAR_T, 3, Eigen::Dynamic> getTranslationalJacobianComToContactPointInWorldFrame(
     const PinocchioInterfaceTpl<SCALAR_T>& interface, const CentroidalModelInfoTpl<SCALAR_T>& info, size_t contactIndex);

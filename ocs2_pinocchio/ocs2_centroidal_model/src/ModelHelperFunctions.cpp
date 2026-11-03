@@ -33,6 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ocs2_centroidal_model/AccessHelperFunctions.h"
 
+#include <ocs2_pinocchio_interface/PinocchioFrameJacobian.h>
+
 #include <pinocchio/algorithm/centroidal-derivatives.hpp>
 #include <pinocchio/algorithm/centroidal.hpp>
 #include <pinocchio/algorithm/frames.hpp>
@@ -151,11 +153,11 @@ template <typename SCALAR_T>
 Eigen::Matrix<SCALAR_T, 3, Eigen::Dynamic> getTranslationalJacobianComToContactPointInWorldFrame(
     const PinocchioInterfaceTpl<SCALAR_T>& interface, const CentroidalModelInfoTpl<SCALAR_T>& info, size_t contactIndex) {
   const auto& model = interface.getModel();
-  auto data = interface.getData();
+  const auto& data = interface.getData();
   Eigen::Matrix<SCALAR_T, 6, Eigen::Dynamic> jacobianWorldToContactPointInWorldFrame;
   jacobianWorldToContactPointInWorldFrame.setZero(6, info.generalizedCoordinatesNum);
-  pinocchio::getFrameJacobian(model, data, info.endEffectorFrameIndices[contactIndex], pinocchio::LOCAL_WORLD_ALIGNED,
-                              jacobianWorldToContactPointInWorldFrame);
+  getFrameJacobianReadOnly(model, data, info.endEffectorFrameIndices[contactIndex], pinocchio::LOCAL_WORLD_ALIGNED,
+                           jacobianWorldToContactPointInWorldFrame);
   Eigen::Matrix<SCALAR_T, 3, Eigen::Dynamic> J_com = getCentroidalMomentumMatrix(interface).template topRows<3>() / info.robotMass;
   return (jacobianWorldToContactPointInWorldFrame.template topRows<3>() - J_com);
 }

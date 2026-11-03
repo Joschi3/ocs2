@@ -38,6 +38,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ocs2_robotic_tools/common/SkewSymmetricMatrix.h>
 
 #include <ocs2_pinocchio_interface/PinocchioEndEffectorKinematics.h>
+#include <ocs2_pinocchio_interface/PinocchioFrameJacobian.h>
 
 namespace ocs2 {
 
@@ -138,14 +139,12 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
 
   const pinocchio::ReferenceFrame rf = pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED;
   const pinocchio::Model& model = pinocchioInterfacePtr_->getModel();
-  // const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
-  // TODO(mspieler): Need to copy here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
-  pinocchio::Data data = pinocchio::Data(pinocchioInterfacePtr_->getData());
+  const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> positions;
   for (const auto& frameId : endEffectorFrameIds_) {
     matrix_t J = matrix_t::Zero(6, model.nv);
-    pinocchio::getFrameJacobian(model, data, frameId, rf, J);
+    getFrameJacobianReadOnly(model, data, frameId, rf, J);
 
     VectorFunctionLinearApproximation pos;
     pos.f = data.oMf[frameId].translation();
@@ -165,14 +164,12 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
 
   const pinocchio::ReferenceFrame rf = pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED;
   const pinocchio::Model& model = pinocchioInterfacePtr_->getModel();
-  // const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
-  // TODO(mspieler): Need to copy here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
-  pinocchio::Data data = pinocchio::Data(pinocchioInterfacePtr_->getData());
+  const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> orientations;
   for (const auto& frameId : endEffectorFrameIds_) {
     matrix_t J = matrix_t::Zero(6, model.nv);
-    pinocchio::getFrameJacobian(model, data, frameId, rf, J);
+    getFrameJacobianReadOnly(model, data, frameId, rf, J);
 
     VectorFunctionLinearApproximation ori;
     ori.f = data.oMf[frameId].translation(); // BUG: Should be orientation? //TODO: FIX THIS
@@ -193,15 +190,14 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
 
   const pinocchio::ReferenceFrame rf = pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED;
   const pinocchio::Model& model = pinocchioInterfacePtr_->getModel();
-  // const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
-  // TODO(mspieler): Need to copy here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
-  pinocchio::Data data = pinocchio::Data(pinocchioInterfacePtr_->getData());
+  const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> velocities;
   for (const auto& frameId : endEffectorFrameIds_) {
     matrix_t v_partial_dq = matrix_t::Zero(6, model.nv);
     matrix_t v_partial_dv = matrix_t::Zero(6, model.nv);
-    pinocchio::getFrameVelocityDerivatives(model, data, frameId, rf, v_partial_dq, v_partial_dv);
+    const auto& frame = model.frames[frameId];
+    pinocchio::getFrameVelocityDerivatives(model, data, frame.parentJoint, frame.placement, rf, v_partial_dq, v_partial_dv);
     const auto frameVel = pinocchio::getFrameVelocity(model, data, frameId, rf);
     // For reference frame LOCAL_WORLD_ALIGNED the jacobian needs to be corrected.
     if (rf == pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED) {
@@ -247,9 +243,7 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
 
   const pinocchio::ReferenceFrame rf = pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED;
   const pinocchio::Model& model = pinocchioInterfacePtr_->getModel();
-  // const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
-  // TODO(mspieler): Need to copy here because getFrameJacobian() modifies data. Will be fixed in pinocchio version 3.
-  pinocchio::Data data = pinocchio::Data(pinocchioInterfacePtr_->getData());
+  const pinocchio::Data& data = pinocchioInterfacePtr_->getData();
 
   std::vector<VectorFunctionLinearApproximation> errors;
   for (int i = 0; i < endEffectorFrameIds_.size(); i++) {
@@ -258,7 +252,7 @@ std::vector<VectorFunctionLinearApproximation> PinocchioEndEffectorKinematics::g
     const quaternion_t q = matrixToQuaternion(data.oMf[frameId].rotation());
     err.f = quaternionDistance(q, referenceOrientations[i]);
     matrix_t J = matrix_t::Zero(6, model.nv);
-    pinocchio::getFrameJacobian(model, data, frameId, rf, J);
+    getFrameJacobianReadOnly(model, data, frameId, rf, J);
     const matrix_t Jqdist =
         (quaternionDistanceJacobian(q, referenceOrientations[i]) * angularVelocityToQuaternionTimeDerivative(q)) * J.bottomRows<3>();
     std::tie(err.dfdx, std::ignore) = mappingPtr_->getOcs2Jacobian(state, Jqdist, matrix_t::Zero(3, model.nv));
